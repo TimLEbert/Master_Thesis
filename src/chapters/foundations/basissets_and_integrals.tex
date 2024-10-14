@@ -15,3 +15,10 @@ The spherical harmonics on the other side enables arbitrary angular resolution a
     ||\mathbf{v}||^l Y_{lm}(\frac{\mathbf{v}}{||\mathbf{v}||}) &= \Sum\limits_{a,b,c\in \mathbb{N}_0 a+b+c\leq l} A_{l,a,b,c} v_1^a v_2^b v_3^c
 \end{align}
 Where $A_{l,a,b,c}$ are constants. This leads to PAOs just being finite sums of finite polynominals multiplied with gaussians.
+
+\subsection{Integrals}
+There are several integrals in Kohn Sham dft which are nessesary to compute. All of them can be formulated in the following way.
+\begin{align}
+    I_{\mu,\nu} = \int d\mathbf{r} \eta_{\mu}(\mathbf{r}) f(\mathbf{r}) \eta_{\nu}(\mathbf{r})
+\end{align}
+Where $f$ is a function of $\mathbf{r}$. The integral can be simplified by the fact that the product of two gaussians is again a gaussian. This leads to the integral being a finite sum of gaussians multiplied with polynominals of the type of the spherical harmonics.
