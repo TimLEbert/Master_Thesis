@@ -1,0 +1,104 @@
+\documentclass[12pt,twoside]{report}
+\usepackage[a4paper,width=150mm,top=25mm,bottom=25mm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}\graphicspath{ {images/} }
+\usepackage{verbatim}
+\usepackage{etoolbox}
+\usepackage{tabularx}
+\usepackage[hyphens]{url}
+\urlstyle{same}
+\usepackage{amsmath,amssymb}
+\usepackage{amsfonts}
+\usepackage{hyperref}
+ % \usepackage{dsfont}
+\usepackage{rotating}
+\usepackage{dcolumn}
+\usepackage[export]{adjustbox}
+\usepackage{fancyhdr}
+\usepackage{csquotes}
+\usepackage{multicol}
+\usepackage{lipsum}
+\usepackage{float}
+\usepackage{subcaption}
+\usepackage[toc,page]{appendix}
+\usepackage{pdfpages}
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\usepackage{caption}
+\usepackage[american]{babel}
+%\usepackage{natbib}
+\usepackage[backend=bibtex,style=ieee,natbib=true]{biblatex}
+%
+\bibliography{chapters/references.bib}
+
+%\bibliography{references}
+
+\usepackage[T1]{fontenc}
+\usepackage{titlesec, blindtext, color}
+\definecolor{gray75}{gray}{0.75}
+\newcommand{\hsp}{\hspace{20pt}}
+\titleformat{\chapter}[hang]{\Huge\bfseries}{\thechapter\hsp\textcolor{gray75}{|}\hsp}{0pt}{\Huge\bfseries}
+
+\DeclareMathOperator*{\sumint}{%
+\mathchoice%
+  {\ooalign{$\displaystyle\sum$\cr\hidewidth$\displaystyle\int$\hidewidth\cr}}
+  {\ooalign{\raisebox{.14\height}{\scalebox{.7}{$\textstyle\sum$}}\cr\hidewidth$\textstyle\int$\hidewidth\cr}}
+  {\ooalign{\raisebox{.2\height}{\scalebox{.6}{$\scriptstyle\sum$}}\cr$\scriptstyle\int$\cr}}
+  {\ooalign{\raisebox{.2\height}{\scalebox{.6}{$\scriptstyle\sum$}}\cr$\scriptstyle\int$\cr}}
+}
+
+\fancyhead{}
+%\fancyhead[RO,LE]{Thesis Title}
+\fancyfoot{}
+\fancyfoot[LE,RO]{\thepage}
+\fancyfoot[LO,CE]{Chapter \thechapter}
+%\fancyfoot[CO,RE]{Tim Ebert}
+
+\makeatletter
+\patchcmd{\@caption}{\csname the#1\endcsname}{\csname fnum@#1\endcsname:}{}{}
+\renewcommand*\l@figure{\@dottedtocline{1}{1.5em}{4.5em}} 
+% default for 3rd arg: 2.3em
+\let\l@table\l@figure % as in article.cls
+\makeatother
+
+
+%define the author
+\author{Tim Ebert}
+\title{Kritische Exponenten von $\phi^4$ Model C bei endlichen Temperaturen}
+
+
+\def\@makechapterhead#1{%
+  \vspace*{50\p@}% <----------------- Space from top of page to Chapter #
+  {\parindent \z@ \raggedright \normalfont
+    \ifnum \c@secnumdepth >\m@ne
+        \huge\bfseries \@chapapp\space \thechapter% <-- Chapter #
+        \par\nobreak
+        \vskip 20\p@% <-------------- Space between Chapter # and title
+    \fi
+    \interlinepenalty\@M
+    \Huge \bfseries #1\par\nobreak% <------------------ Chapter title
+    \vskip 40\p@% <------------------ Space between chapter title and first paragraph
+  }}
+\begin{document}
+
+%omits page number
+\pagenumbering{gobble}
+\input{chapters/titlepage}
+\newpage
+\tableofcontents
+%\listoffigures
+\chapter{Introduction}
+\input{chapters/introduction}
+\chapter{Theoretical Foundations}
+\input{chapters/foundations}
+\begin{appendices}
+\end{appendices}
+\printbibliography[heading=bibintoc, title={Complete bibliography}]    
+%Displays the whole bibliography with the title "Complete bibliography"                  
+\clearpage                                                                                                                                      
+%Filtering bibliography
+\newpage
+\includepdf[pages=1]{images/Selbststaendigkeitserklaerung.pdf}
+
+\end{document}

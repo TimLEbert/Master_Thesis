@@ -1,0 +1,213 @@
+Orbital-Free Density Functional Theory (OF-DFT) represents a significant branch in the evolution of electronic structure methods. Rooted in the original formulation of Density Functional Theory by Hohenberg and Kohn \cite{HohenbergKohn1964}, OF-DFT aims to calculate the ground state properties of a many-electron system directly from the electron density, without the need for individual electronic orbitals.
+
+\subsection{Theoretical Foundation}
+
+OF-DFT is based on the same fundamental theorems as Kohn-Sham DFT:
+
+\begin{theorem}
+The ground-state properties of a many-electron system are uniquely determined by the electron density $n(\mathbf{r})$.
+\end{theorem}
+
+\begin{theorem}
+There exists a universal functional of the electron density, $F[n(\mathbf{r})]$, which can be used to find the ground-state energy of the system.
+\end{theorem}
+
+The key distinction lies in the approach to constructing the energy functional and calculating the ground state density.
+
+\subsection{Energy Functional in OF-DFT}
+
+In OF-DFT, the total energy functional is expressed as:
+
+\begin{equation}
+E[n] = T_s[n] + E_H[n] + E_{xc}[n] + E_{ext}[n]
+\end{equation}
+
+where:
+\begin{itemize}
+    \item $T_s[n]$ is the kinetic energy functional of non-interacting electrons
+    \item $E_H[n]$ is the Hartree energy
+    \item $E_{xc}[n]$ is the exchange-correlation energy
+    \item $E_{ext}[n]$ is the energy due to external potential
+\end{itemize}
+
+\subsubsection{Kinetic Energy Functional}
+
+The central challenge in OF-DFT is the accurate representation of the kinetic energy functional $T_s[n]$. Unlike in Kohn-Sham DFT, where this term is calculated using single-particle orbitals, OF-DFT must approximate it directly from the density. Common approximations include:
+
+\subsubsection{Thomas-Fermi Functional}
+
+The simplest approximation is the Thomas-Fermi functional:
+
+\begin{equation}
+T_{TF}[n] = C_{TF} \int n^{5/3}(\mathbf{r}) d\mathbf{r}
+\end{equation}
+
+where $C_{TF} = \frac{3}{10}(3\pi^2)^{2/3}$.
+
+\subsubsection{von Weizsäcker Functional}
+
+The von Weizsäcker functional adds a gradient correction:
+
+\begin{equation}
+T_{vW}[n] = \frac{1}{8} \int \frac{|\nabla n(\mathbf{r})|^2}{n(\mathbf{r})} d\mathbf{r}
+\end{equation}
+
+\subsubsection{Generalized Gradient Approximation (GGA)}
+
+More sophisticated functionals incorporate higher-order density gradients:
+
+\begin{equation}
+T_{GGA}[n] = \int t_{GGA}(n(\mathbf{r}), \nabla n(\mathbf{r}), \nabla^2 n(\mathbf{r}), ...) d\mathbf{r}
+\end{equation}
+
+\subsubsection{Other Energy Terms}
+
+The Hartree energy and external potential energy are treated similarly to Kohn-Sham DFT:
+
+\begin{equation}
+E_H[n] = \frac{1}{2} \int \int \frac{n(\mathbf{r})n(\mathbf{r'})}{|\mathbf{r}-\mathbf{r'}|} d\mathbf{r} d\mathbf{r'}
+\end{equation}
+
+\begin{equation}
+E_{ext}[n] = \int V_{ext}(\mathbf{r})n(\mathbf{r}) d\mathbf{r}
+\end{equation}
+
+The exchange-correlation energy $E_{xc}[n]$ is typically approximated using functionals similar to those in Kohn-Sham DFT, such as LDA or GGA.
+
+\subsection{Variational Principle and Euler Equation}
+
+The ground state density in OF-DFT is obtained by minimizing the total energy functional subject to the constraint of constant particle number:
+
+\begin{equation}
+\frac{\delta}{\delta n(\mathbf{r})} \left( E[n] - \mu \int n(\mathbf{r}) d\mathbf{r} \right) = 0
+\end{equation}
+
+This leads to the Euler equation:
+
+\begin{equation}
+\frac{\delta T_s[n]}{\delta n(\mathbf{r})} + V_H(\mathbf{r}) + V_{xc}(\mathbf{r}) + V_{ext}(\mathbf{r}) = \mu
+\end{equation}
+
+where $\mu$ is the chemical potential.
+
+\subsection{Advantages and Challenges}
+
+OF-DFT offers several potential advantages:
+
+\begin{itemize}
+    \item Reduced computational complexity, scaling as $O(N)$ with system size
+    \item Direct calculation of electron density without need for orbitals
+    \item Potential for treating very large systems
+\end{itemize}
+
+However, it faces significant challenges:
+
+\begin{itemize}
+    \item Difficulty in accurately representing the kinetic energy functional
+    \item Limited accuracy for systems with strong inhomogeneities or shell structure
+    \item Challenges in describing chemical bonding
+\end{itemize}
+
+\section{Current Research Directions}
+
+Active areas of research in OF-DFT include:
+
+\begin{itemize}
+    \item Development of more accurate kinetic energy functionals
+    \item Incorporation of non-local effects in the kinetic energy functional
+    \item Application to large-scale simulations of metals and simple semiconductors
+    \item Integration with machine learning techniques for functional development
+\end{itemize}
+
+\section{Density Fitting in Electronic Structure Calculations}
+
+\subsection{Introduction to Density Fitting}
+
+Density fitting, also known as resolution of identity (RI) or auxiliary basis set method, is a powerful technique used to reduce the computational cost of electronic structure calculations. This method was introduced by Whitten \cite{Whitten1973} and Baerends et al. \cite{Baerends1973} in the early 1970s and has since become a standard tool in quantum chemistry and solid-state physics.
+
+\subsection{Theoretical Framework}
+
+The core idea of density fitting is to approximate the electron density $n(\mathbf{r})$ or products of orbital pairs $\phi_i(\mathbf{r})\phi_j(\mathbf{r})$ using an auxiliary basis set $\{\chi_P(\mathbf{r})\}$:
+
+\begin{equation}
+n(\mathbf{r}) \approx \tilde{n}(\mathbf{r}) = \sum_P c_P \chi_P(\mathbf{r})
+\end{equation}
+
+or
+
+\begin{equation}
+\phi_i(\mathbf{r})\phi_j(\mathbf{r}) \approx \sum_P c_{ij}^P \chi_P(\mathbf{r})
+\end{equation}
+
+where $c_P$ and $c_{ij}^P$ are expansion coefficients.
+
+\subsection{Application in Two-Electron Integrals}
+
+One of the primary applications of density fitting is in the evaluation of two-electron integrals, which are computationally expensive in traditional methods. The four-center two-electron integrals can be approximated as:
+
+\begin{equation}
+(\mu\nu|\lambda\sigma) \approx \sum_{PQ} (\mu\nu|P)(P|Q)^{-1}(Q|\lambda\sigma)
+\end{equation}
+
+where $(\mu\nu|P)$ are three-center integrals and $(P|Q)$ are two-center integrals involving the auxiliary basis functions.
+
+\subsection{Determination of Fitting Coefficients}
+
+The fitting coefficients can be determined by minimizing the Coulomb self-interaction of the density difference:
+
+\begin{equation}
+\Delta = \int\int \frac{[n(\mathbf{r}) - \tilde{n}(\mathbf{r})][n(\mathbf{r}') - \tilde{n}(\mathbf{r}')]}{|\mathbf{r} - \mathbf{r}'|} d\mathbf{r}d\mathbf{r}'
+\end{equation}
+
+This leads to a linear system of equations:
+
+\begin{equation}
+\sum_Q (P|Q) c_Q = (\rho|P)
+\end{equation}
+
+where $(\rho|P)$ represents the overlap of the true density with the auxiliary functions.
+
+\subsection{Auxiliary Basis Sets}
+
+The choice of auxiliary basis set is crucial for the accuracy and efficiency of density fitting. Typically, auxiliary basis sets are designed to be larger than the orbital basis set but smaller than the product space of the orbital basis. Common types include:
+
+\begin{itemize}
+    \item Atomic-centered Gaussian functions
+    \item Plane waves (in periodic systems)
+    \item Mixed Gaussian and plane wave bases
+\end{itemize}
+
+\subsection{Advantages and Applications}
+
+Density fitting offers several advantages:
+
+\begin{itemize}
+    \item Reduced computational scaling, typically from $O(N^4)$ to $O(N^3)$ for Hartree-Fock and DFT calculations
+    \item Significant reduction in memory requirements
+    \item Enables efficient treatment of larger systems
+    \item Facilitates the implementation of advanced correlation methods
+\end{itemize}
+
+It has been successfully applied in various computational chemistry methods, including:
+
+\begin{itemize}
+    \item Hartree-Fock and Density Functional Theory
+    \item Second-order Møller-Plesset perturbation theory (MP2)
+    \item Coupled Cluster methods
+    \item Random Phase Approximation (RPA)
+\end{itemize}
+
+\subsection{Error Analysis and Control}
+
+While density fitting introduces an approximation, the errors can be systematically controlled and are often negligible compared to other approximations in electronic structure methods. The error in total energies typically scales as $O(M^{-1})$, where $M$ is the size of the auxiliary basis set.
+
+\subsection{Recent Developments}
+
+Recent advancements in density fitting include:
+
+\begin{itemize}
+    \item Local fitting approaches for large systems
+    \item Combination with other cost-reduction techniques like Cholesky decomposition
+    \item Development of density-fitted explicitly correlated methods
+    \item Application in periodic systems and solid-state calculations
+\end{itemize}
