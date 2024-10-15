@@ -1,5 +1,34 @@
-\subsection{Historical Background}
-Kohn-Sham Density Functional Theory (KSDFT) stands as a cornerstone in computational quantum mechanics, revolutionizing our approach to electronic structure calculations. Developed by Walter Kohn and Lu Jeu Sham in 1965 \cite{KohnSham1965}, KSDFT extends the foundational work of Hohenberg and Kohn \cite{HohenbergKohn1964} on Density Functional Theory (DFT).
+\subsection{Kohn Sham Density Functional Theory(KS-DFT)}
+The exact formulation of the Hamiltonial of the electrons of a static many body system, like a molecule, taken into account the born oppenheimer approximation of static nucleii, is given by the Schrödinger equation(using natural units):
+
+
+\begin{align}
+H[\mathbf{\Psi}] = T(\mathbf{\Psi}) + V_{ee}(\mathbf{\Psi}) + V_{ext}(\mathbf{\Psi})
+\end{align}
+Where
+\begin{align}
+    T[\mathbf{\Psi}] &= \frac{1}{2}\int\nabla\mathbf{\phi}^*(\mathbf{r})\nabla\mathbf{\phi}(\mathbf{r}) dr \\
+    V_{ee}[\mathbf{\Psi}] &= \frac{1}{2}\int\int\frac{1}{|\mathbf{r}-\mathbf{r'}|}\mathbf{\Psi}^*(\mathbf{r})\mathbf{\Psi}^*(\mathbf{r}')\mathbf{\Psi}(\mathbf{r}')\mathbf{\Psi}(\mathbf{r})d\mathbf{r}d\mathbf{r'}\\
+    V_{ext}[\mathbf{\Psi}] &= \int v_{ext}(\mathbf{r})\mathbf{\Psi}^*(\mathbf{r})\mathbf{\Psi}(\mathbf{r})d\mathbf{r}
+    \end{align}
+
+ \cite{KohnSham1965}, KSDFT extends the foundational work of Hohenberg and Kohn \cite{HohenbergKohn1964} on Density Functional Theory (DFT).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 \subsection{Theoretical Foundation}
 The theoretical underpinning of DFT rests on two fundamental theorems proved by Hohenberg and Kohn:
 \begin{theorem}

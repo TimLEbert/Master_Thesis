@@ -1,42 +1,18 @@
-Field theories are an influential and widespread field in theoretical physics. Both quantum field theories and statistical field theories are applied with great success to describe the behavior of quantum and classical statistical many-body systems.  One of the simplest nontrivial systems treated in these fields is an $N$-dimensional vector field with quadratic self interaction, a so called O(N)-model of a $\phi^4$-theory which is used in QFT to describe systems of bosons and in statistical field theories to approximately describe Ising models. Its Lagrangian is given by
-\begin{equation}\label{phi4model}
-\mathcal{L}(\phi) = \frac{1}{2}\left(\partial_\mu\phi\right)^2-\frac{m}{2}\phi^2-\frac{\lambda}{4!}\left(\phi^2\right)^2
-\end{equation}
-Here is $m$ the \textit{bare mass} of the particle corresponding to the excitation of the field and $\lambda$ the coupling constant of the quadratic self interaction of the field.  
-In this work we connect each point of the field additional to an external heat bath which is dampening the excitations of the field. The action in momentum space is given by
-\begin{equation}
-S[\phi] =   \frac{T}{2}\sum\limits_{n \in \mathbb{Z}}\int\limits_{\mathbb{R}^d}\frac{dq^d}{(2\pi)^d}\phi_n(\vec q)\left(\omega_n^2+\vec q^2+\gamma |\omega_n|\right)\phi_n(-\vec q)+U(\phi_m(\vec q))
-\end{equation}
-where we introduce the \textit{dissipation constant} $\gamma$ (derivation in appendix \ref{appendix_1}) and the potential which reads in momentum space $U(\phi_m(\vec q)) = -\frac{m}{2}\phi^2-\frac{\lambda}{4!}\left(\phi^2\right)^2$. $\omega_n$ is a Matsubara mode that which are frequently used in finite temperature field theory\cite{matsubara}. For systems of these kind the approach of the \textit{Functional Renormation Group}(FRG)\cite{Gies_2012}\cite{BOHR_2001}\cite{WETTERICH199390} has proven to be an capable tool to study  systems at thermal equilibrium and derive valuable quantities. This technique works by starting with the bare action of the system and integrating out momentum shells one at a time to arrive at a effective average action $\Gamma[\phi]$ from which all expectation values can be obtained. In practice the effective average action cannot be derived exactly but one has to do an truncation which approximates the exact average effective action. The truncation we use goes by the name of \textit{local potential approximation}(LPA)\cite{ZUMBACH1994225} which uses the effective Potential $U$ and the dissipation constant as parameters to describe the the average effective action.
-$\gamma$, as a parameter of the truncation, is expected to diverge at the critical temperature $T_C$ as a result of the occurring phasetransition. Mean field theory\cite{täuber_2014} predicts that the behavior of $\gamma$ near the critical point  only dependents on the reduced temperature $\tau$ which acts as the ordering parameter of this system and its behavior follows a power law described by the critical exponent $\alpha$.
-\begin{equation}
-\gamma(\tau) \approx \tau^\alpha = \left(\frac{T-T_C}{T_C}\right)^\alpha
-\end{equation} 
-Critical exponents are important identifiers of physical systems near a critical point and for classifying the phase transition into universality classes.
-\newpage
-\section*{Conventions And Notations}
-We defined these conventions and notations that are going to be used throughout this work.
-\begin{itemize}
-\item Natural units are used as $c = \hbar = k_b = 1$.
-\item Fourier transformation $f(\omega)$ of a function $f(x)$ in a $d$- dimensional Space is is defined as
-\begin{equation}\label{fourier_transform}
-f(\omega) = \int\limits_{\mathbb{R}^d} dx^d e^{i\omega x}f(x) \text{   and the inverse   }f(x) = \int\limits_{\mathbb{R}^d} \frac{d\omega^d}{(2\pi)^d} e^{i\omega x}f(\omega)
-\end{equation}
-\item The Fourier transformation of a field described in imaginary time $\tau$ to its representations in Matsubara modes is in thermic fieldtheory defined as:
-\begin{equation}\label{matsubara_transformation}
-\phi_m(\vec r) = \int\limits_0^\beta d\tau e^{i\omega_m \tau}\phi(\tau,\vec r)
-\end{equation}
-and the inverse:
-\begin{equation}\label{inverse_matsubara_transformation}
-\phi(\tau,\vec r) = T\sum\limits_{m \in \mathbb{Z}}e^{-i\omega_m \tau}\phi_m (\vec r)
-\end{equation}
-where $\omega_m = 2\pi m T$ describes the Matsubara frequencies and $\beta = 1/T$ is the inverse Temperature.
-\item In combination of the Momentum integral with the Matsubarasum we use the following short hand notation:
-\begin{equation}\label{shorthand_matsubara}
-\int \frac{dp^3}{(2\pi)^3}T\sum\limits_{n\in \mathbb{Z}}\equiv \sumint_p\xrightarrow{T\rightarrow 0}\int \frac{dp^4}{(2\pi)^4}
-\end{equation}
-\item For functional derivatives the following abbreviation is used
-\begin{equation}\label{functional_derivative}
-\Gamma^{(n)}[\phi](x_1,...,x_n) = \frac{\delta^{n}\Gamma}{\delta \phi(x_1)...\delta\phi(x_n)}
-\end{equation}
-\end{itemize}
+\chapter{Introduction}
+
+Density functional theory (DFT) is a field in physics which is commonly applied in the fields of quantum chemistry,
+solid state physics and material sciences. It is based on the Hohenberg-Kohn theorems \cite{hohenberg_inhomogeneous_1964} which state that the ground-state properties of a many-electron system are uniquely determined by its electron density.
+
+Based on these insigths Kohn Sham theory was conceived, which strives to reproduce the ground state
+density of a complex many-body quantum mechanical system with a set of non-interacting particles which are govered by the much simpler Kohn Sham equation. The non interacting electrons are represented by so called orbitals $\{\phi_i (\mathbf{r})\}_{i=1,...,n}$, which are pairwise orthogonal and normalized. They combine to form the density of the system $\rho(\mathbf{r}) = || \sum\limits_{i=1}^N \phi_i(\mathbf{r})||^2$.
+
+\begin{align}
+    H_{KS}[\rho ]  = T_S [\rho] + V_{eff}[\rho]
+\end{align}
+
+Dispite its great success KS-DFT has also some short commings. By using orbitals to describe the system it is bound to computationally scale very poorly to larger system sizes. Its accuracy is also heavily dependent on the choice of the exchange correlation functional which is used to approximate the many body effects of the system and the basis on which the orbitals are defined.
+
+New approaches try to fullfill Hohenberg-Kohn promise of a functional dependendent only on the electron density. These approaches are commonly named the Orbital Free DFT (OFDFT) and while older ones use classical density functionals\cite{oldofdft}, newer ones use machine learning models to approximate the functional.\cite{Roman}\cite{zhang_m-ofdft_2023}.
+
+In both cases well shaped basis sets are neccessary to represent the orbitals of kohn sham or the electron density in OF-DFT. Well optimised basis sets for dft calculation exist for a long time \cite{something} but they mostly use fixed basis functions for every atom type to represent the individual orbitals. In some case adaptive basis functions were used to adapt the local basis function to their local environment \cite{something}. But in these  attemps were mostly complicated by the complex integrals which are nessesary to compute the energy of the system. In this work we introduce differentiable integrals which with the help of machine learning technics and automatic diffentaition are  able to optimize baiss sets in an more effective way than previously employed finite difference methods. These integrals can be used to both optimize the orbtials free as well as the kohn sham basis sets for bath their coefficients as well as their exponents. They can also be used to learn advanced adaptive basis functions which use a graph neural network to adapt the basis functions to their local environment , greatly increasing the accuracy of the dft calculation with very minimal cost.
+

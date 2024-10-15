@@ -27,12 +27,11 @@
 \renewcommand{\footrulewidth}{0.4pt}
 \usepackage{caption}
 \usepackage[american]{babel}
-%\usepackage{natbib}
-%\usepackage[backend=bibtex,style=ieee,natbib=true]{biblatex}
+\usepackage{natbib}
+\usepackage[backend=bibtex,style=ieee,natbib=true]{biblatex}
 %
-% \bibliography{chapters/references.bib}
-
-%\bibliography{references}
+\bibliography{chapters/references}
+% \bibliography{references}
 
 \usepackage[T1]{fontenc}
 \usepackage{titlesec, blindtext, color}
@@ -94,11 +93,11 @@
 \input{chapters/foundations}
 \begin{appendices}
 \end{appendices}
-\printbibliography[heading=bibintoc, title={Complete bibliography}]    
+\printbibliography[heading=bibintoc, title={Complete bibliography}]
 %Displays the whole bibliography with the title "Complete bibliography"                  
-\clearpage                                                                                                                                      
+\clearpage
 %Filtering bibliography
 \newpage
-\includepdf[pages=1]{images/Selbststaendigkeitserklaerung.pdf}
+%\includepdf[pages=1]{images/Selbststaendigkeitserklaerung.pdf}
 
 \end{document}
