@@ -1,11 +1,13 @@
-In order to Represent a the orbitals of electrons in a dft-calculation gaussian orbital basis sets are commonly utilized. They exell in their simplicity and locallity. 
+In order to Represent orbitals inside a Kohn Sham DFT calculation atom centric basis sets are the norm.
+These basis sets usually consist of a radial part times a radial distribution function.
 \subsection{Polarized Atomic Orbitals}
 Polarized Atomic Orbitals(PAOs) are derived as a linear combination from a larger primary basis of functions centered on individuals atom centers. Formally we can write a PAO basis function $\eta_{\mu}(\mathbf{r})$ as a weighted sum of the primary basis functions $\tilde\eta_\nu(\mathbf{r})$ where $\mu,\nu$ are belonging to the same Atom.
 \begin{align}
     \tilde \eta_{\mu} =\Sum\limits_{\nu} A_{\mu,\nu} \eta_{\nu} 
 \end{align}
 \subsection{Gaussian basis functions}
-The individal basis functions $\eta_{\mu}(\mathbf{r})$ are usually chosen as Gaussian's centered on the same atom at position($\mathbf{R}$) with different exponents and multiplied with spherical harmonics$Y_{lm}$ to accomplish some angular dependency.
+The the radial individal basis functions $\eta_{\mu}(\mathbf{r})$ are usually chosen either as Gaussian
+'s centered on the same atom at position($\mathbf{R}$) with different exponents and multiplied with spherical harmonics$Y_{lm}$ to accomplish some angular dependency.
 \begin{align}
     \eta_{\mu}(\mathbf{r}) = N(\alpha,m,l) ||\mathbf{r}-\mathbf{R}||^l Y_{lm}(\frac{\mathbf{r}-\mathbf{R}}{||\mathbf{r}-\mathbf{R}||}) e^{-\alpha ||\mathbf{r}-\mathbf{R}||^2}
 \end{align}
@@ -22,3 +24,4 @@ There are several integrals in Kohn Sham dft which are nessesary to compute. All
     I_{\mu,\nu} = \int d\mathbf{r} \eta_{\mu}(\mathbf{r}) f(\mathbf{r}) \eta_{\nu}(\mathbf{r})
 \end{align}
 Where $f$ is a function of $\mathbf{r}$. The integral can be simplified by the fact that the product of two gaussians is again a gaussian. This leads to the integral being a finite sum of gaussians multiplied with polynominals of the type of the spherical harmonics.
+
