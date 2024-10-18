@@ -17,7 +17,9 @@ To evaluate the different density fitting methods the following metrics are used
 Here the different density fitting methods which were considert are introduced and compared.
 The derivation are include in Appendix \ref{appendix:density_fitting}
 \subsubsection{Overlap Density fitting}
-
+\begin{align}
+        \mathcal{L}(\mathbf{p}) &= \mathbf{p} W \mathbf{p} - 2 \mathbf{p}\bar { L} \bar\Gamma + \bar\Gamma \mathbf{D}\bar\Gamma
+\end{align}
 
 \subsubsection{Hartree Density fitting}
 Minimizes the following metric:
@@ -70,14 +72,30 @@ Which results in the following formula for the fitted density coefficients:
 
 
 \subsubsection{Hartree+External Density Fitting MOFDFT-Version with hard enforced electron number}
+\begin{align}
+    \mathcal{L}(\mathbf{p}) &= \left\lVert\left(\begin{array}{c}\tilde{W}\\v_{ext}^T\end{array}\right) \mathbf{p} - \left(\begin{array}{c}\tilde{L} \bar{\Gamma} \\ \bar{\Gamma}\bar{V}_{ext}\end{array}\right)\right\rVert^2 + \lambda (\mathbf{w}\mathbf{p}-N)
+\end{align}
 
 
 
 \subsubsection{Overlap Density fitting with enforced electron number}
+\begin{align}
+    \mathcal{L}(\mathbf{p},\mu) &= \mathbf{p} \tilde{W} \mathbf{p} - 2 \mathbf{p}\bar {\tilde L} \bar\Gamma + (\mathbf{p}\mathbf{v}_{ext}-\bar\Gamma \bar{V}_{ext})^2+\mu(\mathbf{p}\mathbf{w}-\bar\Gamma\bar S)\\
+    A^{-1}\left(\bar {\tilde L} + \mathbf{v}_{ext} \bar{V}_{ext}- \mathbf{w}\frac{\mathbf{w}A^{-1}\bar {\tilde L} +\mathbf{w}A^{-1}\mathbf{v}_{ext} \bar{V}_{ext}-\bar S}{\mathbf{w}A^{-1}\mathbf{w}}\right)\bar\Gamma\\
+\end{align}
 
 
 
 \subsubsection{Overlap Density fitting with enforced electron number and enforced external energy}
+\begin{align}
+    \mathcal{L}(\mathbf{p},\mu,\nu) &= \mathbf{p} \tilde{W} \mathbf{p} - 2 \mathbf{p}\bar {\tilde L} \bar\Gamma + \nu(\mathbf{p}\mathbf{v}_{ext}-\bar\Gamma \bar{V}_{ext})+\mu(\mathbf{p}\mathbf{w}-\bar\Gamma\bar S)\\
+\end{align}
+
+The following plot shows the difference of the metrics evaluated on the first 1000 Molecules of QM9.
+
+Insert plot here
+
+
 
 
 
