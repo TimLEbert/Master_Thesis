@@ -1,0 +1,12 @@
+Aside from the applied density fitting method also the osed orbital free basis set has an aguably even larger effect on the accuracy of the density fitted density.
+The often used even tempered besis set are an reliable, when also inefficient way to define an orbital free bassis set. Their simple construction algorith\cite{cosnt} covers the space of possible densities very broadly without.
+To improve the performance of our orbital free basis set it makes sense to use ab basis set which offers a higher  resolution in regions where densities fluctuate more rapitly.
+We construct this improved basis by starting with an even tempered one and used differentiable integrals and autograd to .
+
+\section{Using differentiable integrals to optimize an orbital free basis set}
+The basis density fitting formulation which minimizes the L2 norm of the residual density is given by:
+The following Lagragien describes the residula density
+\begin{align}
+    \mathcal{L}[\rho] &= \min_{\rho'}\left(||\rho-\rho'||_{\text{L2}}\right)\\
+    &=
+\end{align}

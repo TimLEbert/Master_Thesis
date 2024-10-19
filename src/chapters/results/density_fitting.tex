@@ -6,10 +6,10 @@ To evaluate the different density fitting methods the following metrics are used
 \begin{enumerate}
     \item Mean Absolute Error (MAE) of the Energies (Hartree, External, xc, kinetic)
     \item Mean Absolute Error (MAE) of the of the number of electrons $N = \int \rho(\mathbf{r}) d\mathbf{r}$
-    \item The L2 Norm of the difference in densities $\text{L2}[\rho-\rho'] = \sqrt{\int (\rho(\mathbf{r})-\rho'(\mathbf{r}))^2}$ d\mathbf{r}
-    \item The L1 Norm of the difference in densities $\text{L1}[\rho-\rho'] = \int |\rho(\mathbf{r})-\rho'(\mathbf{r})|$ d\mathbf{r}
+    \item The L2 Norm of the difference in densities $\text{L2}[\rho-\rho'] = \sqrt{\int (\rho(\mathbf{r})-\rho'(\mathbf{r}))^2} d\mathbf{r}$
+    \item The L1 Norm of the difference in densities $\text{L1}[\rho-\rho'] = \int |\rho(\mathbf{r})-\rho'(\mathbf{r})| d\mathbf{r}$
     \item The Gradient of the total energy at the ground state (Interesting for convergence)
-    \item The L1 Norm of negative values in the fitted density $\text{L1}[\rho'] = \int \text{RELU}(-\rho'(\mathbf{r}))$ d\mathbf{r}
+    \item The L1 Norm of negative values in the fitted density $\text{L1}[\rho'] = \int \text{RELU}(-\rho'(\mathbf{r})) d\mathbf{r}$
     \item The Hartree energy of the residual density $\text{Hartree}[\rho-\rho'] = \int \int \frac{(\rho(\mathbf{r})-\rho'(\mathbf{r}))(\rho(\mathbf{r'})-\rho'(\mathbf{r'}))}{|\mathbf{r}-\mathbf{r'}|}d\mathbf{r}d\mathbf{r'}$
     \item Stability of the fitted density coefficients (std of the coefficients)
 \end{enumerate}
@@ -94,6 +94,8 @@ Which results in the following formula for the fitted density coefficients:
 The following plot shows the difference of the metrics evaluated on the first 1000 Molecules of QM9.
 
 Insert plot here
+
+A more detailed Table of the found falues for the different values can be found in the appendix\cite appendix.
 
 
 
