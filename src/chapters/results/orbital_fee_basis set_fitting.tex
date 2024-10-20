@@ -8,5 +8,17 @@ The basis density fitting formulation which minimizes the L2 norm of the residua
 The following Lagragien describes the residula density
 \begin{align}
     \mathcal{L}[\rho] &= \min_{\rho'}\left(||\rho-\rho'||_{\text{L2}}\right)\\
-    &=
+    & = \min_{\{p_{\mu}\}_{\mu \in 1,...,n_b}} p^\mu W_{\mu,\nu} p^\nu - 2 p^\mu L^{\mu,\gamma\sigma} \Gamma^{\gamma\sigma} + \Gamma^{\mu\nu} D_{\mu\nu,\gamma\sigma} \Gamma^{\gamma,\sigma}
+    & = \left[p^\mu W_{\mu,\nu} p^\nu - 2 p^\mu L^{\mu,\gamma\sigma} \Gamma^{\gamma\sigma}\right]_{\mathbf{p} = W^{-1}\bar{L}\bar\Gamma}
+    & = \bar \Gamma \bar L ^T W^{-1} \bar L \bar Gamma - 2 \bar Gamma \bar L^T W^{-1} \bar L \bar \Gamma + \bar \Gamma \bar D \bar Gamma
+    & = - \bar Gamma \bar L^T W^{-1} \bar L \bar \Gamma + \bar \Gamma \bar D \bar Gamma
 \end{align}
+We can now insert the dependency of our integrals on the exponents $\{\mathbf{\alpha}_Z\}_{Z\in \text{H,C,N,O,F}}$ for the gaussian basis functions for each atom.
+The dependent integrals are the two center integral $W_{\mu,nu}(\mathbf{\alpha}) = \langle \omega_\mu(\mathbf{\alpha})|\omega_\nu(\mathbf{\alpha})\rangle$
+ and the three center overlap integral $L_{\mu,\gamma\sigma}(\mathbf{\alpha}) = \langle \omega_\mu(\mathbf{\alpha})|\eta_\gamma\eta_\sigma\rangle$. The 4 center overlap integral does not depend on the orbital free basis functions $\omega_\mu(\mathbf{\alpha})$ and can therefor be omitted from the final loss when doing gradient decent.
+ \begin{align}
+    \text{Loss}(\mathbf{\alpha}) & = - \bar Gamma \bar L^T(\mathbf{\alpha}) W^{-1}(\mathbf{\alpha}) \bar L(\mathbf{\alpha}) \bar \Gamma
+ \end{align}
+ Other formulations using the residual hartree energy can also be easily formulated but they are much more computational expensive and therefor not as usefull for this procedere.
+ \subsection{Comparison of performance of fitted bsis sets with vanilla even tempered basis sets}
+ We compare several fitted basis sets originating from even tempered basis sets with $\beta$ equal to 5 3 or 2.5 on the same metrics that we used for the different density fitting methods. For better readability we only compare them first using the density fitting method hartree+external Mofdft as it   
