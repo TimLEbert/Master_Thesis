@@ -1,1 +1,37 @@
-As our differentiable basis set framework lets us differentiate through the whole basis set fitting procedere, we can choose to replace the constant basis functions that are commonly used in DFT calculation with adaptive ones which can adopt to the local chemical environment. First approaches in this direction were done by .... and recently with the rise of machine learing approches Linear fitted coefficient (...) and by a gaussian process predicted coefficients have been tried out. Adaptive exponents inside the Gaussian basis functions have been avoided so far as they require to differentiate through the integrals. But now owr framework allows us to to learn the coefficients and exponents used in dft calculations jointly. We mainly restrict our analysis to minimal basis sets as they are exspected to profit the most from these improvements.
+As our differentiable basis set framework lets us differentiate through the whole basis set fitting procedere, we can choose to replace the constant basis functions that are commonly used in DFT calculation with adaptive ones which can adopt to the local chemical environment. First approaches in this direction were done by .... and recently with the rise of machine learing approches Linear fitted coefficient (...) and by a gaussian process predicted coefficients have been tried out. Adaptive exponents inside the Gaussian basis functions have been avoided so far as they require to differentiate through the integrals. But now owr framework allows us to to learn the coefficients and exponents used in dft calculations jointly. We mainly restrict our analysis to minimal basis sets, specificly the STO-3G\cite{STO-3G} minimal basis set, as they are exspected to profit the most from these improvements. We then use a small graph neural network, as described in \ref{Machine learning} to predict the exponents and coefficients of these Basis sets.
+\section{Multi Step Pretraining}
+As the differential basis functions are currently very slow and use a lot of vram compared to what is common in machine learing we cannot reach a very high number of iterations in learning. To compensate for this we using multiple pretraing procedere to improve the speed at which the neural network is learing. At first we let the network predict predict atomwise features, which don't require a evaluation of the differentiable integrals and can therefor be evaluated very quickly.
+\subsection{Pretraining on atomwise properties}
+We first evaluate the Neural network on atomwise properties to let it produce a kind of "physical intuition" before letting it work on the hard task of reliable predicting cefficients and expoenents for each atoms. For the features we borrow from the labels that have been produced for the orbital free model.
+We predict the features by adding an extra linear output head at the last layer of the neural network. 
+The following feature were predicted:
+"atom_charges_all", "nuclear_energy_edges", "sum_forces", "n_electrons_atoms", "effective_charge_atoms", "kin_atoms",
+"ext_atoms", "hartree_atoms", "xc_atoms", "tot_atoms"
+\begin{enumerate}
+    \item Atomic Number of each atom $Z_i$.\\
+    \item Coulob potential from each neightboring Atom $-\sum\limits_{a\in \mathcal{N}(i)} \frac{Z_a}{|e_{i-a}|}$\\
+    \item Sum of Coulomb forces acting on the current atom $\sum\limits_{a\in \mathcal{N}(i)} \frac{Z_aZ_i}{|e_{i-a}|^2}$\\
+    \item Effective number of electrons $\sum_\mu \text{mask(i)}_\mu p_\mu w\mu$ \\
+    \item Effective charge: Atomic Number - Effective number of electrons\\
+    \item Integrated kinetic Gradient\\
+    \item Integrated external energy of this atom\\
+    \item Integrated hartree gradient\\
+    \item Integrated xc gradient\\
+    \item integrated total energy gradient\\
+\end{enumerate}
+where $\text{mask(i)}_\mu = \begin{array}{c} 1. \text{if} \omega_\mu(\mathbf{r}) \text{is centered on \mathbf{R_i}}\\0. \text{else} 
+\end{array} $
+
+\subsection{Orbitals Deltalearing to bigger basis set}
+For the main traing step we train the basis set by fitting the orbitals produced by a largely bigger basis set 31-3g2fg? with the smaller basis set.
+The derivation of this equation can be found in appendix... , it is identical to the common precedure of data whitening.
+\begin{align}
+    \text{Loss} &= \sum_{i,j} A^{-\frac{1}{2}} \langle\eta_\mu|\eta_\nu\rangle^{-1}_{\mu,nu} \langle\eta_\nu|\tilde\eta_\gamma) C_{i,\gamma}\\
+    A_{i,j}&=C_{i,\sigma}\langle\eta_\sigma|\tilde\eta_\mu)\rangle \langle\eta_\mu|\eta_\nu\rangle^{-1}_{\mu,nu} \langle\eta_\nu|\tilde\eta_\gamma) C_{i,\gamma}\\
+\end{align}
+
+
+
+
+
+
