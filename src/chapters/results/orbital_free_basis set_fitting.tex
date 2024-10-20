@@ -16,10 +16,32 @@ The following Lagragien describes the residula density
 We can now insert the dependency of our integrals on the exponents $\{\mathbf{\alpha}_Z\}_{Z\in \text{H,C,N,O,F}}$ for the gaussian basis functions for each atom.
 The dependent integrals are the two center integral $W_{\mu,nu}(\mathbf{\alpha}) = \langle \omega_\mu(\mathbf{\alpha})|\omega_\nu(\mathbf{\alpha})\rangle$
  and the three center overlap integral $L_{\mu,\gamma\sigma}(\mathbf{\alpha}) = \langle \omega_\mu(\mathbf{\alpha})|\eta_\gamma\eta_\sigma\rangle$. The 4 center overlap integral does not depend on the orbital free basis functions $\omega_\mu(\mathbf{\alpha})$ and can therefor be omitted from the final loss when doing gradient decent.
- \begin{align}
-    \text{Loss}(\mathbf{\alpha}) & = - \bar Gamma \bar L^T(\mathbf{\alpha}) W^{-1}(\mathbf{\alpha}) \bar L(\mathbf{\alpha}) \bar \Gamma
+ \begin{align}\label{loss_basis_set_fitting}
+    \text{Loss}(\mathbf{\alpha}) & = - \bar \Gamma \bar L^T(\mathbf{\alpha}) W^{-1}(\mathbf{\alpha}) \bar L(\mathbf{\alpha}) \bar \Gamma
  \end{align}
  Other formulations using the residual hartree energy can also be easily formulated but they are much more computational expensive and therefor not as usefull for this procedere.
  \subsection{Comparison of performance of fitted bsis sets with vanilla even tempered basis sets}
- We compare several fitted basis sets originating from even tempered basis sets with $\beta$ equal to 5 3 or 2.5 on the same metrics that we used for the different density fitting methods. For better readability we only compare them first using the density fitting method hartree+external Mofdft as it   
+ We compare several fitted basis sets originating from even tempered basis sets with $\beta$ equal to 5 3 or 2.5 on the same metrics that we used for the different density fitting methods. For better readability we only compare them first using the density fitting method hartree+external Mofdft as it.
+ \section{Additional Sidelosses}
+ Using the prior mentioned loss\ref{loss_basis_set_fitting} alone isn't sufficient to garantie that the fitted basis set produces stable labels As can be seen the in the following plots, the exponents of basis set ... have moved very close together and lead to quite unstable coefficients. While the metrics of this basis set are very good, it has considerable problems while training. \ref{plot_tensorboard}.
+ To counteract this behavior additional sidelosses on the fitted coefficients $\mathbf{p}(\mathbf{alpha}) = W^{-1}(\mathbf{\alpha}) \bar L(\mathbf{\alpha}) \bar \Gamma$ during training have been applied. 
+ \begin{align}
+    \text{Loss}_{Coeffs}(\mathbf{\alpha}) = \epsilon_{Coeffs}||*\mathbf{p}(\mathbf{alpha})||^2\\
+    \text{Loss}_{STD\_Coeffs}(\mathbf{\alpha}) = \epsilon_{STDCoeffs}\left(\text{std}(\mathbf{p}(\mathbf{alpha}))\right)^2\\
+    \text{Loss}_{STD\_Coeffs\_Diff}(\mathbf{\alpha}) = \epsilon_{STDCoeffs}\left(\text{std}(\mathbf{p}(\mathbf{alpha}))\right)^2\\
+ \end{align}
+
+ Where the standart deviation is computed using A running STD implementation following welfords algorithm \cite{Welford}. 
+ The following plots show how the metrics change after aplliing these additional sidelosses starting with the previously best performing basis sets.
+ After applying these algorithms the standart deviation of the is much more evenly distributed over the coefficients. 
+ Which also results in smoother training.
+
+ At last we are going to compare the performance of a typical transformer model trained on the different fitted basis sets when doing denop and find out that while they aren't better at fitting the produced labels, they still perform better when compared to the orbital free density and lower the theoretical best performance.
  
+
+
+
+
+
+
+

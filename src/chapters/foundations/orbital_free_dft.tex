@@ -76,15 +76,15 @@ The exchange-correlation energy $E_{xc}[n]$ is typically approximated using func
 The calculation of the effective potential in terms of the orbital free density we first need to fit the kohn sham density to the orbitals.
 \subsection{Density fitting}
 This procedere called density fitting is also very commonly done to speed up kohn sham calculation , as the four center coulomb integral used to calculate the hartree energy scales with $O(N^4)$ and is therefore very expensive for large systems. As for this usecase it is only important that the hartree energy of the produced by the fitted basis is accurate the Hartree energy of the residual density is often the metric of choocise to minimise.
-\begin{aligned}
+\begin{align}
         \mathcal{L}(\mathbf{p}) &= \mathbf{p} \tilde{W} \mathbf{p} - 2 \mathbf{p}\bar {\tilde L} \bar\Gamma + \bar\Gamma \tilde{\mathbf{D}}\bar\Gamma
-\end{aligned}
+\end{align}
 By variational methods this equation can be minimized in the following way:
-\begin{aligned}
+\begin{align}
 \partial_{\mathbf p}\mathcal L&= 2\tilde{W} \mathbf{p}- 2 \bar {\tilde L} \bar\Gamma=0\\
 \mathbf{p}&=\tilde{W}^{-1}\bar {\tilde L} \bar\Gamma\\
 &=\bar{\mathbf{P}} \bar\Gamma
-\end{aligned}
+\end{align}
 Which results in a equation that can be easily solved by least squares methods.
 But this simple method results in bad in inaccurate densities and bad other energies.
 In Section ... better density fitting methods are discussed and compared.

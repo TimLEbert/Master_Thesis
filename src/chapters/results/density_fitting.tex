@@ -1,4 +1,4 @@
-\usepackage{amsmath}As intoduced in Chapter \ref{density_fitting_theory}
+As intoduced in Chapter \ref{density_fitting_theory}
 density fitting is ma method that attemps to reproduce the physical properties of a electron density produced by a set of orbitals by using a orbital free basis set.
 In the following the different denisty fitting methods are introduced and compared.
 \subsection{Metrics}
@@ -33,19 +33,19 @@ Which results in the following formula for the fitted density coefficients:
 
 
 \subsubsection{Hartree+External Density Fitting}
-\begin{aligned}
+\begin{align}
         \mathcal{L}(\mathbf{p}) &= \mathbf{p} \tilde{W} \mathbf{p} - 2 \mathbf{p}\bar {\tilde L} \bar\Gamma + \bar\Gamma \tilde{\mathbf{D}}\bar\Gamma + (\mathbf{p}\mathbf{v}_{ext}-\bar\Gamma \bar{V}_{ext})^2
-\end{aligned}
+\end{align}
 \begin{align}
     A&:=\tilde{W}+\mathbf{v}_{ext}\mathbf{v}_{ext}^T\\
     \mathbf{p}&:=A^{-1}\left(\bar {\tilde L}+\mathbf{v}_{ext}\bar{V}_{ext}\right) \bar\Gamma\\
 \end{align}
 
 \subsubsection{Hartree+External Density Fitting MOFDFT-Version}
-        \begin{aligned}
-        \mathcal{L}(\mathbf{p}) &= \mathbf{p} \tilde{W} \mathbf{p} - 2 \mathbf{p}\bar {\tilde L} \bar\Gamma + \bar\Gamma \tilde{\mathbf{D}}\bar\Gamma + (\mathbf{p}\mathbf{v}_{ext}-\bar\Gamma \bar{V}_{ext})^2\\
-        &\left(\begin{array}{c}\tilde{W}\\v_{ext}^T\end{array}\right) \mathbf{p} =  \left(\begin{array}{c}\tilde{L} \bar{\Gamma} \\ \bar{\Gamma}\bar{V}_{ext}\end{array}\right)
-        \end{aligned}
+\begin{align}
+\mathcal{L}(\mathbf{p}) &= \mathbf{p} \tilde{W} \mathbf{p} - 2 \mathbf{p}\bar {\tilde L} \bar\Gamma + \bar\Gamma \tilde{\mathbf{D}}\bar\Gamma + (\mathbf{p}\mathbf{v}_{ext}-\bar\Gamma \bar{V}_{ext})^2\\
+&\left(\begin{array}{c}\tilde{W}\\v_{ext}^T\end{array}\right) \mathbf{p} =  \left(\begin{array}{c}\tilde{L} \bar{\Gamma} \\ \bar{\Gamma}\bar{V}_{ext}\end{array}\right)
+\end{align}
 
 
 \subsubsection{Hartree+External Density Fitting with enforced electron number}
@@ -63,9 +63,9 @@ Which results in the following formula for the fitted density coefficients:
 
 
 \subsubsection{Hartree+External Density Fitting MOFDFT-Version with soft enforced electron number}
-\begin{aligned}
+\begin{align}
     \mathcal{L}(\mathbf{p}) &= \mathbf{p} \tilde{W} \mathbf{p} - 2 \mathbf{p}\bar {\tilde L} \bar\Gamma + \bar\Gamma \tilde{\mathbf{D}}\bar\Gamma + (\mathbf{p}\mathbf{v}_{ext}-\bar\Gamma \bar{V}_{ext})^2 + (\mathbf{p}\mathbf{w}-\bar\Gamma \bar{S})^2
-\end{aligned}
+\end{align}
 \begin{align}
     \left(\begin{array}{c}\tilde{W}\\\mathbf{v}_{ext}^T\\\mathbf{w}^T\end{array}\right) \mathbf{p} =  \left(\begin{array}{c}\tilde{L} \bar{\Gamma} \\ \bar{\Gamma}\bar{V}_{ext}\\\bar S\bar \Gamma\end{array}\right)
 \end{align}
