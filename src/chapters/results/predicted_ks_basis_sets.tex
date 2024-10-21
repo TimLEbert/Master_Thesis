@@ -5,22 +5,23 @@ As the differential basis functions are currently very slow and use a lot of vra
 We first evaluate the Neural network on atomwise properties to let it produce a kind of "physical intuition" before letting it work on the hard task of reliable predicting cefficients and expoenents for each atoms. For the features we borrow from the labels that have been produced for the orbital free model.
 We predict the features by adding an extra linear output head at the last layer of the neural network. 
 The following feature were predicted:
-"atom_charges_all", "nuclear_energy_edges", "sum_forces", "n_electrons_atoms", "effective_charge_atoms", "kin_atoms",
-"ext_atoms", "hartree_atoms", "xc_atoms", "tot_atoms"
 \begin{enumerate}
-    \item Atomic Number of each atom $Z_i$.\\
-    \item Coulob potential from each neightboring Atom $-\sum\limits_{a\in \mathcal{N}(i)} \frac{Z_a}{|e_{i-a}|}$\\
-    \item Sum of Coulomb forces acting on the current atom $\sum\limits_{a\in \mathcal{N}(i)} \frac{Z_aZ_i}{|e_{i-a}|^2}$\\
-    \item Effective number of electrons $\sum_\mu \text{mask(i)}_\mu p_\mu w\mu$ \\
-    \item Effective charge: Atomic Number - Effective number of electrons\\
-    \item Integrated kinetic Gradient\\
-    \item Integrated external energy of this atom\\
-    \item Integrated hartree gradient\\
-    \item Integrated xc gradient\\
-    \item integrated total energy gradient\\
+    \item Atomic number of each atom, $Z_i$.
+    \item Coulomb potential from each neighboring atom, $-\sum\limits_{a \in \mathcal{N}(i)} \frac{Z_a}{|e_{i-a}|}$.
+    \item Sum of Coulomb forces acting on the current atom, $\sum\limits_{a \in \mathcal{N}(i)} \frac{Z_a Z_i}{|e_{i-a}|^2}$.
+    \item Effective number of electrons, $\sum\limits_{\mu} \text{mask}(i)_\mu p_\mu w_\mu$.
+    \item Effective charge: Atomic number minus the effective number of electrons.
+    \item Integrated kinetic gradient.
+    \item Integrated external energy of this atom.
+    \item Integrated Hartree gradient.
+    \item Integrated exchange-correlation (xc) gradient.
+    \item Integrated total energy gradient.
 \end{enumerate}
-where $\text{mask(i)}_\mu = \begin{array}{c} 1. \text{if} \omega_\mu(\mathbf{r}) \text{is centered on \mathbf{R_i}}\\0. \text{else} 
-\end{array} $
+where $\text{mask(i)}_\mu =
+\begin{cases}
+1, & \text{if } \omega_\mu(\mathbf{r}) \text{ is centered on } \mathbf{R_i} \\
+0, & \text{else}
+\end{cases}$
 
 \subsection{Orbitals Deltalearing to bigger basis set}
 For the main traing step we train the basis set by fitting the orbitals produced by a largely bigger basis set 31-3g2fg? with the smaller basis set.
