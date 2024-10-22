@@ -1,0 +1,156 @@
+Here we include the detailed derivations of the solutions for the different density fitting methods.
+
+\section{Unrestricted Basis Set Fitting}
+The simplest forms of density fitting just include the inversion of a single matrix to work,
+\subsection{Overlap/Hartree Density fitting}
+The derivations for the overlap and hartree density fitting methods are very similar, as the only difference is the choice of the metric used to fit the density coefficients.
+The lagrangian is just the L2 norm/ the hartree energy of the residual density. We just inlcude here the version with the overlap metric, from which the hartree version can be easily derived by replacing the overlap matrices with the corresponding hartree matrices.
+\begin{align}
+\mathcal{L}(\mathbf{p}) &= \mathbf{p} \tilde{W} \mathbf{p} - 2 \mathbf{p}\bar {\tilde L} \bar\Gamma + \bar\Gamma \tilde{\mathbf{D}}\bar\Gamma
+\end{align}
+This is solved by:
+\begin{align}
+\partial_{\mathbf p}\mathcal L&= 2\tilde{W} \mathbf{p}- 2 \bar {\tilde L} \bar\Gamma=0\\
+\mathbf{p}&=\tilde{W}^{-1}\bar {\tilde L} \bar\Gamma\\
+&=\bar{\mathbf{P}} \bar\Gamma
+\end{align}
+\subsection{Overlap/Hartree + External Density fitting}
+This version improves on the base line by including the external potential in the fitting metric. This is done by adding the following term to the lagrangian:
+\begin{align}
+\mathcal{L}(\mathbf{p}) &= \mathbf{p} \tilde{W} \mathbf{p} - 2 \mathbf{p}\bar {\tilde L} \bar\Gamma + \bar\Gamma \tilde{\mathbf{D}}\bar\Gamma + (\mathbf{p}\mathbf{v}_{ext}-\bar\Gamma \bar{V}_{ext})^2
+\end{align}
+    This is solved by assuming that $A=\tilde{W}+\mathbf{v}_{ext}\mathbf{v}_{ext}^T$ is invertible:
+\begin{align}
+\partial_{\mathbf p}\mathcal L&= 2\tilde{W} \mathbf{p}- 2 \bar {\tilde L} \bar\Gamma + 2\mathbf{v}_{ext}\mathbf{v}_{ext}^T\mathbf{p} - 2\mathbf{v}_{ext}\bar\Gamma \bar{V}_{ext}\\
+&= 2 A \mathbf{p}- 2 \bar {\tilde L} \bar\Gamma - 2\mathbf{v}_{ext}\bar\Gamma \bar{V}_{ext}=0\\
+\mathbf{p}&=A^{-1}\left(\bar {\tilde L}+\mathbf{v}_{ext}\bar{V}_{ext}\right) \bar\Gamma\\
+&=\bar{\mathbf{P}} \bar\Gamma
+\end{align}
+\subsection{Hartree+External Density Fitting MOFDFT version}
+This version is adopted from the MOFDFT - paper\cite{zhang_m-ofdft_2023} where they claim that
+\begin{equation}
+    \left(\begin{array}{c}\tilde{W}\\v_{ext}^T\end{array}\right) \mathbf{p} =  \left(\begin{array}{c}\tilde{L} \bar{\Gamma} \\ \bar{\Gamma}\bar{V}_{ext}\end{array}\right)
+\end{equation}
+minimizes the lagrangian above when solved using a least squares method, but instead this minimize the following lagrangian:
+\begin{equation}
+    \left\lVert
+    \begin{pmatrix}
+    \tilde{W} \\
+    v_{ext}^T
+    \end{pmatrix}
+    \mathbf{p}
+    -
+    \begin{pmatrix}
+    \tilde{L} \bar{\Gamma} \\
+    \bar{\Gamma} \bar{V}_{ext}
+    \end{pmatrix}
+    \right\lVert^2
+\end{equation}
+
+\subsection{Hartree+External Density Fitting MOFDFT version with soft enforced electron number}
+This version is adopted from the published code of the MOFDFT-paper\cite{zhang_m-ofdft_2023}  while it is not mentioned in the paper itself. It adds ann additional row to the matrix lagrangian in the lagrangian which leads to the method putting more emphasis on the correct electron number.
+\begin{equation}
+    \left(\begin{array}{c}\tilde{W}\\v_{ext}^T\\\mathbf{w}^T\end{array}\right) \mathbf{p} =  \left(\begin{array}{c}\tilde{L} \bar{\Gamma} \\ \bar{\Gamma}\bar{V}_{ext}\\\bar{\Gamma}\bar S\end{array}\right)
+\end{equation}
+Which is solved by using a least squares method , minimizing the following lagrangian:
+\begin{equation}
+    \left\lVert
+    \left(\begin{array}{c}\tilde{W}\\v_{ext}^T\\\mathbf{w}^T\end{array}\right) \mathbf{p} -  \left(\begin{array}{c}\tilde{L} \bar{\Gamma} \\ \bar{\Gamma}\bar{V}_{ext}\\\bar{\Gamma}\bar S\end{array}\right)
+    \right\lVert^2
+\end{equation}
+
+\section{Restricted Density Fitting}
+Some more advanced density fitting methods can include the restriction of the allowed densities to those that respect the total number of electrons. The Coulomb energy can also be fixed. We enforced these contstraints using lagrange multipliers.
+\subsection{Hartree+External Density Fitting with enforced electron number}
+Identical to the Hartree+External Density fitting method, but with an additional term in the lagrangian to enforce the electron number:
+\begin{align}
+\mathcal{L}(\mathbf{p},\mu) &= \mathbf{p} \tilde{W} \mathbf{p} - 2 \mathbf{p}\bar {\tilde L} \bar\Gamma + (\mathbf{p}\mathbf{v}_{ext}-\bar\Gamma \bar{V}_{ext})^2+\mu(\mathbf{p}\mathbf{w}-\bar\Gamma\bar S)\\
+\partial_{\mathbf p}\mathcal L&= 2\tilde{W} \mathbf{p}- 2 \bar {\tilde L} \bar\Gamma + 2\mathbf{v}_{ext}(\mathbf{p}\mathbf{v}_{ext}-\bar\Gamma \bar{V}_{ext})+\mu \mathbf{w}\\
+&= 2(\tilde{W}+\mathbf{v}_{ext}\mathbf{v}_{ext}^T) \mathbf{p}- 2 \bar {\tilde L} \bar\Gamma + 2\mathbf{v}_{ext}\bar\Gamma \bar{V}_{ext}+\mu \mathbf{w}= 0\\
+\partial_\mu\mathcal{L}&= (\mathbf{p}\mathbf{w}-\bar\Gamma\bar S)=0\\
+\end{align}
+
+If we assume that $A=\tilde{W}+\mathbf{v}_{ext}\mathbf{v}_{ext}^T$ is invertible we can solve this using the lagrange multiplier:
+\begin{align}
+\mathbf{w}A^{-1}\partial_{\mathbf p}\mathcal L&= 2 \mathbf{w}\mathbf{p}-2 \mathbf{w}A^{-1}\bar {\tilde L} \bar\Gamma-2\mathbf{w}A^{-1}\mathbf{v}_{ext}\bar\Gamma \bar{V}_{ext} + \mu \mathbf{w}A^{-1}\mathbf{w}\\
+&=2\bar\Gamma\bar S -2 \mathbf{w}A^{-1}\bar {\tilde L} \bar\Gamma-2\mathbf{w}A^{-1}\mathbf{v}_{ext}\bar\Gamma \bar{V}_{ext} + \mu \mathbf{w}A^{-1}\mathbf{w}=0\\
+\mu &= 2\frac{-\bar\Gamma\bar S + \mathbf{w}A^{-1}\bar {\tilde L} \bar\Gamma+\mathbf{w}A^{-1}\mathbf{v}_{ext}\bar\Gamma \bar{V}_{ext}}{\mathbf{w}A^{-1}\mathbf{w}}\\
+&=2\frac{\mathbf{w}A^{-1}\bar {\tilde L} +\mathbf{w}A^{-1}\mathbf{v}_{ext} \bar{V}_{ext}-\bar S}{\mathbf{w}A^{-1}\mathbf{w}}\bar\Gamma\\
+\partial_{\mathbf p}\mathcal L&= 2A\mathbf{p}- 2 \bar {\tilde L} \bar\Gamma - 2\mathbf{v}_{ext}\bar\Gamma \bar{V}_{ext}+\mu \mathbf{w}=0\\
+\Leftrightarrow\mathbf p&=A^{-1}\bar {\tilde L} \bar\Gamma + A^{-1}\mathbf{v}_{ext}\bar\Gamma \bar{V}_{ext}-\frac{1}{2}\mu A^{-1}\mathbf{w}\\
+&=A^{-1}\bar {\tilde L} \bar\Gamma + A^{-1}\mathbf{v}_{ext}\bar\Gamma \bar{V}_{ext}- A^{-1}\mathbf{w}\frac{\mathbf{w}A^{-1}\bar {\tilde L} +\mathbf{w}A^{-1}\mathbf{v}_{ext} \bar{V}_{ext}-\bar S}{\mathbf{w}A^{-1}\mathbf{w}}\bar\Gamma\\
+&=A^{-1}\left(\bar {\tilde L} + \mathbf{v}_{ext} \bar{V}_{ext}- \mathbf{w}\frac{\mathbf{w}A^{-1}\bar {\tilde L} +\mathbf{w}A^{-1}\mathbf{v}_{ext} \bar{V}_{ext}-\bar S}{\mathbf{w}A^{-1}\mathbf{w}}\right)\bar\Gamma\\
+&= \bar {\mathbf{P}}\bar\Gamma
+\end{align}
+\subsection{Hartree + External Density Fitting MOFDFT-Version with hard enforced electron number}
+In this version of the MOFDFT implementation of density fitting we hard enforce the number of electrons by adding an additional laplace multiplier to the lagrangian:
+\begin{align}
+\mathcal{L}(\mathbf{p}) &= \left\lVert\left(\begin{array}{c}\tilde{W}\\v_{ext}^T\end{array}\right) \mathbf{p} - \left(\begin{array}{c}\tilde{L} \bar{\Gamma} \\ \bar{\Gamma}\bar{V}_{ext}\end{array}\right)\right\rVert^2 + \lambda (\mathbf{w}\mathbf{p}-N)
+\end{align}
+It is solved by:
+\begin{align}
+\mathbf{\tilde{p}} &= \underset{\mathbf{p'}}{\text{argmin}}
+ \left\lVert\left(\begin{array}{c}\tilde{W}\\v_{ext}^T\end{array}\right) \mathbf{p'} - \left(\begin{array}{c}\tilde{L} \bar{\Gamma} \\ \bar{\Gamma}\bar{V}_{ext}\end{array}\right)\right\rVert^2\\
+\mathbf{M} &= \left(\begin{array}{c}\tilde{W}\\v_{ext}^T\end{array}\right)^T\left(\begin{array}{c}\tilde{W}\\v_{ext}^T\end{array}\right)\\
+\mathbf{p} &= \mathbf{\tilde{p}} - \frac{\mathbf{w\tilde{p}}-N}{\mathbf{w}\mathbf{M}^{-1}\mathbf{w}}\mathbf{M}^{-1}\mathbf{w}
+\end{align}
+\subsection{Hartree/Overlap+External Density Fitting with enforced electron number and External Energy}
+By adding another lagrange multiplier we arrive at the following lagrangian:
+\begin{align}
+\mathcal{L}(\mathbf{p},\mu,\nu) &= \mathbf{p} \tilde{W} \mathbf{p} - 2 \mathbf{p}\bar {\tilde L} \bar\Gamma + \nu(\mathbf{p}\mathbf{v}_{ext}-\bar\Gamma \bar{V}_{ext})+\mu(\mathbf{p}\mathbf{w}-\bar\Gamma\bar S)\\
+\partial_{\mathbf p}\mathcal L&= 2\tilde{W} \mathbf{p}- 2 \bar {\tilde L} \bar\Gamma + \nu\mathbf{v}_{ext}+\mu \mathbf{w}= 0\\
+\partial_\mu\mathcal{L}&= (\mathbf{p}\mathbf{w}-\bar\Gamma\bar S)=0\\
+\partial_\nu\mathcal{L}&= (\mathbf{p}\mathbf{v}_{ext}-\bar\Gamma \bar{V}_{ext})=0\\
+\end{align}
+
+If we assume that $A=\tilde{W}$ is invertible this can be solved by:\\
+\begin{align}
+\mathbf{w}\tilde W^{-1}\partial_{\mathbf p}\mathcal L&= 2 \mathbf{w}\mathbf{p}-2 \mathbf{w}\tilde W^{-1}\bar {\tilde L} \bar\Gamma+\nu\mathbf{w}\tilde W^{-1}\mathbf{v}_{ext} + \mu \mathbf{w}\tilde W^{-1}\mathbf{w}\\
+&=2\bar\Gamma\bar S -2 \mathbf{w}\tilde W^{-1}\bar {\tilde L} \bar\Gamma+\nu\mathbf{w}\tilde W^{-1}\mathbf{v}_{ext} + \mu \mathbf{w}\tilde W^{-1}\mathbf{w}=0\\
+\mu &= 2\frac{\bar\Gamma\bar S - \mathbf{w}\tilde W^{-1}\bar {\tilde L} \bar\Gamma}{\mathbf{w}\tilde W^{-1}\mathbf{w}}+\nu\frac{\mathbf{w}\tilde W^{-1}\mathbf{v}_{ext}}{\mathbf{w}\tilde W^{-1}\mathbf{w}}\\
+\mathbf{v}_{ext}\tilde W^{-1}\partial_{\mathbf p}\mathcal L&= 2 \mathbf{v}_{ext}\mathbf{p}-2 \mathbf{v}_{ext}\tilde W^{-1}\bar {\tilde L} \bar\Gamma+\nu\mathbf{v}_{ext}\tilde W^{-1}\mathbf{v}_{ext} + \mu \mathbf{v}_{ext}\tilde W^{-1}\mathbf{w}\\
+&=2\bar\Gamma \bar{V}_{ext} -2 \mathbf{v}_{ext}\tilde W^{-1}\bar {\tilde L} \bar\Gamma+\nu\mathbf{v}_{ext}\tilde W^{-1}\mathbf{v}_{ext} + \mu \mathbf{v}_{ext}\tilde W^{-1}\mathbf{w}=0\\
+\nu &= 2\frac{\bar\Gamma \bar{V}_{ext} - \mathbf{v}_{ext}\tilde W^{-1}\bar {\tilde L} \bar\Gamma}{\mathbf{v}_{ext}\tilde W^{-1}\mathbf{v}_{ext}}+\mu\frac{\mathbf{w}\tilde W^{-1}\mathbf{v}_{ext}}{\mathbf{v}_{ext}\tilde W^{-1}\mathbf{v}_{ext}}\\
+&= 2\frac{\bar\Gamma \bar{V}_{ext} - \mathbf{v}_{ext}\tilde W^{-1}\bar {\tilde L} \bar\Gamma}{\mathbf{v}_{ext}\tilde W^{-1}\mathbf{v}_{ext}}+\left(2\frac{\bar\Gamma\bar S - \mathbf{w}\tilde W^{-1}\bar {\tilde L} \bar\Gamma}{\mathbf{w}\tilde W^{-1}\mathbf{w}}+\nu\frac{\mathbf{w}\tilde W^{-1}\mathbf{v}_{ext}}{\mathbf{w}\tilde W^{-1}\mathbf{w}}\right)\frac{\mathbf{w}\tilde W^{-1}\mathbf{v}_{ext}}{\mathbf{v}_{ext}\tilde W^{-1}\mathbf{v}_{ext}}\\
+\nu\left(1-&\frac{\mathbf{w}\tilde W^{-1}\mathbf{v}_{ext}}{\mathbf{w}\tilde W^{-1}\mathbf{w}}\frac{\mathbf{w}\tilde W^{-1}\mathbf{v}_{ext}}{\mathbf{v}_{ext}\tilde W^{-1}\mathbf{v}_{ext}}\right)\\
+&= -2\frac{\bar\Gamma \bar{V}_{ext} - \mathbf{v}_{ext}\tilde W^{-1}\bar {\tilde L} \bar\Gamma}{\mathbf{v}_{ext}\tilde W^{-1}\mathbf{v}_{ext}}+2\frac{\bar\Gamma\bar S - \mathbf{w}\tilde W^{-1}\bar {\tilde L} \bar\Gamma}{\mathbf{w}\tilde W^{-1}\mathbf{w}}\frac{\mathbf{w}\tilde W^{-1}\mathbf{v}_{ext}}{\mathbf{v}_{ext}\tilde W^{-1}\mathbf{v}_{ext}}\\
+\nu\left(\mathbf{w}\tilde W^{-1}\mathbf{w} & \cdot\mathbf{v}_{ext}\tilde W^{-1}\mathbf{v}_{ext}-(\mathbf{w}\tilde W^{-1}\mathbf{v}_{ext})^2\right)\\
+&= -2\mathbf{w}\tilde W^{-1}\mathbf{w}\cdot\left(\bar\Gamma \bar{V}_{ext} - \mathbf{v}_{ext}\tilde W^{-1}\bar {\tilde L} \bar\Gamma\right)+2\mathbf{w}\tilde W^{-1}\mathbf{v}_{ext}\left(\bar\Gamma\bar S - \mathbf{w}\tilde W^{-1}\bar {\tilde L} \bar\Gamma\right)\\
+\nu&= 2\frac{-\mathbf{w}\tilde W^{-1}\mathbf{w}\cdot\left(\bar{V}_{ext} - \mathbf{v}_{ext}\tilde W^{-1}\bar {\tilde L}\right)+\mathbf{w}\tilde W^{-1}\mathbf{v}_{ext}\left(\bar S - \mathbf{w}\tilde W^{-1}\bar {\tilde L}\right)}{\mathbf{w}\tilde W^{-1}\mathbf{w}\cdot\mathbf{v}_{ext}\tilde W^{-1}\mathbf{v}_{ext}-(\mathbf{w}\tilde W^{-1}\mathbf{v}_{ext})^2}\bar\Gamma\\
+\mu&= 2\frac{-\mathbf{v}_{ext}\tilde W^{-1}\mathbf{v}_{ext}\cdot\left(\bar S - \mathbf{w}\tilde W^{-1}\bar {\tilde L} \right)+\mathbf{w}\tilde W^{-1}\mathbf{v}_{ext}\left( \bar{V}_{ext}- \mathbf{v}_{ext}\tilde W^{-1}\bar {\tilde L} \right)}{\mathbf{w}\tilde W^{-1}\mathbf{w}\cdot\mathbf{v}_{ext}\tilde W^{-1}\mathbf{v}_{ext}-(\mathbf{w}\tilde W^{-1}\mathbf{v}_{ext})^2}\bar\Gamma\\
+\partial_{\mathbf p}\mathcal L&= 2\tilde{W} \mathbf{p}- 2 \bar {\tilde L} \bar\Gamma + \nu\mathbf{v}_{ext}+\mu \mathbf{w}= 0\\
+\Leftrightarrow\mathbf{p} &= \tilde W^{-1}\bar {\tilde L} \bar\Gamma - \frac{1}{2}\nu\tilde W^{-1}\mathbf{v}_{ext}-\frac{1}{2}\mu \tilde W^{-1}\mathbf{w}\\
+&= \tilde W^{-1}\left(\bar {\tilde L} - \mathbf{v}_{ext}\frac{\mathbf{w}\tilde W^{-1}\mathbf{w}\cdot\left(\bar{V}_{ext} - \mathbf{v}_{ext}\tilde W^{-1}\bar {\tilde L}\right)+\left(\bar S - \mathbf{w}\tilde W^{-1}\bar {\tilde L}\right)}{\mathbf{w}\tilde W^{-1}\mathbf{w}\cdot\mathbf{v}_{ext}\tilde W^{-1}\mathbf{v}_{ext}+(\mathbf{w}\tilde W^{-1}\mathbf{v}_{ext})^2}\right. \\
+&\left. -\mathbf{w}\frac{\mathbf{v}_{ext}\tilde W^{-1}\mathbf{v}_{ext}\cdot\left(\bar S - \mathbf{w}\tilde W^{-1}\bar {\tilde L} \right)+\left( \bar{V}_{ext}- \mathbf{v}_{ext}\tilde W^{-1}\bar {\tilde L} \right)}{\mathbf{w}\tilde W^{-1}\mathbf{w}\cdot\mathbf{v}_{ext}\tilde W^{-1}\mathbf{v}_{ext}+(\mathbf{w}\tilde W^{-1}\mathbf{v}_{ext})^2}\right)\bar\Gamma\\
+&= \bar{\mathbf{P}}\bar\Gamma\\
+\end{align}
+Where $\bar{\mathbf{P}}$ is a three index tensor only dependent on the geometry of the molecule.
+
+
+
+
+
+
+\begin{table}[ht]
+\centering
+\renewcommand{\arraystretch}{1.2}
+\setlength{\tabcolsep}{8pt}
+\begin{tabular}{lccccccccc}
+
+                             hartree & hartree+external & hartree+external_fixed_density & hartree+external_mofdft & hartree+external_mofdft_enforced_density & hartree+external_mofdft_fixed_density & hartree_fixed_density_external & overlap & overlap_fixed_density_external & \\
+\hrule
+AE_hartree_energy              & 1.43e-06\pm3.54e-07   &2.54e-05\pm2.57e-06   &3.13e-04\pm2.53e-04   &1.43e-06\pm3.54e-07   &1.15e-06\pm1.56e-06   &1.59e-06\pm3.40e-06   &3.13e-04\pm2.53e-04   &9.49e-03\pm3.29e-03   &3.17e-04\pm2.41e-04   &\\
+AE_xc_energy                   & 1.09e-05\pm7.39e-06   &1.95e-05\pm8.03e-06   &2.12e-05\pm1.00e-05   &1.44e-05\pm7.76e-06   &1.13e-05\pm7.43e-06   &5.16e-05\pm1.66e-04   &2.12e-05\pm1.00e-05   &1.16e-04\pm5.30e-05   &8.48e-05\pm2.64e-05   &\\
+AE_ext_energy                  & 8.68e-04\pm1.24e-04   &2.48e-08\pm6.13e-09   &1.68e-08\pm6.25e-09   &2.02e-12\pm5.32e-13   &3.89e-11\pm4.64e-11   &1.15e-11\pm1.56e-11   &5.49e-11\pm4.90e-11   &9.66e-03\pm3.32e-03   &1.85e-13\pm1.61e-13   &\\
+AE_kin_energy                  & 8.56e-04\pm1.21e-04   &8.35e-06\pm5.41e-06   &2.92e-04\pm2.44e-04   &1.59e-05\pm7.98e-06   &1.16e-05\pm6.89e-06   &5.10e-05\pm1.63e-04   &2.92e-04\pm2.44e-04   &2.89e-04\pm9.22e-05   &2.33e-04\pm2.40e-04   &\\
+AE_hartree_ext_energy          & 8.67e-04\pm1.24e-04   &2.55e-05\pm2.57e-06   &3.13e-04\pm2.53e-04   &1.43e-06\pm3.54e-07   &1.15e-06\pm1.56e-06   &1.59e-06\pm3.40e-06   &3.13e-04\pm2.53e-04   &1.73e-04\pm4.62e-05   &3.17e-04\pm2.41e-04   &\\
+AE_density                     & 4.25e-05\pm3.48e-05   &4.14e-05\pm3.48e-05   &8.83e-11\pm7.58e-11   &4.25e-05\pm3.49e-05   &7.01e-16\pm5.89e-16   &1.64e-07\pm1.39e-07   &3.04e-14\pm2.51e-14   &1.19e-03\pm4.16e-04   &2.63e-14\pm2.30e-14   &\\
+L2_residual_densities          & 7.94e-04\pm1.10e-04   &7.64e-04\pm1.06e-04   &7.73e-04\pm1.13e-04   &6.78e-04\pm9.95e-05   &9.29e-04\pm5.36e-04   &2.30e-03\pm2.79e-03   &7.73e-04\pm1.13e-04   &5.21e-04\pm6.99e-05   &5.23e-04\pm7.15e-05   &\\
+L1_residual_densities          & 6.22e-03\pm4.64e-04   &6.22e-03\pm4.64e-04   &6.24e-03\pm4.79e-04   &6.22e-03\pm4.64e-04   &7.12e-03\pm1.36e-03   &7.84e-03\pm2.38e-03   &6.24e-03\pm4.79e-04   &6.28e-03\pm4.47e-04   &6.36e-03\pm4.73e-04   &\\
+L1_negative_densities          & 2.61e-07\pm8.10e-07   &2.61e-07\pm8.10e-07   &2.55e-07\pm7.96e-07   &2.60e-07\pm8.09e-07   &2.44e-06\pm1.31e-05   &3.55e-06\pm1.87e-05   &2.55e-07\pm7.96e-07   &7.50e-07\pm3.28e-06   &4.85e-07\pm2.04e-06   &\\
+L2_residual_hartree            & 2.86e-06\pm7.07e-07   &2.86e-06\pm7.07e-07   &2.89e-06\pm7.42e-07   &2.87e-06\pm7.08e-07   &3.78e-06\pm2.31e-06   &5.02e-06\pm6.01e-06   &2.89e-06\pm7.42e-07   &1.72e-05\pm1.09e-05   &7.52e-06\pm3.89e-06   &\\
+L2_residual_hartree_ext        & 3.76e-05\pm1.13e-05   &2.86e-06\pm7.07e-07   &2.89e-06\pm7.42e-07   &2.87e-06\pm7.08e-07   &3.78e-06\pm2.31e-06   &5.02e-06\pm6.01e-06   &2.89e-06\pm7.42e-07   &4.72e-03\pm4.40e-03   &7.52e-06\pm3.89e-06   &\\
+max_abs_gradient               & 5.18e-07\pm3.78e-07   &5.18e-07\pm3.78e-07   &5.18e-07\pm3.78e-07   &5.18e-07\pm3.78e-07   &5.18e-07\pm3.78e-07   &5.18e-07\pm3.78e-07   &5.18e-07\pm3.78e-07   &5.20e-07\pm3.79e-07   &5.18e-07\pm3.78e-07   &\\
+N_basis_functions              & 1.75e+01\pm5.90e-01   &1.75e+01\pm5.90e-01   &1.75e+01\pm5.90e-01   &1.75e+01\pm5.90e-01   &1.75e+01\pm5.90e-01   &1.75e+01\pm5.90e-01   &1.75e+01\pm5.90e-01   &1.75e+01\pm5.90e-01   &1.75e+01\pm5.90e-01   &\\
+\end{tabular}
+\end{table}
