@@ -26,9 +26,9 @@ The dependent integrals are the two center integral $W_{\mu,nu}(\mathbf{\alpha})
  Using the prior mentioned loss\ref{loss_basis_set_fitting} alone isn't sufficient to garantie that the fitted basis set produces stable labels As can be seen the in the following plots, the exponents of basis set ... have moved very close together and lead to quite unstable coefficients. While the metrics of this basis set are very good, it has considerable problems while training. \ref{plot_tensorboard}.
  To counteract this behavior additional sidelosses on the fitted coefficients $\mathbf{p}(\mathbf{alpha}) = W^{-1}(\mathbf{\alpha}) \bar L(\mathbf{\alpha}) \bar \Gamma$ during training have been applied. 
  \begin{align}
-    \text{Loss}_{Coeffs}(\mathbf{\alpha}) = \epsilon_{Coeffs}||*\mathbf{p}(\mathbf{alpha})||^2\\
-    \text{Loss}_{STD\_Coeffs}(\mathbf{\alpha}) = \epsilon_{STDCoeffs}\left(\text{std}(\mathbf{p}(\mathbf{alpha}))\right)^2\\
-    \text{Loss}_{STD\_Coeffs\_Diff}(\mathbf{\alpha}) = \epsilon_{STDCoeffs}\left(\text{std}(\mathbf{p}(\mathbf{alpha}))\right)^2\\
+    \text{Loss}_\text{Coeffs}(\mathbf{\alpha}) = \epsilon_\text{Coeffs}||*\mathbf{p}(\mathbf{alpha})||^2\\
+    \text{Loss}_\text{STD\_Coeffs}(\mathbf{\alpha}) = \epsilon_\text{STDCoeffs}\left(\text{std}(\mathbf{p}(\mathbf{alpha}))\right)^2\\
+    \text{Loss}_\text{STD\_Coeffs\_Diff}(\mathbf{\alpha}) = \epsilon_\text{STDCoeffs}\left(\text{std}(\mathbf{p}(\mathbf{alpha}))\right)^2\\
  \end{align}
 
  Where the standart deviation is computed using A running STD implementation following welfords algorithm \cite{Welford}. 
@@ -37,6 +37,12 @@ The dependent integrals are the two center integral $W_{\mu,nu}(\mathbf{\alpha})
  Which also results in smoother training.
 
  At last we are going to compare the performance of a typical transformer model trained on the different fitted basis sets when doing denop and find out that while they aren't better at fitting the produced labels, they still perform better when compared to the orbital free density and lower the theoretical best performance.
+
+
+ \begin{figure}
+   \centering
+   \includegraphics{chapters/results/results_images/density_fitting_slices2}
+ \end{figure}
  
 
 
