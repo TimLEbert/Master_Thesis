@@ -50,10 +50,10 @@
 
 \fancyhead{}
 %\fancyhead[RO,LE]{Thesis Title}
-\fancyfoot{}
+%\fancyfoot{}
 \fancyfoot[LE,RO]{\thepage}
 \fancyfoot[LO,CE]{Chapter \thechapter}
-%\fancyfoot[CO,RE]{Tim Ebert}
+%\fancyfoot[CO,RE]{Tim Ebert\thepage}
 
 \makeatletter
 \patchcmd{\@caption}{\csname the#1\endcsname}{\csname fnum@#1\endcsname:}{}{}
@@ -82,14 +82,16 @@
   }}
 \newcommand{\rhoPhi}{\rho_{[\mathbf{\Phi}]}}
 \begin{document}
-
+\linespread{1.25}
 %omits page number
-\pagenumbering{gobble}
+%\pagenumbering{gobble}
+\pagenumbering{roman}
 \input{chapters/titlepage}
 \newpage
 \tableofcontents
 %\listoffigures
 \chapter{Introduction}
+\pagenumbering{arabic}
 \input{chapters/introduction}
 \chapter{Theoretical Foundations}
 \input{chapters/foundations}
