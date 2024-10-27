@@ -19,9 +19,20 @@ The spherical harmonics on the other side enables arbitrary angular resolution a
 Where $A_{l,a,b,c}$ are constants. This leads to PAOs just being finite sums of finite polynominals multiplied with gaussians.
 
 \subsection{Integrals}
-There are several integrals in Kohn Sham dft which are nessesary to compute. All of them can be formulated in the following way.
+Most relevant integrals for DFT involve integrals over products of gaussians which can be computed analytically. Examples are the overlap integral $\langle \eta_{\mu}|\eta_{\nu}\rangle$, the kinetic energy integral $\langle \nabla \eta_{\mu}|\nabla \eta_{\nu}\rangle$, the electron-nucleus integral $\langle \eta_{\mu}|\frac{Z}{||\mathbf{r}-\mathbf{R}||}|\eta_{\nu}\rangle$ as well as the hartree integral $(\eta_{\mu}\eta_{\nu}|\eta_\gamma\eta_\delta)$. Other more complicated integrals, such as the Thomas Fermi functional or the von Weizsäcker functional, as well as practically all exchange correlation functionals, are usually computed numerically on a sufficently large grid.
+The way these integrals are usually calculated can be demonstrated on the example of the overlap integral. First one can notice that it is possible to write the product of the two gaussians as a single gaussian and simplify.
 \begin{align}
-    I_{\mu,\nu} = \int d\mathbf{r} \eta_{\mu}(\mathbf{r}) f(\mathbf{r}) \eta_{\nu}(\mathbf{r})
+    \langle \phi|\psi \rangle &= \langle   \sum\limits_{a,b,c\in \mathbb{N}_0 a+b+c\leq l_1} A_{l,a,b,c} (v_1-x_1)^a (v_2-x_2)^b (v_3-x_3)^c e^{-\alpha (\mathbf v -\mathbf x)^2}| \sum\limits_{a,b,c\in \mathbb{N}_0 d+e+f\leq l_2} B_{l,d,e,f} (w_1-x_1)^d (w_2-x_2)^e (w_3-x_3)^{f}e^{-\beta(\mathbf w -\mathbf x)^2}\rangle\\
+    &=\int \sum\limits_{a,b,c\in \mathbb{N}_0 a+b+c\leq l_1+l_2} C_{l,a,b,c} (x_1)^a (x_2)^b (x_3)^{c}e^{-(\alpha+\beta)\alpha(\frac{\alpha \mathbf v +\beta\mathbf w}{\alpha+\beta} -\mathbf x)^2-\frac{\alpha\beta}{\alpha+\beta}(\mathbf{v}-\mathbf{w})^2}\\
+    &=\sum\limits_{a,b,c\in \mathbb{N}_0 a+b+c\leq l_1+l_2} C_{l,a,b,c} I_{a}(\alpha,\beta,(\mathbf{v}-\mathbf{w})|_{1})I_{b}(\alpha,\beta,(\mathbf{v}-\mathbf{w})|_{2})I_{c}(\alpha,\beta,(\mathbf{v}-\mathbf{w})|_{3})
 \end{align}
-Where $f$ is a function of $\mathbf{r}$. The integral can be simplified by the fact that the product of two gaussians is again a gaussian. This leads to the integral being a finite sum of gaussians multiplied with polynominals of the type of the spherical harmonics.
-
+The individual integrals $I_{a}(\alpha,\beta,x)$ can be computed using recursion relations the recursion root can be camputed as:
+\begin{align}
+    I_{0}(\alpha,\beta,\mathbf{v}-\mathbf{w}) &= \sqrt{\frac{\pi}{\alpha+\beta}} e^{-\frac{\alpha\beta}{\alpha+\beta}(\mathbf{v}-\mathbf{w})^2}
+\end{align}
+And the higher order terms as:
+\begin{align}
+    I_{a,b,c}(\alpha,\beta,\mathbf{v}-\mathbf{w}) &= \frac{1}{2(\alpha+\beta)}\left( (a-1)I_{a-1,b,c}(\alpha,\beta,\mathbf{v}-\mathbf{w}) + (b-1)I_{a,b-1,c}(\alpha,\beta,\mathbf{v}-\mathbf{w})\right.\\
+    &\left.+ (c-1)I_{a,b,c-1}(\alpha,\beta,\mathbf{v}-\mathbf{w})\right)
+\end{align}
+There exist more recursion relations for the other types of integrals.

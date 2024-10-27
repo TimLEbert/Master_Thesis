@@ -103,27 +103,27 @@ By adding another lagrange multiplier we arrive at the following lagrangian:
 \partial_\nu\mathcal{L}&= (\mathbf{p}\mathbf{v}_{ext}-\bar\Gamma \bar{V}_{ext})=0\\
 \end{align}
 
-If we assume that $A=\tilde{W}$ is invertible this can be solved by:\\
+If we assume that $A=\tilde{W}$ is invertible this can be solved by:
 \begin{align}
-\mathbf{w}\tilde W^{-1}\partial_{\mathbf p}\mathcal L&= 2 \mathbf{w}\mathbf{p}-2 \mathbf{w}\tilde W^{-1}\bar {\tilde L} \bar\Gamma+\nu\mathbf{w}\tilde W^{-1}\mathbf{v}_{ext} + \mu \mathbf{w}\tilde W^{-1}\mathbf{w}\\
-&=2\bar\Gamma\bar S -2 \mathbf{w}\tilde W^{-1}\bar {\tilde L} \bar\Gamma+\nu\mathbf{w}\tilde W^{-1}\mathbf{v}_{ext} + \mu \mathbf{w}\tilde W^{-1}\mathbf{w}=0\\
-\mu &= 2\frac{\bar\Gamma\bar S - \mathbf{w}\tilde W^{-1}\bar {\tilde L} \bar\Gamma}{\mathbf{w}\tilde W^{-1}\mathbf{w}}+\nu\frac{\mathbf{w}\tilde W^{-1}\mathbf{v}_{ext}}{\mathbf{w}\tilde W^{-1}\mathbf{w}}\\
-\mathbf{v}_{ext}\tilde W^{-1}\partial_{\mathbf p}\mathcal L&= 2 \mathbf{v}_{ext}\mathbf{p}-2 \mathbf{v}_{ext}\tilde W^{-1}\bar {\tilde L} \bar\Gamma+\nu\mathbf{v}_{ext}\tilde W^{-1}\mathbf{v}_{ext} + \mu \mathbf{v}_{ext}\tilde W^{-1}\mathbf{w}\\
-&=2\bar\Gamma \bar{V}_{ext} -2 \mathbf{v}_{ext}\tilde W^{-1}\bar {\tilde L} \bar\Gamma+\nu\mathbf{v}_{ext}\tilde W^{-1}\mathbf{v}_{ext} + \mu \mathbf{v}_{ext}\tilde W^{-1}\mathbf{w}=0\\
-\nu &= 2\frac{\bar\Gamma \bar{V}_{ext} - \mathbf{v}_{ext}\tilde W^{-1}\bar {\tilde L} \bar\Gamma}{\mathbf{v}_{ext}\tilde W^{-1}\mathbf{v}_{ext}}+\mu\frac{\mathbf{w}\tilde W^{-1}\mathbf{v}_{ext}}{\mathbf{v}_{ext}\tilde W^{-1}\mathbf{v}_{ext}}\\
-&= 2\frac{\bar\Gamma \bar{V}_{ext} - \mathbf{v}_{ext}\tilde W^{-1}\bar {\tilde L} \bar\Gamma}{\mathbf{v}_{ext}\tilde W^{-1}\mathbf{v}_{ext}}+\left(2\frac{\bar\Gamma\bar S - \mathbf{w}\tilde W^{-1}\bar {\tilde L} \bar\Gamma}{\mathbf{w}\tilde W^{-1}\mathbf{w}}+\nu\frac{\mathbf{w}\tilde W^{-1}\mathbf{v}_{ext}}{\mathbf{w}\tilde W^{-1}\mathbf{w}}\right)\frac{\mathbf{w}\tilde W^{-1}\mathbf{v}_{ext}}{\mathbf{v}_{ext}\tilde W^{-1}\mathbf{v}_{ext}}\\
-\nu\left(1-&\frac{\mathbf{w}\tilde W^{-1}\mathbf{v}_{ext}}{\mathbf{w}\tilde W^{-1}\mathbf{w}}\frac{\mathbf{w}\tilde W^{-1}\mathbf{v}_{ext}}{\mathbf{v}_{ext}\tilde W^{-1}\mathbf{v}_{ext}}\right)\\
-&= -2\frac{\bar\Gamma \bar{V}_{ext} - \mathbf{v}_{ext}\tilde W^{-1}\bar {\tilde L} \bar\Gamma}{\mathbf{v}_{ext}\tilde W^{-1}\mathbf{v}_{ext}}+2\frac{\bar\Gamma\bar S - \mathbf{w}\tilde W^{-1}\bar {\tilde L} \bar\Gamma}{\mathbf{w}\tilde W^{-1}\mathbf{w}}\frac{\mathbf{w}\tilde W^{-1}\mathbf{v}_{ext}}{\mathbf{v}_{ext}\tilde W^{-1}\mathbf{v}_{ext}}\\
-\nu\left(\mathbf{w}\tilde W^{-1}\mathbf{w} & \cdot\mathbf{v}_{ext}\tilde W^{-1}\mathbf{v}_{ext}-(\mathbf{w}\tilde W^{-1}\mathbf{v}_{ext})^2\right)\\
-&= -2\mathbf{w}\tilde W^{-1}\mathbf{w}\cdot\left(\bar\Gamma \bar{V}_{ext} - \mathbf{v}_{ext}\tilde W^{-1}\bar {\tilde L} \bar\Gamma\right)+2\mathbf{w}\tilde W^{-1}\mathbf{v}_{ext}\left(\bar\Gamma\bar S - \mathbf{w}\tilde W^{-1}\bar {\tilde L} \bar\Gamma\right)\\
-\nu&= 2\frac{-\mathbf{w}\tilde W^{-1}\mathbf{w}\cdot\left(\bar{V}_{ext} - \mathbf{v}_{ext}\tilde W^{-1}\bar {\tilde L}\right)+\mathbf{w}\tilde W^{-1}\mathbf{v}_{ext}\left(\bar S - \mathbf{w}\tilde W^{-1}\bar {\tilde L}\right)}{\mathbf{w}\tilde W^{-1}\mathbf{w}\cdot\mathbf{v}_{ext}\tilde W^{-1}\mathbf{v}_{ext}-(\mathbf{w}\tilde W^{-1}\mathbf{v}_{ext})^2}\bar\Gamma\\
-\mu&= 2\frac{-\mathbf{v}_{ext}\tilde W^{-1}\mathbf{v}_{ext}\cdot\left(\bar S - \mathbf{w}\tilde W^{-1}\bar {\tilde L} \right)+\mathbf{w}\tilde W^{-1}\mathbf{v}_{ext}\left( \bar{V}_{ext}- \mathbf{v}_{ext}\tilde W^{-1}\bar {\tilde L} \right)}{\mathbf{w}\tilde W^{-1}\mathbf{w}\cdot\mathbf{v}_{ext}\tilde W^{-1}\mathbf{v}_{ext}-(\mathbf{w}\tilde W^{-1}\mathbf{v}_{ext})^2}\bar\Gamma\\
-\partial_{\mathbf p}\mathcal L&= 2\tilde{W} \mathbf{p}- 2 \bar {\tilde L} \bar\Gamma + \nu\mathbf{v}_{ext}+\mu \mathbf{w}= 0\\
-\Leftrightarrow\mathbf{p} &= \tilde W^{-1}\bar {\tilde L} \bar\Gamma - \frac{1}{2}\nu\tilde W^{-1}\mathbf{v}_{ext}-\frac{1}{2}\mu \tilde W^{-1}\mathbf{w}\\
-&= \tilde W^{-1}\left(\bar {\tilde L} - \mathbf{v}_{ext}\frac{\mathbf{w}\tilde W^{-1}\mathbf{w}\cdot\left(\bar{V}_{ext} - \mathbf{v}_{ext}\tilde W^{-1}\bar {\tilde L}\right)+\left(\bar S - \mathbf{w}\tilde W^{-1}\bar {\tilde L}\right)}{\mathbf{w}\tilde W^{-1}\mathbf{w}\cdot\mathbf{v}_{ext}\tilde W^{-1}\mathbf{v}_{ext}+(\mathbf{w}\tilde W^{-1}\mathbf{v}_{ext})^2}\right. \\
-&\left. -\mathbf{w}\frac{\mathbf{v}_{ext}\tilde W^{-1}\mathbf{v}_{ext}\cdot\left(\bar S - \mathbf{w}\tilde W^{-1}\bar {\tilde L} \right)+\left( \bar{V}_{ext}- \mathbf{v}_{ext}\tilde W^{-1}\bar {\tilde L} \right)}{\mathbf{w}\tilde W^{-1}\mathbf{w}\cdot\mathbf{v}_{ext}\tilde W^{-1}\mathbf{v}_{ext}+(\mathbf{w}\tilde W^{-1}\mathbf{v}_{ext})^2}\right)\bar\Gamma\\
-&= \bar{\mathbf{P}}\bar\Gamma\\
-\end{align}
+    \mathbf{w}\tilde W^{-1}\partial_{\mathbf p}\mathcal L&= 2 \mathbf{w}\mathbf{p}-2 \mathbf{w}\tilde W^{-1}\bar {\tilde L} \bar\Gamma+\nu\mathbf{w}\tilde W^{-1}\mathbf{v}_{ext} + \mu \mathbf{w}\tilde W^{-1}\mathbf{w}\\
+    &=2\bar\Gamma\bar S -2 \mathbf{w}\tilde W^{-1}\bar {\tilde L} \bar\Gamma+\nu\mathbf{w}\tilde W^{-1}\mathbf{v}_{ext} + \mu \mathbf{w}\tilde W^{-1}\mathbf{w}=0\\
+    \mu &= 2\frac{\bar\Gamma\bar S - \mathbf{w}\tilde W^{-1}\bar {\tilde L} \bar\Gamma}{\mathbf{w}\tilde W^{-1}\mathbf{w}}+\nu\frac{\mathbf{w}\tilde W^{-1}\mathbf{v}_{ext}}{\mathbf{w}\tilde W^{-1}\mathbf{w}}\\
+    \mathbf{v}_{ext}\tilde W^{-1}\partial_{\mathbf p}\mathcal L&= 2 \mathbf{v}_{ext}\mathbf{p}-2 \mathbf{v}_{ext}\tilde W^{-1}\bar {\tilde L} \bar\Gamma+\nu\mathbf{v}_{ext}\tilde W^{-1}\mathbf{v}_{ext} + \mu \mathbf{v}_{ext}\tilde W^{-1}\mathbf{w}\\
+    &=2\bar\Gamma \bar{V}_{ext} -2 \mathbf{v}_{ext}\tilde W^{-1}\bar {\tilde L} \bar\Gamma+\nu\mathbf{v}_{ext}\tilde W^{-1}\mathbf{v}_{ext} + \mu \mathbf{v}_{ext}\tilde W^{-1}\mathbf{w}=0\\
+    \nu &= 2\frac{\bar\Gamma \bar{V}_{ext} - \mathbf{v}_{ext}\tilde W^{-1}\bar {\tilde L} \bar\Gamma}{\mathbf{v}_{ext}\tilde W^{-1}\mathbf{v}_{ext}}+\mu\frac{\mathbf{w}\tilde W^{-1}\mathbf{v}_{ext}}{\mathbf{v}_{ext}\tilde W^{-1}\mathbf{v}_{ext}}\\
+    &= 2\frac{\bar\Gamma \bar{V}_{ext} - \mathbf{v}_{ext}\tilde W^{-1}\bar {\tilde L} \bar\Gamma}{\mathbf{v}_{ext}\tilde W^{-1}\mathbf{v}_{ext}}+\left(2\frac{\bar\Gamma\bar S - \mathbf{w}\tilde W^{-1}\bar {\tilde L} \bar\Gamma}{\mathbf{w}\tilde W^{-1}\mathbf{w}}+\nu\frac{\mathbf{w}\tilde W^{-1}\mathbf{v}_{ext}}{\mathbf{w}\tilde W^{-1}\mathbf{w}}\right)\frac{\mathbf{w}\tilde W^{-1}\mathbf{v}_{ext}}{\mathbf{v}_{ext}\tilde W^{-1}\mathbf{v}_{ext}}\\
+    \nu(1-&\frac{\mathbf{w}\tilde W^{-1}\mathbf{v}_{ext}}{\mathbf{w}\tilde W^{-1}\mathbf{w}}\frac{\mathbf{w}\tilde W^{-1}\mathbf{v}_{ext}}{\mathbf{v}_{ext}\tilde W^{-1}\mathbf{v}_{ext}})\\
+    &= -2\frac{\bar\Gamma \bar{V}_{ext} - \mathbf{v}_{ext}\tilde W^{-1}\bar {\tilde L} \bar\Gamma}{\mathbf{v}_{ext}\tilde W^{-1}\mathbf{v}_{ext}}+2\frac{\bar\Gamma\bar S - \mathbf{w}\tilde W^{-1}\bar {\tilde L} \bar\Gamma}{\mathbf{w}\tilde W^{-1}\mathbf{w}}\frac{\mathbf{w}\tilde W^{-1}\mathbf{v}_{ext}}{\mathbf{v}_{ext}\tilde W^{-1}\mathbf{v}_{ext}}\\
+    \nu(\mathbf{w}\tilde W^{-1}\mathbf{w} & \cdot\mathbf{v}_{ext}\tilde W^{-1}\mathbf{v}_{ext}-(\mathbf{w}\tilde W^{-1}\mathbf{v}_{ext})^2 )\\
+    &= -2\mathbf{w}\tilde W^{-1}\mathbf{w}\cdot\left(\bar\Gamma \bar{V}_{ext} - \mathbf{v}_{ext}\tilde W^{-1}\bar {\tilde L} \bar\Gamma\right)+2\mathbf{w}\tilde W^{-1}\mathbf{v}_{ext}\left(\bar\Gamma\bar S - \mathbf{w}\tilde W^{-1}\bar {\tilde L} \bar\Gamma\right)\\
+    \nu&= 2\frac{-\mathbf{w}\tilde W^{-1}\mathbf{w}\cdot\left(\bar{V}_{ext} - \mathbf{v}_{ext}\tilde W^{-1}\bar {\tilde L}\right)+\mathbf{w}\tilde W^{-1}\mathbf{v}_{ext}\left(\bar S - \mathbf{w}\tilde W^{-1}\bar {\tilde L}\right)}{\mathbf{w}\tilde W^{-1}\mathbf{w}\cdot\mathbf{v}_{ext}\tilde W^{-1}\mathbf{v}_{ext}-(\mathbf{w}\tilde W^{-1}\mathbf{v}_{ext})^2}\bar\Gamma\\
+    \mu&= 2\frac{-\mathbf{v}_{ext}\tilde W^{-1}\mathbf{v}_{ext}\cdot\left(\bar S - \mathbf{w}\tilde W^{-1}\bar {\tilde L} \right)+\mathbf{w}\tilde W^{-1}\mathbf{v}_{ext}\left( \bar{V}_{ext}- \mathbf{v}_{ext}\tilde W^{-1}\bar {\tilde L} \right)}{\mathbf{w}\tilde W^{-1}\mathbf{w}\cdot\mathbf{v}_{ext}\tilde W^{-1}\mathbf{v}_{ext}-(\mathbf{w}\tilde W^{-1}\mathbf{v}_{ext})^2}\bar\Gamma\\
+    \partial_{\mathbf p}\mathcal L&= 2\tilde{W} \mathbf{p}- 2 \bar {\tilde L} \bar\Gamma + \nu\mathbf{v}_{ext}+\mu \mathbf{w}= 0\\
+    \Leftrightarrow\mathbf{p} &= \tilde W^{-1}\bar {\tilde L} \bar\Gamma - \frac{1}{2}\nu\tilde W^{-1}\mathbf{v}_{ext}-\frac{1}{2}\mu \tilde W^{-1}\mathbf{w}\\
+    &= \tilde W^{-1}\left(\bar {\tilde L} - \mathbf{v}_{ext}\frac{\mathbf{w}\tilde W^{-1}\mathbf{w}\cdot\left(\bar{V}_{ext} - \mathbf{v}_{ext}\tilde W^{-1}\bar {\tilde L}\right)+\left(\bar S - \mathbf{w}\tilde W^{-1}\bar {\tilde L}\right)}{\mathbf{w}\tilde W^{-1}\mathbf{w}\cdot\mathbf{v}_{ext}\tilde W^{-1}\mathbf{v}_{ext}+(\mathbf{w}\tilde W^{-1}\mathbf{v}_{ext})^2}\right. \\
+    &\left. -\mathbf{w}\frac{\mathbf{v}_{ext}\tilde W^{-1}\mathbf{v}_{ext}\cdot\left(\bar S - \mathbf{w}\tilde W^{-1}\bar {\tilde L} \right)+\left( \bar{V}_{ext}- \mathbf{v}_{ext}\tilde W^{-1}\bar {\tilde L} \right)}{\mathbf{w}\tilde W^{-1}\mathbf{w}\cdot\mathbf{v}_{ext}\tilde W^{-1}\mathbf{v}_{ext}+(\mathbf{w}\tilde W^{-1}\mathbf{v}_{ext})^2}\right)\bar\Gamma\\
+    &= \bar{\mathbf{P}}\bar\Gamma\\
+    \end{align}
 Where $\bar{\mathbf{P}}$ is a three index tensor only dependent on the geometry of the molecule.
 \begin{table}[ht]
 \centering
