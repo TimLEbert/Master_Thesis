@@ -5,13 +5,13 @@ We construct this improved basis by starting with an even tempered one and used 
 
 \section{Using differentiable integrals to optimize an orbital free basis set}
 The basis density fitting formulation which minimizes the L2 norm of the residual density is given by:
-The following Lagragien describes the residula density
+The following Lagragian describes the residual density
 \begin{align}
     \mathcal{L}[\rho] &= \min_{\rho'}\left(||\rho-\rho'||_{\text{L2}}\right)\\
-    & = \min_{\{p_{\mu}\}_{\mu \in 1,...,n_b}} p^\mu W_{\mu,\nu} p^\nu - 2 p^\mu L^{\mu,\gamma\sigma} \Gamma^{\gamma\sigma} + \Gamma^{\mu\nu} D_{\mu\nu,\gamma\sigma} \Gamma^{\gamma,\sigma}
-    & = \left[p^\mu W_{\mu,\nu} p^\nu - 2 p^\mu L^{\mu,\gamma\sigma} \Gamma^{\gamma\sigma}\right]_{\mathbf{p} = W^{-1}\bar{L}\bar\Gamma}
-    & = \bar \Gamma \bar L ^T W^{-1} \bar L \bar Gamma - 2 \bar Gamma \bar L^T W^{-1} \bar L \bar \Gamma + \bar \Gamma \bar D \bar Gamma
-    & = - \bar Gamma \bar L^T W^{-1} \bar L \bar \Gamma + \bar \Gamma \bar D \bar Gamma
+    & = \min_{\{p_{\mu}\}_{\mu \in 1,...,n_b}} p^\mu W_{\mu,\nu} p^\nu - 2 p^\mu L^{\mu,\gamma\sigma} \Gamma^{\gamma\sigma} + \Gamma^{\mu\nu} D_{\mu\nu,\gamma\sigma} \Gamma^{\gamma,\sigma}\\
+    & = \left[p^\mu W_{\mu,\nu} p^\nu - 2 p^\mu L^{\mu,\gamma\sigma} \Gamma^{\gamma\sigma}\right]_{\mathbf{p} = W^{-1}\bar{L}\bar\Gamma}\\
+    & = \bar \Gamma \bar L ^T W^{-1} \bar L \bar \Gamma - 2 \bar \Gamma \bar L^T W^{-1} \bar L \bar \Gamma + \bar \Gamma \bar D \bar \Gamma\\
+    & = - \bar \Gamma \bar L^T W^{-1} \bar L \bar \Gamma + \bar \Gamma \bar D \bar \Gamma
 \end{align}
 We can now insert the dependency of our integrals on the exponents $\{\mathbf{\alpha}_Z\}_{Z\in \text{H,C,N,O,F}}$ for the gaussian basis functions for each atom.
 The dependent integrals are the two center integral $W_{\mu,nu}(\mathbf{\alpha}) = \langle \omega_\mu(\mathbf{\alpha})|\omega_\nu(\mathbf{\alpha})\rangle$
