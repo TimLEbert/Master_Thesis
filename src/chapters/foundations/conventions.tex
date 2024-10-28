@@ -5,13 +5,19 @@ In this work we are using Einstein summation notation, which is a compact notati
     a_i b^i = \sum_{i=1}^n a_i b^i
 \end{align}
 is implied by the notation. The summation convention is used in this work for all repeated indices, unless otherwise stated.
+The summation convention applies to all repeated indices throughout this work unless stated otherwise. To simplify the notation further, we adopt a convention from MOFDFT \cite{zhang_m-ofdft_2023}, where a bar over a tensor indicates that pairs of indices corresponding to orbital basis functions of the same density are flattened into a vector. For example:
+\begin{align}
+    \text{tr}(\Gamma L^{\gamma})&=\Gamma_{\mu\nu}L^{\mu\nu,\gamma} = \bar\Gamma\bar L^{\gamma}\\
+    \Gamma_{\mu\nu}\tilde D^{\mu\nu,\gamma\delta}\Gamma_{\gamma\delta} &= \bar\Gamma\bar {\tilde  D}\bar\Gamma
+\end{align}
+Here we interpreted $\bar\Gamma$ and $\bar L^{\gamma}$ as a vector and $\bar{\tilde D}$ as a matrix.
 \subsection{Integral Notation}\label{integral_notation}
-We are using Bra-Ket Notation, which is commonly used in quantum mechanics. For two functions $\phi,\psi:\mathbb{R}^3\rightarrow \mathbb{C}$
+We are using Bra-Ket Notation, which is commonly used in quantum mechanics. For two functions $\phi,\psi:\mathbb{R}^3\rightarrow \mathbb{C}$ we denote:
 \begin{align}
     \langle \phi | \psi\rangle &:= \int \phi(\mathbf r)\psi^\dagger(\mathbf r) d\mathbf r
 \end{align}
 As we are mostly interested in the ground state, which can be described by purely real functions, we can omit the dagger in the notation.
-We also note hartree integrals by round brackets, for example
+We also note hartree integrals by round brackets, for example:
 \begin{align}
     (\phi | \psi) &:= \int \int \frac{\phi(\mathbf r)\psi^\dagger(\mathbf r')}{|\mathbf{r}-\mathbf{r'}|} d\mathbf rd\mathbf {r'}
 \end{align}
