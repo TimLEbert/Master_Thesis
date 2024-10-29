@@ -18,7 +18,7 @@ We tested several promising density fitting methods using these metrics. Below, 
 The first few methods are derived from a simple Lagrangian that is minimized without any additional constraints to ensure the conservation of the total integrated density, i.e., the number of electrons.
 \subsubsection{Overlap Density fitting}
 The simplest density fitting method just minimises the L2 norm of the residual density.
-\begin{align}
+\begin{align} \label{overlap_eq}
         \mathcal{L}(\mathbf{p}) &= \mathbf{p} W \mathbf{p} - 2 \mathbf{p}\bar { L} \bar\Gamma + \bar\Gamma \mathbf{D}\bar\Gamma
 \end{align}
 As the energies are not directly minimised, they are bound to be very anaccurate.
