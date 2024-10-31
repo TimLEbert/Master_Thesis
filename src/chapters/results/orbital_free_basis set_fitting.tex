@@ -62,13 +62,7 @@ fitted reg basis 3.0 & 5 & 3 & 1 & 9 & 7 & 6 & 3 & 2 & 10 & 7 & 6 & 3 & 2 & 10 &
 \caption{Detailed comparison of irreducible representations for different basis sets. For each atom, the number of basis functions is shown for each angular momentum (s, p, d, f, g). Hydrogen only includes s, p, and d functions. Each number represents the count of basis functions for that specific angular momentum. \footnote{Formatting done by claude}}
 \label{tab:basis-comparison-detailed}
 \end{table}
-We are going to start by comparing the energies produced by the different basis sets, which are shown in figure \ref{fig:AE_energies_basis_sets}. First of all we can notice that for the even tempered basis sets the ones with a higher number of basis functions perform consistently better than the ones with a lower number of basis functions for all fitted energies. "def2-universal-jfit" performs very poorly on account of its low number of basis functions. The fitted basis sets also produce consistenly more accurate energies than the even tempered basis set they originated from, often beating even tempered basis sets with a higher number of basis functions. The regularized basis sets perform slightly worse than the non regularized basis sets. \\
-If we now take a look at the difference in densities in figure \ref{fig:density_error_basis_sets} we can see similar results. The bigger even tempered basis sets outperform the smaller ones and the fitted basis sets outperform their respective fitted basis functions. "def2-universal-jfit" performs poorly in comparison, but on account of its contracted basis functions it still performs almost as well as even tempered 3.0 while having a much lower number of basis functions.\\
-The additional metrics in figure \ref{fig:density_error_basis_sets} show that most basis sets have a relatively low number of negative densities which should be of not much concern. Only the fitted basis set with $\beta = 3.0$ and its fitted variant as well as "def2-universal-jfit" have a few outlier which have a higher number of negative densities. The maximal absolute gradient is also very consitent over all basis sets.
-In the third plot we depicted the variance of the individual basis functions at each atomtype. For the even tempered basis functions the ones with a higher number of basis functions have a larger standart deviation on average. The fitted basis functions seem
- to have a higher end of exponents than their vanilla counterparts. An explaination for the this behavior we can find in figure \ref{fig:var_coeffseven_tempered_3.0}- \ref{fig:var_coeffsfitted_regularized_basis_3.0}: Here we plotted the mean and standart deviation of the distinct coefficients.
-
-
+We are going to start by comparing the energies produced by the different basis sets, which are shown in figure \ref{fig:AE_energies_basis_sets}. First of all we notice that for the even tempered basis sets the ones with a higher number of basis functions perform consistently better than the ones with a lower number of basis functions for all fitted energies. "def2-universal-jfit" performs very poorly on account of its low number of basis functions. The fitted basis sets also produce consistenly more accurate energies than the even tempered basis set they originated from, often beating even tempered basis sets with a higher number of basis functions. The regularized basis sets perform slightly worse than the non regularized basis sets. \\
 \begin{figure}
     \centering
     \includegraphics[width=0.75\textwidth]{chapters/results/results_images/AE_hartree_energy_on_hartree+external_MOFDFT_for_different_basis_sets}
@@ -77,6 +71,8 @@ In the third plot we depicted the variance of the individual basis functions at 
     \includegraphics[width=0.75\textwidth]{chapters/results/results_images/AE_kin_energy_on_hartree+external_MOFDFT_for_different_basis_sets}
     \caption{Boxplots(\ref{boxplots}) of the AE for the different energies on the fitted basis sets averaged over the first 1000 molecules of QM9} \label{fig:AE_energies_basis_sets}
 \end{figure}
+If we now take a look at the difference in densities in figure \ref{fig:density_error_basis_sets} we can see similar results. The bigger even tempered basis sets outperform the smaller ones and the fitted basis sets outperform their respective fitted basis functions. "def2-universal-jfit" performs poorly in comparison, but on account of its contracted basis functions it still performs almost as well as even tempered 3.0 while having a much lower number of basis functions.\\
+The additional metrics in figure \ref{fig:density_error_basis_sets} show that most basis sets have a relatively low number of negative densities which should be of not much concern. Only the fitted basis set with $\beta = 3.0$ and its fitted variant as well as "def2-universal-jfit" have a few outlier which have a higher number of negative densities. The maximal absolute gradient is also very consitent over all basis sets.\\
 \begin{figure}
     \centering
         \includegraphics[width=0.75\textwidth]{chapters/results/results_images/AE_density_on_hartree+external_MOFDFT_for_different_basis_sets}
@@ -85,6 +81,8 @@ In the third plot we depicted the variance of the individual basis functions at 
     \includegraphics[width=0.75\textwidth]{chapters/results/results_images/L2_residual_hartree_on_hartree+external_MOFDFT_for_different_basis_sets}
 \caption{Boxplots(\ref{boxplots}) comparing the error in density fitting for the different basis sets over the first 1000 molecules of QM9} \label{fig:density_error_basis_sets}
 \end{figure}
+In the third plot we depicted the variance of the individual basis functions at each atomtype. For the even tempered basis functions the ones with a higher number of basis functions have a larger standart deviation on average. The fitted basis functions seem
+ to have a higher end of exponents than their vanilla counterparts. An explaination for the this behavior we can find in figure \ref{fig:var_coeffseven_tempered_3.0}- \ref{fig:var_coeffsfitted_regularized_basis_3.0}: Here we plotted the mean and standart deviation of the distinct coefficients.
     \begin{figure}
     \centering
     \includegraphics[width=0.9\textwidth]{chapters/results/results_images/L1_negative_densities_on_hartree+external_MOFDFT_for_different_basis_sets}
@@ -102,11 +100,12 @@ In the third plot we depicted the variance of the individual basis functions at 
     \includegraphics[width=0.9\textwidth]{chapters/results/results_images/var_coeffsfitted_regularized_basis_3.0}
         \caption{The mean values(top) and the standart deviation(bottom) of the coefficients of an basis set  fitted from even tempered with $\beta = 3.0$ after finetuning with regularisation} \label{fig:var_coeffsfitted_regularized_basis_3.0}
 \end{figure}
-
+As before, we can also examine the difference in densities directly, which are depicted in figure \ref{fig:slices_basis_sets}. Here we can rediscover our findings from the metrics. Far away from the atomic nuclei, the error in density for all tested basis sets is low compared to the error in the core regions (notice the different scales). When moving to bigger basis sets, i.e., even-tempered basis sets with a lower $\beta$, we observe that the density error in the core regions is strongly improved while the error in the outer regions is only slightly improved. The fitted basis sets also mainly improve the density near the atomic center while only minimal changes are noticeable far from the nuclei. The regularized basis sets perform slightly worse than the non-regularized basis sets. As most of the density and density fitting error is concentrated around the core, it is plausible that the loss also puts emphasis on improving the density in the center, and only when the density around the cores is very well reproduced will the further away regions be optimized. In table \ref{tab:basis-comparison-detailed}, we can also see that the bigger even-tempered basis sets improve the number of basis functions in each shell but don't add higher-order shells. If one wants to improve the density in the surrounding areas, adding basis functions with higher angular momentum could be necessary, but as there is very little density located there, the improvements would probably be minimal.\\
  \begin{figure}
    \centering
    \includegraphics[width=1\textwidth]{chapters/results/results_images/basis_set_slices.pdf}
      \caption{Slices of the fitted density with density fitting method hartree+external Mofdft using different basis sets}
+     \label{fig:slices_basis_sets}
  \end{figure}
 
 
@@ -117,6 +116,11 @@ In the third plot we depicted the variance of the individual basis functions at 
    \includegraphics[width=0.6\textwidth]{chapters/results/results_images/basis_functions_with_size3.0}
     \caption{}
 \end{figure}
+\section{Conclusion}
+To summarize our findings, we have shown that by using differentiable integrals and stochastic gradient descent, we can optimize the basis functions of an orbital-free basis set to better fit the density produced by a Kohn-Sham calculation. The fitted basis sets improve upon the standard even-tempered basis sets in both the reproduced energies and the quality of the density fit. Without regularization, the fitted basis sets tend to cluster some exponents very close together, which can lead to very large and unstable coefficients and, when employed in a machine learning context, can greatly hinder training. The regularization procedures can remove these problems but also lead to slightly worse metrics.\\
+Altogether, our produced basis sets can increase the accuracy of orbital-free DFT without the need for more basis functions, which would otherwise slow training.
+
+
 
 
 

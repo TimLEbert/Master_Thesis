@@ -1,4 +1,4 @@
-\section{Derivation of the loss function}
+\section{Derivation of the loss function} \label{derivation_adaptive_loss}
 One of the characteristics of orbitals is that they are orthonormal to each other. But if we try to fit orbitals naively we won't be able to guarantee this property. To ensure that the fitted orbitals are orthonormal we can use the following loss function wich enforces the orthogonormality of the orbitals using laplace multipliers:
 \begin{align}
     \{\phi_i\}_{i=1,...,N_e} = \underset{\{\phi_i\}_{i=1,...,N_e} pairwise orthonormal}{\text{argmin}}\sum\limits_{i=1}^{N_e} \int (\phi_i(\mathbf{r})-\phi'_i(\mathbf{r}))^2 d\mathbf{r}
