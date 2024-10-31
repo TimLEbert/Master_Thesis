@@ -1,4 +1,4 @@
-\documentclass[12pt,twoside]{report}
+\documentclass[12pt,twoside]{report}%report
 \usepackage[a4paper,width=150mm,top=25mm,bottom=25mm]{geometry}
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}\graphicspath{ {images/} }
@@ -33,6 +33,17 @@
 %
 \bibliography{chapters/references}
 % \bibliography{references}
+\definecolor{cite_colour}{blue}{0.75}
+\definecolor{link_colour}{red}{0.}
+\hypersetup{
+   hypertexnames=false,
+   colorlinks=true,
+   linkcolor=link_colour,
+   citecolor=cite_colour,
+   urlcolor=cite_colour,
+   %linktocpage=true,
+   pdftitle={Thesis Tim},
+}
 
 \usepackage[T1]{fontenc}
 \usepackage{titlesec, blindtext, color}
