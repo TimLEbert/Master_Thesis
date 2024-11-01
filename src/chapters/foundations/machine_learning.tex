@@ -39,10 +39,10 @@ Where we choose p = 1 and c = 6, as most of the bonds in our dataset are shorter
 \begin{figure}
     \centering
     \includegraphics[width=1.\textwidth]{chapters/foundations/images_foundation/bondlength}
-    \caption{The average Bondlength appearing in QM9. The x axis show different nearest neightbor combinations while y shows the respective distances. The quantity of occurence of each dintance is visualized using a violin plot. This grafic was put together by Tobias Kaczun.}
+    \caption{The average Bondlength appearing in QM9\cite{ramakrishnan2014quantum}. The x axis show different nearest neightbor combinations while y shows the respective distances. The quantity of occurence of each dintance is visualized using a violin plot. This grafic was put together by Tobias Kaczun.}
     \label{fig:bond_length}
 \end{figure}
-For the final embedding of the edge features the one hot encoded atomic number of the incoming and outgoing atoms is concatenated with the distance embedding. This is then passed through a short multi layer perceptron(MLP).:
+For the final embedding of the edge features the one hot encoded atomic number of the incoming and outgoing atoms is concatenated with the distance embedding. This is then passed through a short multi layer perceptron(MLP).
 %\begin{align}
 %        h_i:= \text{HOTONE(z_i)}\in R^{n_z}\\
 %        e_{\text{edge embedding},i,j}^{(0)} = \sigma((h_i||h_j||\text{emb_{ij}})W_{\text{edge}}+b_{\text{edge}})\\
