@@ -1,0 +1,1663 @@
+
+@misc{zhang_m-ofdft_2023,
+	title = {M-{OFDFT}: {Overcoming} the {Barrier} of {Orbital}-{Free} {Density} {Functional} {Theory} for {Molecular} {Systems} {Using} {Deep} {Learning}},
+	shorttitle = {M-{OFDFT}},
+	url = {http://arxiv.org/abs/2309.16578},
+	abstract = {Orbital-free density functional theory (OFDFT) is a quantum chemistry formulation that has a lower cost scaling than the prevailing Kohn-Sham DFT, which is increasingly desired for contemporary molecular research. However, its accuracy is limited by the kinetic energy density functional, which is notoriously hard to approximate for non-periodic molecular systems. In this work, we propose MOFDFT, an OFDFT approach capable of solving molecular systems using a deep-learning functional model. We build the essential nonlocality into the model, which is made affordable by the concise density representation as expansion coefficients under an atomic basis. With techniques to address unconventional learning challenges therein, M-OFDFT achieves a comparable accuracy with Kohn-Sham DFT on a wide range of molecules untouched by OFDFT before. More attractively, M-OFDFT extrapolates well to molecules much larger than those in training, which unleashes the appealing scaling for studying large molecules including proteins, representing an advancement of the accuracy-efficiency trade-off frontier in quantum chemistry.},
+	language = {en},
+	urldate = {2024-01-08},
+	publisher = {arXiv},
+	author = {Zhang, He and Liu, Siyuan and You, Jiacheng and Liu, Chang and Zheng, Shuxin and Lu, Ziheng and Wang, Tong and Zheng, Nanning and Shao, Bin},
+	month = sep,
+	year = {2023},
+	note = {arXiv:2309.16578 [physics, stat]},
+	keywords = {Computer Science - Machine Learning, Physics - Chemical Physics, Statistics - Machine Learning},
+	file = {Zhang et al. - 2023 - M-OFDFT Overcoming the Barrier of Orbital-Free De.pdf:/home/tim/Zotero/storage/4IT3ZISP/Zhang et al. - 2023 - M-OFDFT Overcoming the Barrier of Orbital-Free De.pdf:application/pdf},
+}
+
+@article{muller_atom--molecule_2023,
+	title = {An atom-in-molecule adaptive polarized valence single- \textit{ζ} atomic orbital basis for electronic structure calculations},
+	volume = {159},
+	issn = {0021-9606, 1089-7690},
+	url = {https://pubs.aip.org/jcp/article/159/16/164108/2918302/An-atom-in-molecule-adaptive-polarized-valence},
+	doi = {10.1063/5.0172373},
+	abstract = {Many low-cost or semiempirical quantum mechanical-based electronic structure methods suffer from the use of unpolarized minimal atomic orbital (AO) basis sets. In this work, we overcome this limitation by a fully DFT variationally optimized, adaptive minimal basis set consistently available for the elements up to radon (Z = 86). The new key feature is to make the linear coefficients of the primitive Gaussians in a contracted AO dependent on the effective atomic charge of the atom in the molecule, i.e., each symmetry-unique atom obtains its “own” specifically adapted basis functions. In this way, the physically important “breathing” of the AOs in a molecule with (a) atomic charge (expansion/contraction for anionic/cationic states) and (b) the number of close-lying bonded neighbor atoms is accounted for. The required atomic charges are obtained from a specially developed extended Hückel type Hamiltonian and the coordination numbers from the molecule geometry. Proper analytical derivatives of the resulting adaptive basis functions can easily be derived. Moreover, the basis functions are electric field-dependent, thus improving the description of, e.g., dipole moments and polarizabilities. The new basis set termed q-vSZP (charge dependent valence single-ζ, polarized) is thoroughly benchmarked for atomic/molecular and thermochemical properties compared to standard minimal and double-ζ basis sets at the DFT level with the accurate ωB97X-D4 functional. It is shown that q-vSZP is clearly superior to existing minimal basis sets, often reaching double-ζ quality or even better results. We expect it to be the optimal choice in future semiempirical quantum mechanical methods.},
+	language = {en},
+	number = {16},
+	urldate = {2024-10-17},
+	journal = {The Journal of Chemical Physics},
+	author = {Müller, Marcel and Hansen, Andreas and Grimme, Stefan},
+	month = oct,
+	year = {2023},
+	pages = {164108},
+	file = {Müller et al. - 2023 - An atom-in-molecule adaptive polarized valence sin.pdf:/home/tim/Zotero/storage/LWT6LXAB/Müller et al. - 2023 - An atom-in-molecule adaptive polarized valence sin.pdf:application/pdf},
+}
+
+@misc{ying_transformers_2021,
+	title = {Do {Transformers} {Really} {Perform} {Bad} for {Graph} {Representation}?},
+	url = {http://arxiv.org/abs/2106.05234},
+	abstract = {The Transformer architecture has become a dominant choice in many domains, such as natural language processing and computer vision. Yet, it has not achieved competitive performance on popular leaderboards of graph-level prediction compared to mainstream GNN variants. Therefore, it remains a mystery how Transformers could perform well for graph representation learning. In this paper, we solve this mystery by presenting Graphormer, which is built upon the standard Transformer architecture, and could attain excellent results on a broad range of graph representation learning tasks, especially on the recent OGB Large-Scale Challenge. Our key insight to utilizing Transformer in the graph is the necessity of effectively encoding the structural information of a graph into the model. To this end, we propose several simple yet effective structural encoding methods to help Graphormer better model graph-structured data. Besides, we mathematically characterize the expressive power of Graphormer and exhibit that with our ways of encoding the structural information of graphs, many popular GNN variants could be covered as the special cases of Graphormer. The code and models of Graphormer will be made publicly available at https://github.com/Microsoft/Graphormer.},
+	language = {en},
+	urldate = {2024-10-17},
+	publisher = {arXiv},
+	author = {Ying, Chengxuan and Cai, Tianle and Luo, Shengjie and Zheng, Shuxin and Ke, Guolin and He, Di and Shen, Yanming and Liu, Tie-Yan},
+	month = nov,
+	year = {2021},
+	note = {arXiv:2106.05234 [cs]},
+	keywords = {Computer Science - Machine Learning, Computer Science - Artificial Intelligence},
+	file = {Ying et al. - 2021 - Do Transformers Really Perform Bad for Graph Repre.pdf:/home/tim/Zotero/storage/9TZC77FW/Ying et al. - 2021 - Do Transformers Really Perform Bad for Graph Repre.pdf:application/pdf},
+}
+
+@misc{gasteiger_directional_2022,
+	title = {Directional {Message} {Passing} for {Molecular} {Graphs}},
+	url = {http://arxiv.org/abs/2003.03123},
+	abstract = {Graph neural networks have recently achieved great successes in predicting quantum mechanical properties of molecules. These models represent a molecule as a graph using only the distance between atoms (nodes). They do not, however, consider the spatial direction from one atom to another, despite directional information playing a central role in empirical potentials for molecules, e.g. in angular potentials. To alleviate this limitation we propose directional message passing, in which we embed the messages passed between atoms instead of the atoms themselves. Each message is associated with a direction in coordinate space. These directional message embeddings are rotationally equivariant since the associated directions rotate with the molecule. We propose a message passing scheme analogous to belief propagation, which uses the directional information by transforming messages based on the angle between them. Additionally, we use spherical Bessel functions and spherical harmonics to construct theoretically well-founded, orthogonal representations that achieve better performance than the currently prevalent Gaussian radial basis representations while using fewer than 1/4 of the parameters. We leverage these innovations to construct the directional message passing neural network (DimeNet). DimeNet outperforms previous GNNs on average by 76\% on MD17 and by 31\% on QM9. Our implementation is available online.},
+	language = {en},
+	urldate = {2024-10-17},
+	publisher = {arXiv},
+	author = {Gasteiger, Johannes and Groß, Janek and Günnemann, Stephan},
+	month = apr,
+	year = {2022},
+	note = {arXiv:2003.03123 [cs]},
+	keywords = {Computer Science - Machine Learning, Statistics - Machine Learning, Physics - Computational Physics},
+	annote = {Comment: Published as a conference paper at ICLR 2020. Author name changed from Johannes Klicpera to Johannes Gasteiger},
+	file = {Gasteiger et al. - 2022 - Directional Message Passing for Molecular Graphs.pdf:/home/tim/Zotero/storage/5K7EDN7Q/Gasteiger et al. - 2022 - Directional Message Passing for Molecular Graphs.pdf:application/pdf},
+}
+
+@article{kohn_self-consistent_1965,
+	title = {Self-{Consistent} {Equations} {Including} {Exchange} and {Correlation} {Effects}},
+	volume = {140},
+	copyright = {http://link.aps.org/licenses/aps-default-license},
+	issn = {0031-899X},
+	url = {https://link.aps.org/doi/10.1103/PhysRev.140.A1133},
+	doi = {10.1103/PhysRev.140.A1133},
+	language = {en},
+	number = {4A},
+	urldate = {2024-10-15},
+	journal = {Physical Review},
+	author = {Kohn, W. and Sham, L. J.},
+	month = nov,
+	year = {1965},
+	pages = {A1133--A1138},
+	file = {Kohn and Sham - 1965 - Self-Consistent Equations Including Exchange and C.pdf:/home/tim/Zotero/storage/3W4KEZLP/Kohn and Sham - 1965 - Self-Consistent Equations Including Exchange and C.pdf:application/pdf},
+}
+
+@article{hohenberg_inhomogeneous_1964,
+	title = {Inhomogeneous {Electron} {Gas}},
+	volume = {136},
+	copyright = {http://link.aps.org/licenses/aps-default-license},
+	issn = {0031-899X},
+	url = {https://link.aps.org/doi/10.1103/PhysRev.136.B864},
+	doi = {10.1103/PhysRev.136.B864},
+	language = {en},
+	number = {3B},
+	urldate = {2024-10-15},
+	journal = {Physical Review},
+	author = {Hohenberg, P. and Kohn, W.},
+	month = nov,
+	year = {1964},
+	pages = {B864--B871},
+	file = {Hohenberg and Kohn - 1964 - Inhomogeneous Electron Gas.pdf:/home/tim/Zotero/storage/KWXFP6RP/Hohenberg and Kohn - 1964 - Inhomogeneous Electron Gas.pdf:application/pdf},
+}
+
+@article{sugawara_adaptive_1999,
+	title = {Adaptive basis set for quantum-mechanical calculation based on element-free {Galerkin} method},
+	volume = {314},
+	copyright = {https://www.elsevier.com/tdm/userlicense/1.0/},
+	issn = {00092614},
+	url = {https://linkinghub.elsevier.com/retrieve/pii/S0009261499011720},
+	doi = {10.1016/S0009-2614(99)01172-0},
+	abstract = {A new adaptive basis set based on the element-free Galerkin method ŽEFGM. for the quantum-mechanical calculation is proposed. In this method, wavefunctions are constructed on the basis of moving least-square ŽMLS. interpolation. Adaptivity is introduced by adjusting node distribution and associated parameters to nature of the solution, or distribution of zero and stationary points of the target wavefunction. Applications of the adaptive EFGM ŽAEFGM. to eigenvalue problems of one-dimensional harmonic oscillator and double-well potential systems are presented to demonstrate its effectiveness. q 1999 Elsevier Science B.V. All rights reserved.},
+	language = {en},
+	number = {5-6},
+	urldate = {2024-10-14},
+	journal = {Chemical Physics Letters},
+	author = {Sugawara, M.},
+	month = dec,
+	year = {1999},
+	pages = {522--528},
+	file = {Sugawara - 1999 - Adaptive basis set for quantum-mechanical calculat.pdf:/home/tim/Zotero/storage/GKCM6N7Z/Sugawara - 1999 - Adaptive basis set for quantum-mechanical calculat.pdf:application/pdf},
+}
+
+@article{sugawara_adaptive_1998,
+	title = {Adaptive basis set for quantum mechanical calculation based on hierarchical finite element method},
+	volume = {295},
+	copyright = {https://www.elsevier.com/tdm/userlicense/1.0/},
+	issn = {00092614},
+	url = {https://linkinghub.elsevier.com/retrieve/pii/S0009261498009920},
+	doi = {10.1016/S0009-2614(98)00992-0},
+	abstract = {A principal idea towards realizing adaptive basis set for quantum mechanical calculation is presented. The adaptive basis set is constructed based on the hierarchical finite element method, which permits mixing of the element sizes and the orders. The adaptability is introduced by adjusting these parameters. Application to the eigenvalue problem of the one-dimensional harmonic oscillator system is presented to demonstrate its effectiveness. q 1998 Elsevier Science B.V. All rights reserved.},
+	language = {en},
+	number = {5-6},
+	urldate = {2024-10-14},
+	journal = {Chemical Physics Letters},
+	author = {Sugawara, M.},
+	month = oct,
+	year = {1998},
+	pages = {423--430},
+	file = {Sugawara - 1998 - Adaptive basis set for quantum mechanical calculat.pdf:/home/tim/Zotero/storage/XU4SAJRL/Sugawara - 1998 - Adaptive basis set for quantum mechanical calculat.pdf:application/pdf},
+}
+
+@article{kwon_adaptive_2023,
+	title = {Adaptive basis sets for practical quantum computing},
+	volume = {123},
+	issn = {1097-461X},
+	url = {https://onlinelibrary.wiley.com/doi/abs/10.1002/qua.27123},
+	doi = {10.1002/qua.27123},
+	abstract = {Electronic structure calculations on small systems such as H2, H2O, LiH, and BeH2 with chemical accuracy are still a challenge for the current generation of noisy intermediate-scale quantum (NISQ) devices. One of the reasons is that due to the device limitations, only minimal basis sets are commonly applied in quantum chemical calculations, which allows one to keep the number of qubits employed in the calculations at a minimum. However, the use of minimal basis sets leads to very large errors in the computed molecular energies as well as potential energy surface shapes. One way to increase the accuracy of electronic structure calculations is through the development of small basis sets better suited for quantum computing. In this work, we show that the use of adaptive basis sets, in which exponents and contraction coefficients depend on molecular structure, provides an easy way to dramatically improve the accuracy of quantum chemical calculations without the need to increase the basis set size and thus the number of qubits utilized in quantum circuits. As a proof of principle, we optimize an adaptive minimal basis set for quantum computing calculations on an H2 molecule, in which exponents and contraction coefficients depend on the HH distance, and apply it to the generation of H2 potential energy surface on IBM-Q quantum devices. The adaptive minimal basis set reaches the accuracy of the double-zeta basis sets, thus allowing one to perform double-zeta quality calculations on quantum devices without the need to utilize twice as many qubits in simulations. This approach can be extended to other molecular systems and larger basis sets in a straightforward manner.},
+	language = {en},
+	number = {14},
+	urldate = {2024-10-14},
+	journal = {International Journal of Quantum Chemistry},
+	author = {Kwon, Hyuk-Yong and Curtin, Gregory M. and Morrow, Zachary and Kelley, C. T. and Jakubikova, Elena},
+	year = {2023},
+	note = {\_eprint: https://onlinelibrary.wiley.com/doi/pdf/10.1002/qua.27123},
+	keywords = {adaptive basis set, potential energy surface, quantum computing},
+	pages = {e27123},
+	file = {Full Text PDF:/home/tim/Zotero/storage/V7YA4D4J/Kwon et al. - 2023 - Adaptive basis sets for practical quantum computin.pdf:application/pdf;Snapshot:/home/tim/Zotero/storage/TVWZQK2X/qua.html:text/html},
+}
+
+@article{schutt_machine_2018,
+	title = {Machine {Learning} {Adaptive} {Basis} {Sets} for {Efficient} {Large} {Scale} {Density} {Functional} {Theory} {Simulation}},
+	volume = {14},
+	issn = {1549-9618},
+	url = {https://doi.org/10.1021/acs.jctc.8b00378},
+	doi = {10.1021/acs.jctc.8b00378},
+	abstract = {It is chemically intuitive that an optimal atom centered basis set must adapt to its atomic environment, for example by polarizing toward nearby atoms. Adaptive basis sets of small size can be significantly more accurate than traditional atom centered basis sets of the same size. The small size and well conditioned nature of these basis sets leads to large saving in computational cost, in particular in a linear scaling framework. Here, it is shown that machine learning can be used to predict such adaptive basis sets using local geometrical information only. As a result, various properties of standard DFT calculations can be easily obtained at much lower costs, including nuclear gradients. In our approach, a rotationally invariant parametrization of the basis is obtained by employing a potential anchored on neighboring atoms to ultimately construct a rotation matrix that turns a traditional atom centered basis set into a suitable adaptive basis set. The method is demonstrated using MD simulations of liquid water, where it is shown that minimal basis sets yield structural properties in fair agreement with basis set converged results, while reducing the computational cost in the best case by a factor of 200 and the required flops by 4 orders of magnitude. Already a very small training set yields satisfactory results as the variational nature of the method provides robustness.},
+	number = {8},
+	urldate = {2024-10-14},
+	journal = {Journal of Chemical Theory and Computation},
+	author = {Schütt, Ole and VandeVondele, Joost},
+	month = aug,
+	year = {2018},
+	note = {Publisher: American Chemical Society},
+	pages = {4168--4175},
+	file = {Full Text PDF:/home/tim/Zotero/storage/SS4BATVS/Schütt and VandeVondele - 2018 - Machine Learning Adaptive Basis Sets for Efficient.pdf:application/pdf},
+}
+
+@misc{song_neuralscf_2024,
+	title = {{NeuralSCF}: {Neural} network self-consistent fields for density functional theory},
+	shorttitle = {{NeuralSCF}},
+	url = {http://arxiv.org/abs/2406.15873},
+	abstract = {Kohn-Sham density functional theory (KS-DFT) has found widespread application in accurate electronic structure calculations. However, it can be computationally demanding especially for large-scale simulations, motivating recent efforts toward its machine-learning (ML) acceleration. We propose a neural network self-consistent fields (NeuralSCF) framework that establishes the Kohn-Sham density map as a deep learning objective, which encodes the mechanics of the Kohn-Sham equations. Modeling this map with an SE(3)-equivariant graph transformer, NeuralSCF emulates the Kohn-Sham self-consistent iterations to obtain electron densities, from which other properties can be derived. NeuralSCF achieves state-of-the-art accuracy in electron density prediction and derived properties, featuring exceptional zero-shot generalization to a remarkable range of out-of-distribution systems. NeuralSCF reveals that learning from KS-DFT's intrinsic mechanics significantly enhances the model's accuracy and transferability, offering a promising stepping stone for accelerating electronic structure calculations through mechanics learning.},
+	language = {en},
+	urldate = {2024-06-28},
+	publisher = {arXiv},
+	author = {Song, Feitong and Feng, Ji},
+	month = jun,
+	year = {2024},
+	note = {arXiv:2406.15873 [physics]},
+	keywords = {Computer Science - Machine Learning, Physics - Chemical Physics, Physics - Computational Physics},
+	file = {Song and Feng - 2024 - NeuralSCF Neural network self-consistent fields f.pdf:/home/tim/Zotero/storage/I2NGQGQN/Song and Feng - 2024 - NeuralSCF Neural network self-consistent fields f.pdf:application/pdf},
+}
+
+@article{remme_kineticnet_2023,
+	title = {{KineticNet}: {Deep} learning a transferable kinetic energy functional for orbital-free density functional theory},
+	volume = {159},
+	issn = {0021-9606, 1089-7690},
+	shorttitle = {{KineticNet}},
+	url = {https://pubs.aip.org/jcp/article/159/14/144113/2916356/KineticNet-Deep-learning-a-transferable-kinetic},
+	doi = {10.1063/5.0158275},
+	abstract = {Orbital-free density functional theory (OF-DFT) holds promise to compute ground state molecular properties at minimal cost. However, it has been held back by our inability to compute the kinetic energy as a functional of electron density alone. Here, we set out to learn the kinetic energy functional from ground truth provided by the more expensive Kohn–Sham density functional theory. Such learning is confronted with two key challenges: Giving the model sufficient expressivity and spatial context while limiting the memory footprint to afford computations on a GPU and creating a sufficiently broad distribution of training data to enable iterative density optimization even when starting from a poor initial guess. In response, we introduce KineticNet, an equivariant deep neural network architecture based on point convolutions adapted to the prediction of quantities on molecular quadrature grids. Important contributions include convolution filters with sufficient spatial resolution in the vicinity of nuclear cusp, an atom-centric sparse but expressive architecture that relays information across multiple bond lengths, and a new strategy to generate varied training data by finding ground state densities in the face of perturbations by a random external potential. KineticNet achieves, for the first time, chemical accuracy of the learned functionals across input densities and geometries of tiny molecules. For two-electron systems, we additionally demonstrate OF-DFT density optimization with chemical accuracy.},
+	language = {en},
+	number = {14},
+	urldate = {2023-12-12},
+	journal = {The Journal of Chemical Physics},
+	author = {Remme, R. and Kaczun, T. and Scheurer, M. and Dreuw, A. and Hamprecht, F. A.},
+	month = oct,
+	year = {2023},
+	pages = {144113},
+	file = {Remme et al. - 2023 - KineticNet Deep learning a transferable kinetic e.pdf:/home/tim/Zotero/storage/IKGAZ6WK/Remme et al. - 2023 - KineticNet Deep learning a transferable kinetic e.pdf:application/pdf},
+}
+
+@misc{fu_recipe_2024,
+	title = {A {Recipe} for {Charge} {Density} {Prediction}},
+	url = {http://arxiv.org/abs/2405.19276},
+	abstract = {In density functional theory, the charge density is the core attribute of atomic systems from which all chemical properties can be derived. Machine learning methods are promising as a means of significantly accelerating charge density predictions, yet existing approaches either lack accuracy or scalability. We propose a recipe that can achieve both. In particular, we identify three key ingredients: (1) representing the charge density with atomic and virtual orbitals (spherical fields centered at atom/virtual coordinates); (2) using expressive and learnable orbital basis sets (basis functions for the spherical fields); and (3) using a high-capacity equivariant neural network architecture. Our method achieves state-of-the-art accuracy while being more than an order of magnitude faster than existing methods. Furthermore, our method enables flexible efficiency–accuracy trade-offs by adjusting the model and/or basis set sizes.},
+	language = {en},
+	urldate = {2024-11-01},
+	publisher = {arXiv},
+	author = {Fu, Xiang and Rosen, Andrew and Bystrom, Kyle and Wang, Rui and Musaelian, Albert and Kozinsky, Boris and Smidt, Tess and Jaakkola, Tommi},
+	month = may,
+	year = {2024},
+	note = {arXiv:2405.19276 [physics]},
+	keywords = {Computer Science - Machine Learning, Physics - Computational Physics},
+	annote = {Comment: 15 pages},
+	file = {Fu et al. - 2024 - A Recipe for Charge Density Prediction.pdf:/home/tim/Zotero/storage/L6NMZPCU/Fu et al. - 2024 - A Recipe for Charge Density Prediction.pdf:application/pdf},
+}
+
+@article{sun_libcint_2015,
+	title = {Libcint: {An} efficient general integral library for {Gaussian} basis functions},
+	volume = {36},
+	copyright = {© 2015 Wiley Periodicals, Inc.},
+	issn = {1096-987X},
+	shorttitle = {Libcint},
+	url = {https://onlinelibrary.wiley.com/doi/abs/10.1002/jcc.23981},
+	doi = {10.1002/jcc.23981},
+	abstract = {An efficient integral library Libcint was designed to automatically implement general integrals for Gaussian-type scalar and spinor basis functions. The library is able to evaluate arbitrary integral expressions on top of p, r and σ operators with one-electron overlap and nuclear attraction, two-electron Coulomb and Gaunt operators for segmented contracted and/or generated contracted basis in Cartesian, spherical or spinor form. Using a symbolic algebra tool, new integrals are derived and translated to C code programmatically. The generated integrals can be used in various types of molecular properties. To demonstrate the capability of the integral library, we computed the analytical gradients and NMR shielding constants at both nonrelativistic and 4-component relativistic Hartree–Fock level in this work. Due to the use of kinetically balanced basis and gauge including atomic orbitals, the relativistic analytical gradients and shielding constants requires the integral library to handle the fifth-order electron repulsion integral derivatives. The generality of the integral library is achieved without losing efficiency. On the modern multi-CPU platform, Libcint can easily reach the overall throughput being many times of the I/O bandwidth. On a 20-core node, we are able to achieve an average output 8.3 GB/s for C60 molecule with cc-pVTZ basis. © 2015 Wiley Periodicals, Inc.},
+	language = {en},
+	number = {22},
+	urldate = {2024-11-01},
+	journal = {Journal of Computational Chemistry},
+	author = {Sun, Qiming},
+	year = {2015},
+	note = {\_eprint: https://onlinelibrary.wiley.com/doi/pdf/10.1002/jcc.23981},
+	keywords = {Gaussian type basis, integral, Libcint},
+	pages = {1664--1671},
+	file = {Snapshot:/home/tim/Zotero/storage/H5QUGHUB/jcc.html:text/html;Submitted Version:/home/tim/Zotero/storage/Z3XBKZL3/Sun - 2015 - Libcint An efficient general integral library for.pdf:application/pdf},
+}
+
+@article{kim_gbasis_2024,
+	title = {{GBasis}: {A} {Python} library for evaluating functions, functionals, and integrals expressed with {Gaussian} basis functions},
+	volume = {161},
+	issn = {0021-9606},
+	shorttitle = {{GBasis}},
+	url = {https://doi.org/10.1063/5.0216776},
+	doi = {10.1063/5.0216776},
+	abstract = {GBasis is a free and open-source Python library for molecular property computations based on Gaussian basis functions in quantum chemistry. Specifically, GBasis allows one to evaluate functions expanded in Gaussian basis functions (including molecular orbitals, electron density, and reduced density matrices) and to compute functionals of Gaussian basis functions (overlap integrals, one-electron integrals, and two-electron integrals). Unique features of GBasis include supporting evaluation and analytical integration of arbitrary-order derivatives of the density (matrices), computation of a broad range of (screened) Coulomb interactions, and evaluation of overlap integrals of arbitrary numbers of Gaussians in arbitrarily high dimensions. For circumstances where the flexibility of GBasis is less important than high performance, a seamless Python interface to the Libcint C package is provided. GBasis is designed to be easy to use, maintain, and extend following many standards of sustainable software development, including code-quality assurance through continuous integration protocols, extensive testing, comprehensive documentation, up-to-date package management, and continuous delivery. This article marks the official release of the GBasis library, outlining its features, examples, and development.},
+	number = {4},
+	urldate = {2024-11-01},
+	journal = {The Journal of Chemical Physics},
+	author = {Kim, Taewon David and Pujal, Leila and Richer, Michelle and van Zyl, Maximilian and Martínez-González, Marco and Tehrani, Alireza and Chuiko, Valerii and Sánchez-Díaz, Gabriela and Sanchez, Wesley and Adams, William and Huang, Xiaomin and Kelly, Braden D. and Vöhringer-Martinez, Esteban and Verstraelen, Toon and Heidar-Zadeh, Farnaz and Ayers, Paul W.},
+	month = jul,
+	year = {2024},
+	pages = {042503},
+	file = {Snapshot:/home/tim/Zotero/storage/3E48KV57/GBasis-A-Python-library-for-evaluating-functions.html:text/html},
+}
+
+@article{sun_recent_2020,
+	title = {Recent developments in the {PySCF} program package},
+	volume = {153},
+	issn = {0021-9606},
+	url = {https://doi.org/10.1063/5.0006074},
+	doi = {10.1063/5.0006074},
+	abstract = {PySCF is a Python-based general-purpose electronic structure platform that supports first-principles simulations of molecules and solids as well as accelerates the development of new methodology and complex computational workflows. This paper explains the design and philosophy behind PySCF that enables it to meet these twin objectives. With several case studies, we show how users can easily implement their own methods using PySCF as a development environment. We then summarize the capabilities of PySCF for molecular and solid-state simulations. Finally, we describe the growing ecosystem of projects that use PySCF across the domains of quantum chemistry, materials science, machine learning, and quantum information science.},
+	number = {2},
+	urldate = {2024-11-01},
+	journal = {The Journal of Chemical Physics},
+	author = {Sun, Qiming and Zhang, Xing and Banerjee, Samragni and Bao, Peng and Barbry, Marc and Blunt, Nick S. and Bogdanov, Nikolay A. and Booth, George H. and Chen, Jia and Cui, Zhi-Hao and Eriksen, Janus J. and Gao, Yang and Guo, Sheng and Hermann, Jan and Hermes, Matthew R. and Koh, Kevin and Koval, Peter and Lehtola, Susi and Li, Zhendong and Liu, Junzi and Mardirossian, Narbe and McClain, James D. and Motta, Mario and Mussard, Bastien and Pham, Hung Q. and Pulkin, Artem and Purwanto, Wirawan and Robinson, Paul J. and Ronca, Enrico and Sayfutyarova, Elvira R. and Scheurer, Maximilian and Schurkus, Henry F. and Smith, James E. T. and Sun, Chong and Sun, Shi-Ning and Upadhyay, Shiv and Wagner, Lucas K. and Wang, Xiao and White, Alec and Whitfield, James Daniel and Williamson, Mark J. and Wouters, Sebastian and Yang, Jun and Yu, Jason M. and Zhu, Tianyu and Berkelbach, Timothy C. and Sharma, Sandeep and Sokolov, Alexander Yu. and Chan, Garnet Kin-Lic},
+	month = jul,
+	year = {2020},
+	pages = {024109},
+	file = {Full Text PDF:/home/tim/Zotero/storage/HFZ59BUR/Sun et al. - 2020 - Recent developments in the PySCF program package.pdf:application/pdf;Snapshot:/home/tim/Zotero/storage/J9JYCX94/Recent-developments-in-the-PySCF-program-package.html:text/html},
+}
+
+% Encoding: UTF-8
+
+@Misc{methods,
+  note = {Materials and methods are available as supplementary material},
+}
+
+@article{kohn1965self,
+	title = {Self-{Consistent} {Equations} {Including} {Exchange} and {Correlation} {Effects}},
+	volume = {140},
+	url = {https://link.aps.org/doi/10.1103/PhysRev.140.A1133},
+	doi = {10.1103/PhysRev.140.A1133},
+	abstract = {From a theory of Hohenberg and Kohn, approximation methods for treating an inhomogeneous system of interacting electrons are developed. These methods are exact for systems of slowly varying or high density. For the ground state, they lead to self-consistent equations analogous to the Hartree and Hartree-Fock equations, respectively. In these equations the exchange and correlation portions of the chemical potential of a uniform electron gas appear as additional effective potentials. (The exchange portion of our effective potential differs from that due to Slater by a factor of 23.) Electronic systems at finite temperatures and in magnetic fields are also treated by similar methods. An appendix deals with a further correction for systems with short-wavelength density oscillations.},
+	number = {4A},
+	urldate = {2023-12-12},
+	journal = {Physical Review},
+	author = {Kohn, W. and Sham, L. J.},
+	month = nov,
+	year = {1965},
+	note = {Publisher: American Physical Society},
+	pages = {A1133--A1138},
+}
+
+
+@article{constantin2011semiclassical,
+  title={Semiclassical neutral atom as a reference system in density functional theory},
+  author={Constantin, Lucian A and Fabiano, E and Laricchia, S and Della Sala, F},
+  journal={Physical Review Letters},
+  volume={106},
+  number={18},
+  pages={186406},
+  year={2011},
+  publisher={APS}
+}
+@article{yang2024mattersim,
+  title={Mattersim: A deep learning atomistic model across elements, temperatures and pressures},
+  author={Yang, Han and Hu, Chenxi and Zhou, Yichi and Liu, Xixian and Shi, Yu and Li, Jielan and Li, Guanzhi and Chen, Zekun and Chen, Shuizhou and Zeni, Claudio and others},
+  journal={arXiv preprint arXiv:2405.04967},
+  year={2024}
+}
+
+
+@incollection{lecun2006tutorial,
+title = "A tutorial on energy-based learning",
+author = "Yann Lecun and Sumit Chopra and Raia Hadsell and Ranzato, {Marc Aurelio} and Huang, {Fu Jie}",
+year = "2006",
+booktitle = "Predicting structured data",
+publisher = "MIT Press"
+}
+
+
+@book{parr1994density,
+  added-at = {2010-11-30T22:41:16.000+0100},
+  asin = {0195092767},
+  author = {Parr, Robert G. and Weitao, Yang},
+  biburl = {https://www.bibsonomy.org/bibtex/2a3a2fe16214923e566e388d39159ca45/cjblanton},
+  description = {Amazon.com: Density-Functional Theory of Atoms and Molecules (International Series of…},
+  dewey = {320},
+  ean = {9780195092769},
+  interhash = {4c94d003bbfa39baef07ca895d506f62},
+  intrahash = {a3a2fe16214923e566e388d39159ca45},
+  isbn = {0195092767},
+  keywords = {DFT Densityfunctional chemistry quantum},
+  publisher = {Oxford University Press, USA},
+  timestamp = {2010-11-30T22:41:16.000+0100},
+  title = {Density-Functional Theory of Atoms and Molecules},
+  url = {http://www.amazon.com/Density-Functional-Molecules-International-Monographs-Chemistry/dp/0195092767/ref=sr_1_1?ie=UTF8&s=books&qid=1279096906&sr=1-1},
+  year = 1994
+}
+
+
+@article{song2024neuralscf,
+  title={{NeuralSCF}: Neural network self-consistent fields for density functional theory},
+  author={Song, Feitong and Feng, Ji},
+  journal={arXiv preprint arXiv:2406.15873},
+  year={2024}
+}
+@article{koker2024higher,
+  title={Higher-order equivariant neural networks for charge density prediction in materials},
+  author={Koker, Teddy and Quigley, Keegan and Taw, Eric and Tibbetts, Kevin and Li, Lin},
+  journal={npj Computational Materials},
+  volume={10},
+  number={1},
+  pages={161},
+  year={2024},
+  publisher={Nature Publishing Group UK London}
+}
+@article{rackers2023recipe,
+  title={A recipe for cracking the quantum scaling limit with machine learned electron densities},
+  author={Rackers, Joshua A and Tecot, Lucas and Geiger, Mario and Smidt, Tess E},
+  journal={Machine Learning: Science and Technology},
+  volume={4},
+  number={1},
+  pages={015027},
+  year={2023},
+  publisher={IOP Publishing}
+}
+@article{dick2021highly,
+  title={Highly accurate and constrained density functional obtained with differentiable programming},
+  author={Dick, Sebastian and Fernandez-Serra, Marivi},
+  journal={Physical Review B},
+  volume={104},
+  number={16},
+  pages={L161109},
+  year={2021},
+  publisher={APS}
+}
+@article{hermann2023ab,
+  title={Ab initio quantum chemistry with neural-network wavefunctions},
+  author={Hermann, Jan and Spencer, James and Choo, Kenny and Mezzacapo, Antonio and Foulkes, W Matthew C and Pfau, David and Carleo, Giuseppe and No{\'e}, Frank},
+  journal={Nature Reviews Chemistry},
+  volume={7},
+  number={10},
+  pages={692--709},
+  year={2023},
+  publisher={Nature Publishing Group UK London}
+}
+
+
+@article{casares2024graddft,
+  title={{GradDFT}. A software library for machine learning enhanced density functional theory},
+  author={M Casares, Pablo A and Baker, Jack S and Medvidovi{\'c}, Matija and Reis, Roberto dos and Arrazola, Juan Miguel},
+  journal={The Journal of Chemical Physics},
+  volume={160},
+  number={6},
+  year={2024},
+  publisher={AIP Publishing}
+}
+
+@article{dunlap1979some,
+  title={On some approximations in applications of {X$\alpha$} theory},
+  author={Dunlap, Brett I and Connolly, JWD and Sabin, JR},
+  journal={The Journal of Chemical Physics},
+  volume={71},
+  number={8},
+  pages={3396--3402},
+  year={1979},
+  publisher={AIP Publishing}
+}
+@incollection{burke2021lies,
+  title={Lies My Teacher Told Me About Density Functional Theory: Seeing Through Them with the {Hubbard} Dimer},
+  author={Burke, Kieron and Kozlowski, John},
+  booktitle={Simulating Correlations with Computers},
+publisher ={Verlag des Forschungszentrum Jülich},
+year = {2021}
+}
+
+@inproceedings{ruhe2024clifford,
+ author = {Ruhe, David and Brandstetter, Johannes and Forr\'{e}, Patrick},
+ booktitle = {Advances in Neural Information Processing Systems},
+ pages = {62922--62990},
+ title = {Clifford Group Equivariant Neural Networks},
+ url = {https://proceedings.neurips.cc/paper_files/paper/2023/file/c6e0125e14ea3d1a3de3c33fd2d49fc4-Paper-Conference.pdf},
+ volume = {36},
+ year = {2023}
+}
+@article{amos2023tutorial,
+  title={Tutorial on amortized optimization},
+  author={Amos, Brandon},
+  journal={Foundations and Trends in Machine Learning},
+  volume={16},
+  number={5},
+  pages={592--732},
+  year={2023},
+  publisher={Now Publishers, Inc.}
+}
+
+@article{duval2023hitchhiker,
+  title={A Hitchhiker's Guide to Geometric {GNNs} for 3D Atomic Systems},
+  author={Duval, Alexandre and Mathis, Simon V and Joshi, Chaitanya K and Schmidt, Victor and Miret, Santiago and Malliaros, Fragkiskos D and Cohen, Taco and Lio, Pietro and Bengio, Yoshua and Bronstein, Michael},
+  journal={arXiv preprint arXiv:2312.07511},
+  year={2023}
+}
+@article{zhang2023artificial,
+  title={Artificial intelligence for science in quantum, atomistic, and continuum systems},
+  author={Zhang, Xuan and Wang, Limei and Helwig, Jacob and Luo, Youzhi and Fu, Cong and Xie, Yaochen and Liu, Meng and Lin, Yuchao and Xu, Zhao and Yan, Keqiang and others},
+  journal={arXiv preprint arXiv:2307.08423},
+  year={2023}
+}
+@article{margraf2023science-driven,
+author = {Margraf, Johannes T.},
+title = {Science-Driven Atomistic Machine Learning},
+journal = {Angewandte Chemie International Edition},
+volume = {62},
+number = {26},
+pages = {e202219170},
+keywords = {Artificial Intelligence, Atomistic Simulations, Chemical Data, Machine Learning, Molecular Dynamics},
+doi = {https://doi.org/10.1002/anie.202219170},
+url = {https://onlinelibrary.wiley.com/doi/abs/10.1002/anie.202219170},
+eprint = {https://onlinelibrary.wiley.com/doi/pdf/10.1002/anie.202219170},
+abstract = {Abstract Machine learning (ML) algorithms are currently emerging as powerful tools in all areas of science. Conventionally, ML is understood as a fundamentally data-driven endeavour. Unfortunately, large well-curated databases are sparse in chemistry. In this contribution, I therefore review science-driven ML approaches which do not rely on “big data”, focusing on the atomistic modelling of materials and molecules. In this context, the term science-driven refers to approaches that begin with a scientific question and then ask what training data and model design choices are appropriate. As key features of science-driven ML, the automated and purpose-driven collection of data and the use of chemical and physical priors to achieve high data-efficiency are discussed. Furthermore, the importance of appropriate model evaluation and error estimation is emphasized.},
+year = {2023}
+}
+
+
+
+
+@inproceedings{brehmer2023geometric,
+ author = {Brehmer, Johann and de Haan, Pim and Behrends, S\"{o}nke and Cohen, Taco S},
+ booktitle = {Advances in Neural Information Processing Systems},
+ pages = {35472--35496},
+ title = {Geometric Algebra Transformer},
+ url = {https://proceedings.neurips.cc/paper_files/paper/2023/file/6f6dd92b03ff9be7468a6104611c9187-Paper-Conference.pdf},
+ volume = {36},
+ year = {2023}
+}
+
+@article{shi2022benchmarking,
+  title={Benchmarking graphormer on large-scale molecular modeling datasets},
+  author={Shi, Yu and Zheng, Shuxin and Ke, Guolin and Shen, Yifei and You, Jiacheng and He, Jiyan and Luo, Shengjie and Liu, Chang and He, Di and Liu, Tie-Yan},
+  journal={arXiv preprint arXiv:2203.04810},
+  year={2022}
+}
+
+@inproceedings{liao2024equiformerv2,
+  title={EquiformerV2: Improved Equivariant Transformer for Scaling to Higher-Degree Representations},
+  author={Liao, Yi-Lun and Wood, Brandon M and Das, Abhishek and Smidt, Tess},
+  booktitle={The Twelfth International Conference on Learning Representations},
+year = {2024}
+}
+
+@article{wang2014discovering,
+  title={Discovering chemistry with an ab initio nanoreactor},
+  author={Wang, Lee-Ping and Titov, Alexey and McGibbon, Robert and Liu, Fang and Pande, Vijay S and Mart{\'\i}nez, Todd J},
+  journal={Nature chemistry},
+  volume={6},
+  number={12},
+  pages={1044--1048},
+  year={2014},
+  publisher={Nature Publishing Group}
+}
+@inproceedings{pozdnyakov2024smooth,
+ author = {Pozdnyakov, Sergey and Ceriotti, Michele},
+ booktitle = {Advances in Neural Information Processing Systems},
+ pages = {79469--79501},
+ title = {Smooth, exact rotational symmetrization for deep learning on point clouds},
+ url = {https://proceedings.neurips.cc/paper_files/paper/2023/file/fb4a7e3522363907b26a86cc5be627ac-Paper-Conference.pdf},
+ volume = {36},
+ year = {2023}
+}
+@inproceedings{kaba2023equivariance,
+  title={Equivariance with learned canonicalization functions},
+  author={Kaba, S{\'e}kou-Oumar and Mondal, Arnab Kumar and Zhang, Yan and Bengio, Yoshua and Ravanbakhsh, Siamak},
+  booktitle={International Conference on Machine Learning},
+  pages={15546--15566},
+  year={2023},
+  organization={PMLR}
+}
+@article{nakata2023pubchemqc,
+  title={{PubChemQC B3LYP/6-31G*//PM6 Data Set}: The Electronic Structures of 86 Million Molecules Using {B3LYP/6-31G*} Calculations},
+  author={Nakata, Maho and Maeda, Toshiyuki},
+  journal={Journal of Chemical Information and Modeling},
+  volume={63},
+  number={18},
+  pages={5734--5754},
+  year={2023},
+  publisher={ACS Publications}
+}
+@article{isert2022qmugs,
+  title={{QMugs}, quantum mechanical properties of drug-like molecules},
+  author={Isert, Clemens and Atz, Kenneth and Jim{\'e}nez-Luna, Jos{\'e} and Schneider, Gisbert},
+  journal={Scientific Data},
+  volume={9},
+  number={1},
+  pages={273},
+  year={2022},
+  publisher={Nature Publishing Group UK London}
+}
+
+@article{ko2023accurate,
+  title={Accurate fourth-generation machine learning potentials by electrostatic embedding},
+  author={Ko, Tsz Wai and Finkler, Jonas A and Goedecker, Stefan and Behler, Jörg},
+  journal={Journal of Chemical Theory and Computation},
+  volume={19},
+  number={12},
+  pages={3567--3579},
+  year={2023},
+  publisher={ACS Publications}
+}
+
+@inproceedings{simeon2024tensornet,
+ author = {Simeon, Guillem and De Fabritiis, Gianni},
+ booktitle = {Advances in Neural Information Processing Systems},
+ pages = {37334--37353},
+ title = {{TensorNet}: Cartesian Tensor Representations for Efficient Learning of Molecular Potentials},
+ url = {https://proceedings.neurips.cc/paper_files/paper/2023/file/75c2ec5f98d7b2f50ad68033d2c07086-Paper-Conference.pdf},
+ volume = {36},
+ year = {2023}
+}
+
+
+@inproceedings{kozinsky2023scaling,
+  title={Scaling the leading accuracy of deep equivariant models to biomolecular simulations of realistic size},
+  author={Kozinsky, Boris and Musaelian, Albert and Johansson, Anders and Batzner, Simon},
+  booktitle={Proceedings of the International Conference for High Performance Computing, Networking, Storage and Analysis},
+  pages={1--12},
+  year={2023}
+}
+@article{lippmann2024tensor,
+  title={Tensor Frames--How To Make Any Message Passing Network Equivariant},
+  author={Lippmann, Peter and Gerhartz, Gerrit and Remme, Roman and Hamprecht, Fred A},
+  journal={arXiv preprint arXiv:2405.15389},
+  year={2024}
+}
+
+@inproceedings{villar2021scalars,
+ author = {Villar, Soledad and Hogg, David W and Storey-Fisher, Kate and Yao, Weichi and Blum-Smith, Ben},
+ booktitle = {Advances in Neural Information Processing Systems},
+ pages = {28848--28863},
+ title = {Scalars are universal: Equivariant machine learning, structured like classical physics},
+ url = {https://proceedings.neurips.cc/paper_files/paper/2021/file/f1b0775946bc0329b35b823b86eeb5f5-Paper.pdf},
+ volume = {34},
+ year = {2021}
+}
+
+@article{ke2013angular-momentum,
+  title = {Angular-Momentum-Dependent Orbital-Free Density Functional Theory},
+  author = {Ke, Youqi and Libisch, Florian and Xia, Junchao and Wang, Lin-Wang and Carter, Emily A.},
+  journal = {Phys. Rev. Lett.},
+  volume = {111},
+  issue = {6},
+  pages = {066402},
+  numpages = {5},
+  year = {2013},
+  month = {Aug},
+  publisher = {American Physical Society},
+  doi = {10.1103/PhysRevLett.111.066402},
+  url = {https://link.aps.org/doi/10.1103/PhysRevLett.111.066402}
+}
+
+
+@article{cohen2008insights,
+  title={Insights into current limitations of density functional theory},
+  author={Cohen, Aron J and Mori-S{\'a}nchez, Paula and Yang, Weitao},
+  journal={Science},
+  volume={321},
+  number={5890},
+  pages={792--794},
+  year={2008},
+  publisher={American Association for the Advancement of Science}
+}
+
+@article{perdew1982density,
+  title={Density-functional theory for fractional particle number: derivative discontinuities of the energy},
+  author={Perdew, John P and Parr, Robert G and Levy, Mel and Balduz Jr, Jose L},
+  journal={Physical Review Letters},
+  volume={49},
+  number={23},
+  pages={1691},
+  year={1982},
+  publisher={APS}
+}
+
+@article{levy1985hellmann,
+  title={{Hellmann-Feynman}, virial, and scaling requisites for the exact universal density functionals. Shape of the correlation potential and diamagnetic susceptibility for atoms},
+  author={Levy, Mel and Perdew, John P},
+  journal={Physical Review A},
+  volume={32},
+  number={4},
+  pages={2010},
+  year={1985},
+  publisher={APS}
+}
+
+
+@article{shi2021inverse,
+author = {Shi, Yuming and Wasserman, Adam},
+title = {Inverse {Kohn–Sham} Density Functional Theory: Progress and Challenges},
+journal = {The Journal of Physical Chemistry Letters},
+volume = {12},
+number = {22},
+pages = {5308-5318},
+year = {2021},
+doi = {10.1021/acs.jpclett.1c00752}
+}
+
+@article{tozer1996exchange,
+  title={Exchange-correlation potentials},
+  author={Tozer, David J and Ingamells, Victoria E and Handy, Nicholas C},
+  journal={The Journal of chemical physics},
+  volume={105},
+  number={20},
+  pages={9200--9213},
+  year={1996},
+  publisher={American Institute of Physics}
+}
+
+
+@article{hernandez2023generalizability,
+  title = {Generalizability of functional forms for interatomic potential models discovered by symbolic regression},
+  author = {Hernandez, Alberto and Mueller, Tim},
+  journal = {Phys. Rev. Mater.},
+  volume = {7},
+  issue = {5},
+  pages = {053804},
+  numpages = {10},
+  year = {2023},
+  month = {May},
+  publisher = {American Physical Society},
+  doi = {10.1103/PhysRevMaterials.7.053804},
+  url = {https://link.aps.org/doi/10.1103/PhysRevMaterials.7.053804}
+}
+
+@article{wang2019symbolic,
+  title={Symbolic regression in materials science},
+  author={Wang, Yiqun and Wagner, Nicholas and Rondinelli, James M},
+  journal={MRS Communications},
+  volume={9},
+  number={3},
+  pages={793--805},
+  year={2019},
+  publisher={Cambridge University Press}
+}
+
+@article{hoyer2021kohnsham,
+  title = {{Kohn-Sham} Equations as Regularizer: Building Prior Knowledge into Machine-Learned Physics},
+  author = {Li, Li and Hoyer, Stephan and Pederson, Ryan and Sun, Ruoxi and Cubuk, Ekin D. and Riley, Patrick and Burke, Kieron},
+  journal = {Phys. Rev. Lett.},
+  volume = {126},
+  issue = {3},
+  pages = {036401},
+  numpages = {7},
+  year = {2021},
+  month = {Jan},
+  publisher = {American Physical Society},
+  doi = {10.1103/PhysRevLett.126.036401},
+  url = {https://link.aps.org/doi/10.1103/PhysRevLett.126.036401}
+}
+@inproceedings{selvaraju2017grad,
+  title={Grad-cam: Visual explanations from deep networks via gradient-based localization},
+  author={Selvaraju, Ramprasaath R and Cogswell, Michael and Das, Abhishek and Vedantam, Ramakrishna and Parikh, Devi and Batra, Dhruv},
+  booktitle={Proceedings of the IEEE international conference on computer vision},
+  pages={618--626},
+  year={2017}
+}
+
+
+@article{leguy2021scalable,
+  title={Scalable estimator of the diversity for de novo molecular generation resulting in a more robust {QM} dataset ({OD9}) and a more efficient molecular optimization},
+  author={Leguy, Jules and Glavatskikh, Marta and Cauchy, Thomas and Da Mota, Benoit},
+  journal={Journal of cheminformatics},
+  volume={13},
+  pages={1--17},
+  year={2021},
+  publisher={Springer}
+}
+
+@article{thakkar1992comparison,
+  title={Comparison of kinetic-energy density functionals},
+  author={Thakkar, Ajit J},
+  journal={Physical Review A},
+  volume={46},
+  number={11},
+  pages={6920},
+  year={1992},
+  publisher={APS}
+}
+
+@article{wang1999orbital,
+  title={Orbital-free kinetic-energy density functionals with a density-dependent kernel},
+  author={Wang, Yan Alexander and Govind, Niranjan and Carter, Emily A},
+  journal={Physical Review B},
+  volume={60},
+  number={24},
+  pages={16350},
+  year={1999},
+  publisher={APS}
+}
+
+
+@article{kumar2023kohnsham,
+    author = {Kumar, Shashikant and Jing, Xin and Pask, John E. and Medford, Andrew J. and Suryanarayana, Phanish},
+    title = "{Kohn–Sham accuracy from orbital-free density functional theory via $\Delta$-machine learning}",
+    journal = {The Journal of Chemical Physics},
+    volume = {159},
+    number = {24},
+    pages = {244106},
+    year = {2023},
+    month = {12},
+    abstract = "{We present a Δ-machine learning model for obtaining Kohn–Sham accuracy from orbital-free density functional theory (DFT) calculations. In particular, we employ a machine-learned force field (MLFF) scheme based on the kernel method to capture the difference between Kohn–Sham and orbital-free DFT energies/forces. We implement this model in the context of on-the-fly molecular dynamics simulations and study its accuracy, performance, and sensitivity to parameters for representative systems. We find that the formalism not only improves the accuracy of Thomas–Fermi–von Weizsäcker orbital-free energies and forces by more than two orders of magnitude but is also more accurate than MLFFs based solely on Kohn–Sham DFT while being more efficient and less sensitive to model parameters. We apply the framework to study the structure of molten Al0.88Si0.12, the results suggesting no aggregation of Si atoms, in agreement with a previous Kohn–Sham study performed at an order of magnitude smaller length and time scales.}",
+    issn = {0021-9606},
+    doi = {10.1063/5.0180541},
+    url = {https://doi.org/10.1063/5.0180541},
+    eprint = {https://pubs.aip.org/aip/jcp/article-pdf/doi/10.1063/5.0180541/18276603/244106\_1\_5.0180541.pdf},
+}
+
+@inproceedings{
+hu2022lora,
+title={Lo{RA}: Low-Rank Adaptation of Large Language Models},
+author={Edward J Hu and yelong shen and Phillip Wallis and Zeyuan Allen-Zhu and Yuanzhi Li and Shean Wang and Lu Wang and Weizhu Chen},
+booktitle={International Conference on Learning Representations},
+year={2022},
+url={https://openreview.net/forum?id=nZeVKeeFYf9}
+}
+
+@article{ramakrishnan2014quantum,
+  title={Quantum chemistry structures and properties of 134 kilo molecules},
+  author={Ramakrishnan, Raghunathan and Dral, Pavlo O and Rupp, Matthias and Von Lilienfeld, O Anatole},
+  journal={Scientific data},
+  volume={1},
+  number={1},
+  pages={1--7},
+  year={2014},
+  publisher={Nature Publishing Group}
+}
+@article{ryabinkin2015reduction,
+  title={Reduction of electronic wave functions to Kohn-Sham effective potentials},
+  author={Ryabinkin, Ilya G and Kohut, Sviataslau V and Staroverov, Viktor N},
+  journal={Physical review letters},
+  volume={115},
+  number={8},
+  pages={083001},
+  year={2015},
+  publisher={APS}
+}
+
+@article{geerlings2003conceptual,
+  title={Conceptual density functional theory},
+  author={Geerlings, Paul and De Proft, Frank and Langenaeker, Wilfried},
+  journal={Chemical reviews},
+  volume={103},
+  number={5},
+  pages={1793--1874},
+  year={2003},
+  publisher={ACS Publications}
+}
+
+
+@article{guo2021local,
+  title={Local temperature as a chemical reactivity descriptor},
+  author={Guo, Chunna and He, Xin and Rong, Chunying and Lu, Tian and Liu, Shubin and Chattaraj, Pratim Kumar},
+  journal={The Journal of Physical Chemistry Letters},
+  volume={12},
+  number={23},
+  pages={5623--5630},
+  year={2021},
+  publisher={ACS Publications}
+}
+
+
+
+@article{moreno2020deep,
+  title = {Deep Learning the {Hohenberg-Kohn} Maps of Density Functional Theory},
+  author = {Moreno, Javier Robledo and Carleo, Giuseppe and Georges, Antoine},
+  journal = {Phys. Rev. Lett.},
+  volume = {125},
+  issue = {7},
+  pages = {076402},
+  numpages = {6},
+  year = {2020},
+  month = {Aug},
+  publisher = {American Physical Society},
+  doi = {10.1103/PhysRevLett.125.076402},
+  url = {https://link.aps.org/doi/10.1103/PhysRevLett.125.076402}
+}
+
+@article{batatia2024foundation,
+  title={A foundation model for atomistic materials chemistry},
+  author={Batatia, Ilyes and Benner, Philipp and Chiang, Yuan and Elena, Alin M and Kov{\'a}cs, D{\'a}vid P and Riebesell, Janosh and Advincula, Xavier R and Asta, Mark and Baldwin, William J and Bernstein, Noam and others},
+  journal={arXiv preprint arXiv:2401.00096},
+  year={2024}
+}
+
+
+@article{soler2002siesta,
+  title={The {SIESTA} method for ab initio order-N materials simulation},
+  author={Soler, Jos{\'e} M and Artacho, Emilio and Gale, Julian D and Garc{\'\i}a, Alberto and Junquera, Javier and Ordej{\'o}n, Pablo and S{\'a}nchez-Portal, Daniel},
+  journal={Journal of Physics: Condensed Matter},
+  volume={14},
+  number={11},
+  pages={2745},
+  year={2002},
+  publisher={IOP Publishing}
+}
+
+@article{bohacek1996art,
+  title={The art and practice of structure-based drug design: a molecular modeling perspective},
+  author={Bohacek, Regine S and McMartin, Colin and Guida, Wayne C},
+  journal={Medicinal research reviews},
+  volume={16},
+  number={1},
+  pages={3--50},
+  year={1996},
+  publisher={Wiley Subscription Services, Inc., A Wiley Company New York}
+}
+
+
+@article{burger2024truth,
+  title={Truth is Universal: Robust Detection of Lies in {LLMs}},
+  author={B{\"u}rger, Lennart and Hamprecht, Fred A and Nadler, Boaz},
+  journal={arXiv preprint arXiv:2407.12831},
+  year={2024}
+}
+
+@article{sturm2024syncellfactory,
+  title={{SynCellFactory}: Generative Data Augmentation for Cell Tracking},
+  author={Sturm, Moritz and Cerrone, Lorenzo and Hamprecht, Fred A},
+  journal={arXiv preprint arXiv:2404.16421},
+  year={2024}
+}
+
+@article{kunsch2005optimal,
+  title={Optimal lattices for sampling},
+  author={Kunsch, Hans R and Agrell, Erik and Hamprecht, Fred A},
+  journal={IEEE Transactions on Information Theory},
+  volume={51},
+  number={2},
+  pages={634--647},
+  year={2005},
+  publisher={IEEE}
+}
+
+@article{hamprecht2002chemical,
+  title={Chemical library subset selection algorithms: a unified derivation using spatial statistics},
+  author={Hamprecht, Fred A and Thiel, Walter and van Gunsteren, Wilfred F},
+  journal={Journal of chemical information and computer sciences},
+  volume={42},
+  number={2},
+  pages={414--428},
+  year={2002},
+  publisher={ACS Publications}
+}
+
+@article{lippmann2022theory,
+  title={Theory and approximate solvers for branched optimal transport with multiple sources},
+  author={Lippmann, Peter and Fita Sanmart{\'\i}n, Enrique and Hamprecht, Fred A},
+  journal={Advances in Neural Information Processing Systems},
+  volume={35},
+  pages={267--279},
+  year={2022}
+}
+
+@inproceedings{sanmartin2022algebraic,
+  title={The algebraic path problem for graph metrics},
+  author={Sanmart{\i}n, Enrique Fita and Damrich, Sebastian and Hamprecht, Fred},
+  booktitle={International Conference on Machine Learning},
+  pages={19178--19204},
+  year={2022},
+  organization={PMLR}
+}
+
+
+@inproceedings{draxler2018essentially,
+  author       = {Felix Draxler and
+                  Kambis Veschgini and
+                  Manfred Salmhofer and
+                  Fred A. Hamprecht},
+  editor       = {Jennifer G. Dy and
+                  Andreas Krause},
+  title        = {Essentially No Barriers in Neural Network Energy Landscape},
+  booktitle    = {Proceedings of the 35th International Conference on Machine Learning,
+                  {ICML} 2018, Stockholmsm{\"{a}}ssan, Stockholm, Sweden, July
+                  10-15, 2018},
+  series       = {Proceedings of Machine Learning Research},
+  volume       = {80},
+  pages        = {1308--1317},
+  publisher    = {{PMLR}},
+  year         = {2018},
+  url          = {http://proceedings.mlr.press/v80/draxler18a.html},
+  timestamp    = {Wed, 29 Apr 2020 09:23:37 +0200},
+  biburl       = {https://dblp.org/rec/conf/icml/DraxlerVSH18.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
+}
+
+
+@article{beier2017multicut,
+  title={Multicut brings automated neurite segmentation closer to human performance},
+  author={Beier, Thorsten and Pape, Constantin and Rahaman, Nasim and Prange, Timo and Berg, Stuart and Bock, Davi D and Cardona, Albert and Knott, Graham W and Plaza, Stephen M and Scheffer, Louis K and Köthe, Ullrich and Kreshuk, Anna and Hamprecht, Fred A. },
+  journal={Nature methods},
+  volume={14},
+  number={2},
+  pages={101--102},
+  year={2017},
+  publisher={Nature Publishing Group}
+}
+
+
+
+@ARTICLE{wolf21mutex,
+  author={Wolf, Steffen and Bailoni, Alberto and Pape, Constantin and Rahaman, Nasim and Kreshuk, Anna and Köthe, Ullrich and Hamprecht, Fred A.},
+  journal={IEEE Transactions on Pattern Analysis and Machine Intelligence},
+  title={The Mutex Watershed and its Objective: Efficient, Parameter-Free Graph Partitioning},
+  year={2021},
+  volume={43},
+  number={10},
+  pages={3724-3738},
+  keywords={Clustering algorithms;Partitioning algorithms;Image segmentation;Image edge detection;Merging;Correlation;Vegetation;Image segmentation;partitioning algorithms;greedy algorithms;optimization;integer linear programming;machine learning;convolutional neural networks},
+  doi={10.1109/TPAMI.2020.2980827}}
+
+
+@inproceedings{damrich23tsne,
+  author       = {Sebastian Damrich and
+                  Jan Niklas B{\"{o}}hm and
+                  Fred A. Hamprecht and
+                  Dmitry Kobak},
+  title        = {From {$t$-SNE} to {UMAP} with contrastive learning},
+  booktitle    = {The Eleventh International Conference on Learning Representations,
+                  {ICLR} 2023, Kigali, Rwanda, May 1-5, 2023},
+  publisher    = {OpenReview.net},
+  year         = {2023},
+  url          = {https://openreview.net/forum?id=B8a1FcY0vi},
+  timestamp    = {Wed, 24 Jul 2024 16:50:34 +0200},
+  biburl       = {https://dblp.org/rec/conf/iclr/DamrichBHK23.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
+}
+
+@inproceedings{weiler2018learning,
+  title={Learning steerable filters for rotation equivariant cnns},
+  author={Weiler, Maurice and Hamprecht, Fred A and Storath, Martin},
+  booktitle={Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition},
+  pages={849--858},
+  year={2018}
+}
+
+@book{parr1989density,
+  title={Density-Functional Theory of Atoms and Molecules},
+  author={Parr, R.G. and Yang, W.},
+  isbn={9780195092769},
+  lccn={lc88025157},
+  year={1989},
+  publisher={Oxford University Press}
+}
+
+@misc{bishopfifth,
+author={CM Bishop}, year={2022},
+title={AI4Science to empower the fifth paradigm of scientific discovery},
+howpublished={\url{https://www.microsoft.com/en-us/research/blog/ai4science-to-empower-the-fifth-paradigm-of-scientific-discovery/}}
+}
+
+@article{schwaller2019molecular,
+  title={Molecular transformer: a model for uncertainty-calibrated chemical reaction prediction},
+  author={Schwaller, Philippe and Laino, Teodoro and Gaudin, Th{\'e}ophile and Bolgar, Peter and Hunter, Christopher A and Bekas, Costas and Lee, Alpha A},
+  journal={ACS central science},
+  volume={5},
+  number={9},
+  pages={1572--1583},
+  year={2019},
+  publisher={ACS Publications}
+}
+
+@article{reiser2022graph,
+  title={Graph neural networks for materials science and chemistry},
+  author={Reiser, Patrick and Neubert, Marlen and Eberhard, Andr{\'e} and Torresi, Luca and Zhou, Chen and Shao, Chen and Metni, Houssam and van Hoesel, Clint and Schopmans, Henrik and Sommer, Timo and others},
+  journal={Communications Materials},
+  volume={3},
+  number={1},
+  pages={93},
+  year={2022},
+  publisher={Nature Publishing Group UK London}
+}
+
+@article{verma20103d,
+  title={3D-QSAR in drug design-a review},
+  author={Verma, Jitender and Khedkar, Vijay M and Coutinho, Evans C},
+  journal={Current topics in medicinal chemistry},
+  volume={10},
+  number={1},
+  pages={95--115},
+  year={2010},
+  publisher={Bentham Science Publishers}
+}
+
+@article{chandrasekaran2019solving,
+  title={Solving the electronic structure problem with machine learning},
+  author={Chandrasekaran, Anand and Kamal, Deepak and Batra, Rohit and Kim, Chiho and Chen, Lihua and Ramprasad, Rampi},
+  journal={npj Computational Materials},
+  volume={5},
+  number={1},
+  pages={22},
+  year={2019},
+  publisher={Nature Publishing Group UK London}
+}
+
+@article{imoto2021order,
+  title={Order-N orbital-free density-functional calculations with machine learning of functional derivatives for semiconductors and metals},
+  author={Imoto, Fumihiro and Imada, Masatoshi and Oshiyama, Atsushi},
+  journal={Physical Review Research},
+  volume={3},
+  number={3},
+  pages={033198},
+  year={2021},
+  publisher={APS}
+}
+
+@article{seino2018semi,
+  title={Semi-local machine-learned kinetic energy density functional with third-order gradients of electron density},
+  author={Seino, Junji and Kageyama, Ryo and Fujinami, Mikito and Ikabata, Yasuhiro and Nakai, Hiromi},
+  journal={The Journal of chemical physics},
+  volume={148},
+  number={24},
+  year={2018},
+  publisher={AIP Publishing}
+}
+
+
+@article{cuevas2021machine,
+  title={Machine learning of analytical electron density in large molecules through message-passing},
+  author={Cuevas-Zuvir{\'\i}a, Bruno and Pacios, Luis F},
+  journal={Journal of chemical information and modeling},
+  volume={61},
+  number={6},
+  pages={2658--2666},
+  year={2021},
+  publisher={ACS Publications}
+}
+
+@article{brockherde2017bypassing,
+  title={Bypassing the {Kohn-Sham} equations with machine learning},
+  author={Brockherde, Felix and Vogt, Leslie and Li, Li and Tuckerman, Mark E and Burke, Kieron and M{\"u}ller, Klaus-Robert},
+  journal={Nature communications},
+  volume={8},
+  number={1},
+  pages={872},
+  year={2017},
+  publisher={Nature Publishing Group UK London}
+}
+
+
+@article{nagai2020completing,
+  title={Completing density functional theory by machine learning hidden messages from molecules},
+  author={Nagai, Ryo and Akashi, Ryosuke and Sugino, Osamu},
+  journal={npj Computational Materials},
+  volume={6},
+  number={1},
+  pages={43},
+  year={2020},
+  publisher={Nature Publishing Group UK London}
+}
+
+@article{dick2020machine,
+  title={Machine learning accurate exchange and correlation functionals of the electronic density},
+  author={Dick, Sebastian and Fernandez-Serra, Marivi},
+  journal={Nature communications},
+  volume={11},
+  number={1},
+  pages={3509},
+  year={2020},
+  publisher={Nature Publishing Group UK London}
+}
+
+@article{kirkpatrick2021pushing,
+  title={Pushing the frontiers of density functionals by solving the fractional electron problem},
+  author={Kirkpatrick, James and McMorrow, Brendan and Turban, David HP and Gaunt, Alexander L and Spencer, James S and Matthews, Alexander GDG and Obika, Annette and Thiry, Louis and Fortunato, Meire and Pfau, David and others},
+  journal={Science},
+  volume={374},
+  number={6573},
+  pages={1385--1389},
+  year={2021},
+  publisher={American Association for the Advancement of Science}
+}
+
+@inproceedings{du2022se,
+  title={SE (3) equivariant graph neural networks with complete local frames},
+  author={Du, Weitao and Zhang, He and Du, Yuanqi and Meng, Qi and Chen, Wei and Zheng, Nanning and Shao, Bin and Liu, Tie-Yan},
+  booktitle={International Conference on Machine Learning},
+  pages={5583--5608},
+  year={2022},
+  organization={PMLR}
+}
+
+@article{geiger2022e3nn,
+  title={e3nn: Euclidean neural networks},
+  author={Geiger, Mario and Smidt, Tess},
+  journal={arXiv preprint arXiv:2207.09453},
+  year={2022}
+}
+
+@article{hohenberg1964inhomogeneous,
+  title={Inhomogeneous electron gas},
+  author={Hohenberg, Pierre and Kohn, Walter},
+  journal={Physical review},
+  volume={136},
+  number={3B},
+  pages={B864},
+  year={1964},
+  publisher={APS}
+}
+
+
+@article{snyder2012finding,
+  title={Finding density functionals with machine learning},
+  author={Snyder, John C and Rupp, Matthias and Hansen, Katja and M{\"u}ller, Klaus-Robert and Burke, Kieron},
+  journal={Physical review letters},
+  volume={108},
+  number={25},
+  pages={253002},
+  year={2012},
+  publisher={APS}
+}
+
+
+@article{thomas2018tensor,
+  title={Tensor field networks: Rotation-and translation-equivariant neural networks for {3D} point clouds},
+  author={Thomas, Nathaniel and Smidt, Tess and Kearnes, Steven and Yang, Lusann and Li, Li and Kohlhoff, Kai and Riley, Patrick},
+  journal={arXiv preprint arXiv:1802.08219},
+  year={2018}
+}
+
+@article{musaelian2023learning,
+  title={Learning local equivariant representations for large-scale atomistic dynamics},
+  author={Musaelian, Albert and Batzner, Simon and Johansson, Anders and Sun, Lixin and Owen, Cameron J and Kornbluth, Mordechai and Kozinsky, Boris},
+  journal={Nature Communications},
+  volume={14},
+  number={1},
+  pages={579},
+  year={2023},
+  publisher={Nature Publishing Group UK London}
+}
+
+@inproceedings{batatia2022mace,
+ author = {Batatia, Ilyes and Kovacs, David P and Simm, Gregor and Ortner, Christoph and Csanyi, Gabor},
+ booktitle = {Advances in Neural Information Processing Systems},
+ pages = {11423--11436},
+ title = {{MACE}: Higher Order Equivariant Message Passing Neural Networks for Fast and Accurate Force Fields},
+ url = {https://proceedings.neurips.cc/paper_files/paper/2022/file/4a36c3c51af11ed9f34615b81edb5bbc-Paper-Conference.pdf},
+ volume = {35},
+ year = {2022}
+}
+
+@article{kulik2022roadmap,
+  title={Roadmap on machine learning in electronic structure},
+  author={Kulik, Heather J and Hammerschmidt, Thomas and Schmidt, Jonathan and Botti, Silvana and Marques, Miguel AL and Boley, Mario and Scheffler, Matthias and Todorovi{\'c}, Milica and Rinke, Patrick and Oses, Corey and others},
+  journal={Electronic Structure},
+  volume={4},
+  number={2},
+  pages={023004},
+  year={2022},
+  publisher={IOP Publishing}
+}
+
+@article{gong2023general,
+  title={General framework for {E}(3)-equivariant neural network representation of density functional theory {Hamiltonian}},
+  author={Gong, Xiaoxun and Li, He and Zou, Nianlong and Xu, Runzhang and Duan, Wenhui and Xu, Yong},
+  journal={Nature Communications},
+  volume={14},
+  number={1},
+  pages={2848},
+  year={2023},
+  publisher={Nature Publishing Group UK London}
+}
+
+@article{ma2022evolving,
+  title={Evolving symbolic density functionals},
+  author={Ma, He and Narayanaswamy, Arunachalam and Riley, Patrick and Li, Li},
+  journal={Science Advances},
+  volume={8},
+  number={36},
+  pages={eabq0279},
+  year={2022},
+  publisher={American Association for the Advancement of Science}
+}
+
+@article{remme2023kineticnet,
+  title={{KineticNet}: Deep learning a transferable kinetic energy functional for orbital-free density functional theory},
+  author={Remme, Roman and Kaczun, Tobias and Scheurer, Maximilian and Dreuw, Andreas and Hamprecht, Fred A},
+  journal={The Journal of Chemical Physics},
+  volume={159},
+  number={14},
+  year={2023},
+  publisher={AIP Publishing}
+}
+
+
+@article{m2024graddft,
+  title={{GradDFT}. A software library for machine learning enhanced density functional theory},
+  author={M Casares, Pablo A and Baker, Jack S and Medvidovi{\'c}, Matija and Reis, Roberto dos and Arrazola, Juan Miguel},
+  journal={The Journal of Chemical Physics},
+  volume={160},
+  number={6},
+  year={2024},
+  publisher={AIP Publishing}
+}
+
+
+
+@article{sun2020recent,
+  title={Recent developments in the {PySCF} program package},
+  author={Sun, Qiming and Zhang, Xing and Banerjee, Samragni and Bao, Peng and Barbry, Marc and Blunt, Nick S and Bogdanov, Nikolay A and Booth, George H and Chen, Jia and Cui, Zhi-Hao and others},
+  journal={The Journal of chemical physics},
+  volume={153},
+  number={2},
+  year={2020},
+  publisher={AIP Publishing}
+}
+
+
+@article{mi2023orbital,
+  title={Orbital-free density functional theory: An attractive electronic structure method for large-scale first-principles simulations},
+  author={Mi, Wenhui and Luo, Kai and Trickey, SB and Pavanello, Michele},
+  journal={Chemical Reviews},
+  volume={123},
+  number={21},
+  pages={12039--12104},
+  year={2023},
+  publisher={ACS Publications}
+}
+
+@article{zhang2024overcoming,
+  title={Overcoming the barrier of orbital-free density functional theory for molecular systems using deep learning},
+  author={Zhang, He and Liu, Siyuan and You, Jiacheng and Liu, Chang and Zheng, Shuxin and Lu, Ziheng and Wang, Tong and Zheng, Nanning and Shao, Bin},
+  journal={Nature Computational Science},
+  pages={1--14},
+  year={2024},
+  publisher={Nature Publishing Group US New York}
+}
+
+@article{meyer2020machine,
+  title={Machine learning approaches toward orbital-free density functional theory: Simultaneous training on the kinetic energy density functional and its functional derivative},
+  author={Meyer, Ralf and Weichselbaum, Manuel and Hauser, Andreas W},
+  journal={Journal of chemical theory and computation},
+  volume={16},
+  number={9},
+  pages={5685--5694},
+  year={2020},
+  publisher={ACS Publications}
+}
+
+
+
+
+@inproceedings{du2023new,
+ author = {Du, Weitao and Du, Yuanqi and Wang, Limei and Feng, Dieqiao and Wang, Guifeng and Ji, Shuiwang and Gomes, Carla P and Ma, Zhi-Ming},
+ booktitle = {Advances in Neural Information Processing Systems},
+ pages = {66647--66674},
+ title = {A new perspective on building efficient and expressive 3D equivariant graph neural networks},
+ url = {https://proceedings.neurips.cc/paper_files/paper/2023/file/d212c6c26603c0eb3c9a6b6432386a1f-Paper-Conference.pdf},
+ volume = {36},
+ year = {2023}
+}
+
+@inproceedings{puny2021frame,
+	title = {Frame Averaging for Invariant and Equivariant Network Design},
+	url = {https://openreview.net/forum?id=zIUyj55nXR},
+	eventtitle = {International Conference on Learning Representations},
+	author = {Puny, Omri and Atzmon, Matan and Smith, Edward J. and Misra, Ishan and Grover, Aditya and Ben-Hamu, Heli and Lipman, Yaron},
+	urldate = {2024-08-28},
+	langid = {english},
+        booktitle={International Conference on Learning Representations},
+        year = {2022}
+}
+
+
+@inproceedings{chen2024geomformer,
+	title = {{GeoMFormer}: A General Architecture for Geometric Molecular Representation Learning},
+	url = {https://proceedings.mlr.press/v235/chen24ac.html},
+	shorttitle = {{GeoMFormer}},
+	eventtitle = {International Conference on Machine Learning},
+	pages = {7118--7142},
+	booktitle = {Proceedings of the 41st International Conference on Machine Learning},
+	publisher = {{PMLR}},
+	author = {Chen, Tianlang and Luo, Shengjie and He, Di and Zheng, Shuxin and Liu, Tie-Yan and Wang, Liwei},
+	urldate = {2024-08-27},
+	date = {2024-07-08},
+	langid = {english},
+	note = {{ISSN}: 2640-3498},
+year={2024}
+}
+
+@article{udrescu2020ai,
+  title={{AI Feynman}: A physics-inspired method for symbolic regression},
+  author={Udrescu, Silviu-Marian and Tegmark, Max},
+  journal={Science Advances},
+  volume={6},
+  number={16},
+  pages={eaay2631},
+  year={2020},
+  publisher={American Association for the Advancement of Science}
+}
+
+@article{bogojeski2020quantum,
+  title={Quantum chemical accuracy from density functional approximations via machine learning},
+  author={Bogojeski, Mihail and Vogt-Maranto, Leslie and Tuckerman, Mark E and M{\"u}ller, Klaus-Robert and Burke, Kieron},
+  journal={Nature communications},
+  volume={11},
+  number={1},
+  pages={5223},
+  year={2020},
+  publisher={Nature Publishing Group UK London}
+}
+
+@article{seino2018semi-local,
+	title = {Semi-local machine-learned kinetic energy density functional with third-order gradients of electron density},
+	volume = {148},
+	issn = {0021-9606},
+	url = {https://doi.org/10.1063/1.5007230},
+	doi = {10.1063/1.5007230},
+	pages = {241705},
+	number = {24},
+	journaltitle = {The Journal of Chemical Physics},
+	shortjournal = {The Journal of Chemical Physics},
+	author = {Seino, Junji and Kageyama, Ryo and Fujinami, Mikito and Ikabata, Yasuhiro and Nakai, Hiromi},
+	urldate = {2024-08-28},
+	date = {2018-03-15},
+}
+
+@article{yao2016kinetic,
+	title = {Kinetic Energy of Hydrocarbons as a Function of Electron Density and Convolutional Neural Networks},
+	volume = {12},
+	issn = {1549-9618},
+	url = {https://doi.org/10.1021/acs.jctc.5b01011},
+	doi = {10.1021/acs.jctc.5b01011},
+	pages = {1139--1147},
+	number = {3},
+	journaltitle = {Journal of Chemical Theory and Computation},
+	shortjournal = {J. Chem. Theory Comput.},
+        journal = {Journal of Chemical Theory and Computation},
+	author = {Yao, Kun and Parkhill, John},
+	urldate = {2024-08-28},
+	date = {2016-03-08},
+        year = {2016},
+	note = {Publisher: American Chemical Society},
+}
+
+@article{kohn1996density,
+  title={Density functional and density matrix method scaling linearly with the number of atoms},
+  author={Kohn, Walter},
+  journal={Physical Review Letters},
+  volume={76},
+  number={17},
+  pages={3168},
+  year={1996},
+  publisher={APS}
+}
+
+
+@article{ryczko2022toward,
+	title = {Toward Orbital-Free Density Functional Theory with Small Data Sets and Deep Learning},
+	volume = {18},
+	issn = {1549-9618},
+	url = {https://doi.org/10.1021/acs.jctc.1c00812},
+	doi = {10.1021/acs.jctc.1c00812},
+	pages = {1122--1128},
+	number = {2},
+	journaltitle = {Journal of Chemical Theory and Computation},
+	shortjournal = {J. Chem. Theory Comput.},
+	author = {Ryczko, Kevin and Wetzel, Sebastian J. and Melko, Roger G. and Tamblyn, Isaac},
+	urldate = {2024-08-28},
+	date = {2022-02-08},
+	note = {Publisher: American Chemical Society},
+}
+
+
+@article{li2016pure,
+	title = {Pure density functional for strong correlation and the thermodynamic limit from machine learning},
+	volume = {94},
+	url = {https://link.aps.org/doi/10.1103/PhysRevB.94.245129},
+	doi = {10.1103/PhysRevB.94.245129},
+	pages = {245129},
+	number = {24},
+        journal = {Phys. Rev. B},
+	journaltitle = {Physical Review B},
+	shortjournal = {Phys. Rev. B},
+	author = {Li, Li and Baker, Thomas E. and White, Steven R. and Burke, Kieron},
+	urldate = {2024-08-28},
+	date = {2016-12-21},
+        year = {2016},
+	note = {Publisher: American Physical Society},
+}
+
+
+@article{ghasemi2021artificial,
+	title = {Artificial neural networks for the kinetic energy functional of non-interacting fermions},
+        journal = {The Journal of Chemical Physics},
+	volume = {154},
+	issn = {0021-9606},
+	url = {https://doi.org/10.1063/5.0037319},
+	doi = {10.1063/5.0037319},
+	pages = {074107},
+	number = {7},
+	journaltitle = {The Journal of Chemical Physics},
+	shortjournal = {The Journal of Chemical Physics},
+	author = {Ghasemi, S. Alireza and Kühne, Thomas D.},
+	urldate = {2024-08-28},
+	date = {2021-02-17},
+        year = {2021},
+}
+
+
+@article{fujinami2020orbital-free,
+	title = {Orbital-free density functional theory calculation applying semi-local machine-learned kinetic energy density functional and kinetic potential},
+	volume = {748},
+	issn = {00092614},
+	url = {https://linkinghub.elsevier.com/retrieve/pii/S0009261420302736},
+	doi = {10.1016/j.cplett.2020.137358},
+	pages = {137358},
+	journaltitle = {Chemical Physics Letters},
+	shortjournal = {Chemical Physics Letters},
+        journal = {Chemical Physics Letters},
+	author = {Fujinami, Mikito and Kageyama, Ryo and Seino, Junji and Ikabata, Yasuhiro and Nakai, Hiromi},
+	urldate = {2024-08-28},
+	date = {2020-06},
+	langid = {english},
+        year = {2020},
+}
+
+
+@article{magnoli1982obtaining,
+	title = {Obtaining self–consistent wave functions which satisfy the virial theorem},
+	volume = {22},
+	rights = {Copyright © 1982 John Wiley \& Sons, Inc.},
+	issn = {1097-461X},
+	url = {https://onlinelibrary.wiley.com/doi/abs/10.1002/qua.560220608},
+	doi = {10.1002/qua.560220608},
+	pages = {1249--1262},
+	number = {6},
+        journal = {International Journal of Quantum Chemistry},
+	journaltitle = {International Journal of Quantum Chemistry},
+	author = {Magnoli, Douglas E. and Murdoch, Joseph R.},
+	urldate = {2024-06-21},
+	year = {1982}
+}
+
+
+@article{sim2003testing,
+	title = {Testing the kinetic energy functional: Kinetic energy density as a density functional},
+	volume = {118},
+	issn = {0021-9606},
+	url = {https://doi.org/10.1063/1.1565316},
+	doi = {10.1063/1.1565316},
+	number = {18},
+	journaltitle = {The Journal of Chemical Physics},
+	shortjournal = {The Journal of Chemical Physics},
+        journal = {The Journal of Chemical Physics},
+	author = {Sim, Eunji and Larkin, Joe and Burke, Kieron and Bock, Charles W.},
+	urldate = {2024-08-27},
+	date = {2003-05-08},
+        year = {2003},
+}
+
+
+@article{bardo1974eventempered,
+    author = {Bardo, Richard D. and Ruedenberg, Klaus},
+    title = "{Even‐tempered atomic orbitals. VI. Optimal orbital exponents and optimal contractions of Gaussian primitives for hydrogen, carbon, and oxygen in molecules}",
+    journal = {The Journal of Chemical Physics},
+    volume = {60},
+    number = {3},
+    pages = {918-931},
+    year = {1974},
+    month = {02},
+    issn = {0021-9606},
+    doi = {10.1063/1.1681168},
+    url = {https://doi.org/10.1063/1.1681168},
+    eprint = {https://pubs.aip.org/aip/jcp/article-pdf/60/3/918/18888966/918\_1\_online.pdf},
+}
+
+@article{pulay1969initiocalculationforce,
+  title = {Ab Initio Calculation of Force Constants and Equilibrium Geometries in Polyatomic Molecules},
+  author = {Pulay, P.},
+  year = {1969},
+  journal = {Molecular Physics},
+  volume = {17},
+  number = {2},
+  pages = {197--204},
+  publisher = {Taylor \& Francis},
+  issn = {0026-8976},
+  doi = {10.1080/00268976900100941},
+  url = {https://doi.org/10.1080/00268976900100941},
+  urldate = {2024-08-05},
+  abstract = {The general expression for the exact forces on the nuclei (negative derivatives of the total energy with respect to the nuclear coordinates) is applied for Hartree-Fock wavefunctions. It is suggested that force constants should be calculated by differentiating the forces numerically. This method, called the force method, is numerically more accurate and requires less computation than the customary one of differentiating the energy numerically twice. It permits the quick determination of the equilibrium geometry by relaxing the nuclear coordinates until the forces vanish. The unreliability of the methods using the Hellmann-Feynman forces is re-emphasized. The question of which force constants can be best calculated ab initio is discussed.},
+  file = {/export/home/tkaczun/Zotero/storage/B39WG87V/pulay_1969_ab_initio_calculation_of_force_constants_and_equilibrium_geometries_in.pdf}
+}
+
+
+@article{ying2021transformers,
+  title={Do transformers really perform badly for graph representation?},
+  author={Ying, Chengxuan and Cai, Tianle and Luo, Shengjie and Zheng, Shuxin and Ke, Guolin and He, Di and Shen, Yanming and Liu, Tie-Yan},
+  journal={Advances in neural information processing systems},
+  volume={34},
+  pages={28877--28888},
+  year={2021}
+}
+
+@article{almlf1982principle,
+  title = {Principles for a direct <scp>SCF</scp> approach to <scp>LICAO</scp>–<scp>MO</scp>ab‐initio calculations},
+  volume = {3},
+  ISSN = {1096-987X},
+  url = {http://dx.doi.org/10.1002/jcc.540030314},
+  DOI = {10.1002/jcc.540030314},
+  number = {3},
+  journal = {Journal of Computational Chemistry},
+  publisher = {Wiley},
+  author = {Alml\"{o}f,  J. and Faegri,  K. and Korsell,  K.},
+  year = {1982},
+  month = sep,
+  pages = {385–399}
+}
+
+@article{vanlenthe2006superposition,
+  title = {Starting SCF calculations by superposition of atomic densities},
+  volume = {27},
+  ISSN = {1096-987X},
+  url = {http://dx.doi.org/10.1002/jcc.20393},
+  DOI = {10.1002/jcc.20393},
+  number = {8},
+  journal = {Journal of Computational Chemistry},
+  publisher = {Wiley},
+  author = {Van Lenthe,  J. H. and Zwaans,  R. and Van Dam,  H. J. J. and Guest,  M. F.},
+  year = {2006},
+  month = mar,
+  pages = {926–932}
+}
+
+@article{lehtola2019initialguess,
+  title = {Assessment of Initial Guesses for Self-Consistent Field Calculations. Superposition of Atomic Potentials: Simple yet Efficient},
+  volume = {15},
+  ISSN = {1549-9626},
+  url = {http://dx.doi.org/10.1021/acs.jctc.8b01089},
+  DOI = {10.1021/acs.jctc.8b01089},
+  number = {3},
+  journal = {Journal of Chemical Theory and Computation},
+  publisher = {American Chemical Society (ACS)},
+  author = {Lehtola,  Susi},
+  year = {2019},
+  month = jan,
+  pages = {1593–1604}
+}
+@article{autoaux,
+	author = {Stoychev, Georgi L et al.},
+	title = {Automatic Generation of Auxiliary Basis Sets.},
+    journal = {Journal of chemical theory and computation},
+	volume = {13},
+	number= {2},
+	year = {2017},
+	pages= {554-562},
+	DOI = {doi:10.1021/acs.jctc.6b01041},
+}
+@software{openai_chatgpt_2024,
+  author       = "{OpenAI}",
+  title        = "{ChatGPT}",
+  year         = "2024",
+  note         = "Oct 2024 version, Large language model",
+  url          = "https://chat.openai.com"
+}
+
+@software{anthropic_claude_2024,
+  author       = "{Anthropic}",
+  title        = "{Claude}",
+  year         = "2024",
+  note         = "Oct 2024 version, Large language model",
+  url          = "https://claude.ai"
+}
+
+@software{github_copilot_2023,
+  author       = "{GitHub, Inc.}",
+  title        = "{GitHub Copilot}",
+  year         = "2023",
+  note         = "AI-powered code completion tool",
+  url          = "https://github.com/features/copilot"
+}
+
+@article{hunter_matplotlib_2007,
+  author       = "Hunter, J. D.",
+  title        = "{Matplotlib: A 2D graphics environment}",
+  journal      = "Computing in Science \\& Engineering",
+  volume       = "9",
+  number       = "3",
+  pages        = "90--95",
+  year         = "2007",
+  doi          = "10.1109/MCSE.2007.55",
+  url          = "https://matplotlib.org/"
+}
+@article{thomas_fermi_1927,
+  author       = "Thomas, L. H. and Fermi, E.",
+  title        = "{The Calculation of Atomic Fields}",
+  journal      = "Proceedings of the Cambridge Philosophical Society",
+  volume       = "23",
+  pages        = "542--548",
+  year         = "1927",
+  doi          = "10.1017/S0305004100011683"
+}
+@article{von_weizsacker_1935,
+  author       = "{von Weizsäcker, C. F.}",
+  title        = "{Zur Theorie der Kernmassen}",
+  journal      = "Zeitschrift für Physik",
+  volume       = "96",
+  pages        = "431--458",
+  year         = "1935",
+  doi          = "10.1007/BF01337700"
+}
+

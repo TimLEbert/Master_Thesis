@@ -31,7 +31,7 @@
 \usepackage{natbib}
 \usepackage[backend=bibtex,style=ieee,natbib=true]{biblatex}
 %
-\bibliography{chapters/references}
+\bibliography{chapters/MasterThesisReverences}
 % \bibliography{references}
 \definecolor{cite_colour}{blue}{0.75}
 \definecolor{link_colour}{red}{0.}
@@ -100,15 +100,16 @@
 \pagenumbering{roman}
 \input{chapters/titlepage}
 \newpage
+\input{chapters/acknowledgments}
 \tableofcontents
 %\listoffigures
 \chapter{Introduction} \label{chapter:introduction}
 \pagenumbering{arabic}
 \input{chapters/introduction}
-\chapter{Differential Differentials}
-\input{chapters/results/integrals}
 \chapter{Theoretical Foundations}
 \input{chapters/foundations}
+\chapter{Differentiable Integrals}
+\input{chapters/results/integrals}
 \chapter{Density Fitting} \label{chapter:densityfitting}
 \input{chapters/results/density_fitting}
 \chapter{Orbital free basis set fitting} \label{chapter:orbitalfreebasissetfitting}
@@ -123,11 +124,11 @@
     \chapter{Adaptive Basis Sets Additional Material}
     \include{chapters/appendices/adaptive_basis_sets}
 \end{appendices}
-\printbibliography[heading=bibintoc, title={Complete bibliography}]
+\printbibliography[heading=bibintoc, title={References}]
 %Displays the whole bibliography with the title "Complete bibliography"                  
 \clearpage
 %Filtering bibliography
 \newpage
-%\includepdf[pages=1]{images/Selbststaendigkeitserklaerung.pdf}
+\includepdf[pages=1]{chapters/SelbstaendigskeitsErklaerung.pdf}
 
 \end{document}

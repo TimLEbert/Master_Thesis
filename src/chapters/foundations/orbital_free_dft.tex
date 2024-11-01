@@ -1,52 +1,61 @@
-Orbital-Free Density Functional Theory (OF-DFT) represents a significant branch in the evolution of electronic structure methods. Rooted in the original formulation of Density Functional Theory by Hohenberg and Kohn \cite{HohenbergKohn1964}, OF-DFT aims to calculate the ground state properties of a many-electron system directly from the electron density, without the need for individual electronic orbitals.
+Rooted in the original formulation of Density Functional Theory by Hohenberg and Kohn \cite{HohenbergKohn1964}, Orbital-Free Density Functional Theory (OF-DFT) aims to calculate the ground state properties of a many-electron system directly from the electron density, without the need for individual electronic orbitals.
 \subsection{Theoretical Foundation}
 
-Based on equation ref{eq:1} the total energy of a system can be expressed as a functional of the electron density $n(\mathbf{r})$. The chalenge of Orbtial free DFT lies in finding an accurate representation of the kinetic energy functional $T_s[n]$ directly from the density, without resorting to orbitals. Historic attemps at this culminated in the Thomas-Fermi functional and the von Weizsäcker functional. These functionals were based on the kinetic energy of a non-interacting electron gas and its gradient.
-
+Based on equation \eqref{eq:energy_density} the total energy of a system can be expressed as a functional of the electron density $\rho(\mathbf{r})$. The challenge of Orbtial free DFT lies in finding an accurate representation of the kinetic energy functional from equation \eqref{eq:kin} directly from the density, without resorting to orbitals. Historic attemps\cite{thakkar1992comparison,wang1999orbital} at this used numerical approximations. Known approximation include the Thomas-Fermi functional\cite{thomas_fermi_1927} and the von Weizsäcker functional\cite{von_weizsacker_1935}. These functionals were based on the kinetic energy of a non-interacting electron gas and its gradient.
 \subsubsection{Thomas-Fermi Functional}
-
 The simplest approximation is the Thomas-Fermi functional:
-
 \begin{equation}
 T_{TF}[n] = C_{TF} \int n^{5/3}(\mathbf{r}) d\mathbf{r}
 \end{equation}
-
 where $C_{TF} = \frac{3}{10}(3\pi^2)^{2/3}$.
-
 \subsubsection{von Weizsäcker Functional}
-
-The von Weizsäcker functional adds a gradient correction:
-
+The von Weizsäcker functional then adds a additional gradient correction:
 \begin{equation}
 T_{vW}[n] = \frac{1}{8} \int \frac{|\nabla n(\mathbf{r})|^2}{n(\mathbf{r})} d\mathbf{r}
 \end{equation}
-
 \subsubsection{Generalized Gradient Approximation (GGA)}
-
 More sophisticated functionals incorporate higher-order density gradients:
-
 \begin{equation}
 T_{GGA}[n] = \int t_{GGA}(n(\mathbf{r}), \nabla n(\mathbf{r}), \nabla^2 n(\mathbf{r}), ...) d\mathbf{r}
 \end{equation}
 
-If One is able to represent the total Energy of the Systen as a function of the density one is able to find the gound state by minimizing the total energy functional using conventional techniges like gradient decent or SLSQC.
-But with the rise of Machine Learning in the field of DFT, a promising new approach to this problem is to learn an emperical approximation of the kinetic energy functional from a large dataset of electronic structure calculations. \cite{remmmmme}\cite{zhang_m-ofdft_2023}
-But both these Attemps failed to extrapolate to larger systems and were not able to model the functional around the ground state fine enough to let the minimization procedere converge on the true ground state.
-To train an machine learning model, first labels for the kinetic energy functional are needed. As \cite{zhang_m-ofdft_2023} proposed learning the energies and the gradient of the model, which is used for the minimization of the total energy functional, should lead to a more realistic model.
-MOFDFT\cite{zhang_m-ofdft_2023} also proposed to used the minimization procedure in the kohn sham step to generate labels at every scf iteration. Furthermore Manuel proposed to peturb the fock matrix of the scf iterations with gasussian noise to generate more diverse labels for the model which lay further away from the ground state.
-
-he label for the kinetic energy in these coordinates is indirectly calculated by:
+If one can represent the total energy of the system as a function of density, the ground state can be found by minimizing the total energy functional using conventional techniques like gradient descent. With the rise of machine learning in DFT, a promising approach is to learn an empirical approximation of the kinetic energy functional from a large dataset of electronic structure calculations.
+While initial attempts by Remme et al. and Imoto et al. \cite{remme_kineticnet_2023,imoto2021order} used grid-based density representations, \textsc{M-OFDFT} \cite{zhang_m-ofdft_2023} pioneered the use of atom-centered basis functions, achieving the first successful prediction of energies with chemical accuracy across a large set of geometries. \textsc{M-OFDFT} also introduced the use of individual Self-Consistent Field (SCF) algorithm steps to generate model labels.
+However, these labels were insufficient for the model to emulate the true functional around the ground state accurately enough to allow convergence of the minimization procedure. Instead, the density coefficients tended to drift in unphysical directions, necessitating a complicated halting criterion to generate densities near the ground state.
+\subsection{OF-DFT label generation}\label{ofdft_labelgen}
+In the following, we will describe the label generation process proposed by the authors of M-OFDFT \cite{zhang_m-ofdft_2023} and the modifications we made to increase training data diversity and improve model convergence.\\
+In the following we will use the following conventions:\\
+We denote the orbital basis functions as $\{\eta_\mu(\mathbf{r})\}_{\mu=1,...,N_\text{basis}}$, which when contracted with the coefficients $\{C_{i,\mu}\}_{i=1,..,N_\text{electrons},\mu=1,...,N_\text{basis}}$ describe the orbitals $\phi_i(\mathbf{r}) = C_i^\mu \eta_\mu(\mathbf{r})$. The orbitals can be used to calculate the electron density $\rho(\mathbf{r}) = \sum_{i=1}^{N_\text{electrons}}\phi_i(\mathbf{r})^2=\sum_{i=1}^{N_\text{electrons}}C_i^\mu \eta_\mu(\mathbf{r})C_i^\nu \eta_\nu(\mathbf{r}) =  \eta_\mu(\mathbf{r})\Gamma^{\mu,\nu} \eta_\nu(\mathbf{r})$. Where we defined the density matrix $\Gamma^{\mu,\nu} = \sum_{i=1}^{N_\text{electrons}}C_i^\mu C_i^\nu$.\\
+To describe the density in the orbital free basis we use another basis set $\{\omega_\mu(\mathbf{r})\}_{\mu=1,...,N_\text{of-basis}}$ with corresponding coefficients $\mathbf{p} =\{p^\mu\}_{\mu=1,...,N_\text{of-basis}}$ which form a linear basis for the density $\rho_\text{OF}(\mathbf{r}) = p^\mu \omega_\mu(\mathbf{r})$.\\
+We also use the follwing symbols to denote common basis integrals between the two basis sets following the conventions introduced in section \ref{integral_notation}:
+\begin{align}
+    W_{\mu\nu} &= \langle\omega_\mu |\omega_\nu\rangle\\
+    L_{\mu,\nu\gamma} &= \langle \omega_\mu |\eta_\nu\eta_\gamma\rangle\\
+    D_{\alpha,\beta,\gamma,\delta}  &= \langle\eta_\alpha\eta_\beta|\eta_\gamma\eta_\delta\rangle\\
+    \tilde{W}_{\mu\nu} &= (\omega_\mu |\omega_\nu)\\
+    \tilde{L}_{\mu,\nu\gamma} &= (\omega_\mu |\eta_\nu\eta_\gamma)\\
+    \tilde{D}_{\alpha,\beta,\gamma,\delta}  &= (\eta_\alpha\eta_\beta|\eta_\gamma\eta_\delta)\\
+    S_{\alpha,\beta} &= \langle \eta_\alpha|\eta_\beta\rangle\\
+    {v_{ext}}_\mu &= \int \omega_\mu (r) V_{ext} (r)dr\\
+    {V_{ext}}_{\mu,\nu} &= \langle \eta_\mu | V_{ext} (r) | \eta_\nu \rangle\\
+\end{align}
+We are now set to describe the label generation process.\\
+\subsubsection{Density fitting}\label{into_density_fitting}
+Density fitting is a procedure to represent the density produced by the Kohn-Sham orbitals using orbital-free basis functions $\{\omega_\mu(\mathbf{r})\}_\textit{\mu=1,...,N_\text{of-basis}}$, while preserving its electronic properties. This mean calculating $\mathbf{p}(\{C_{i,\mu}\}_{i=1,..,N_\text{electrons},\mu=1,...,N_\text{basis}})$.\\
+In chapter \ref{chapter:densityfitting}, we define and evaluate different density fitting algorithms and compare the properties of the densities they produce.\\
+\subsubsection{Energy and gradient label generation}
+The label for the kinetic energy in coordinates is indirectly calculated by:
 
 \begin{align}
     T_S(\mathbf{p}) = T_S(C) + E_{H}(C) + E_{XC}(C) + E_{ext}(C) - E_{H}(\mathbf{p}) + E_{XC}(\mathbf{p}) + E_{ext}(\mathbf{p}).
 \end{align}
 
-We cannot calculate the gradient of the kinetic energy directly from this equation as the density :math:`p` depends on
-the coefficients in the orbital basis $C$ in a nontrivial way.
-Instead, we make use of the minimization procedure in the ksdft calculation. Each iteration the energy is minimized as follows:
+We cannot calculate the gradient of the kinetic energy directly from this equation as the orbital free density coefficients $\mathbf{p}$ are dependent on
+the coefficients in the orbital basis $\{C_{i,\mu}\}_{i=1,..,N_\text{electrons},\mu=1,...,N_\text{basis}}$ in a nontrivial way.\\
+Instead, we make use of the minimization procedure in the KSDFT calculation. Additionally we use a method developed by Manuel Klockow which in each iteration of the self consistent field procedere adds an additional pertubation to the effective potential to increase the diversity of the densities in the labels. In each iteration the next set of orbitals is then computed as follows:
 
 \begin{align}
-    \phi^{k} = \underset{\{\phi_i\}_{i=1}^n \text{orthonormal}}{\text{argmin}} \langle \psi_{\mathbf{\phi}} | \hat T_S | \psi_{\mathbf{\phi}} \rangle + \sum_{k'<k} \pi^{(k')}_k V_{eff}^{k'}[\rho_{[\mathbf{\phi}]}] + V_{peturb}^{k}(\rhoPhi)
+    \Phi^{k} = \underset{\{\phi_i\}_{i=1}^n \text{orthonormal}}{\text{argmin}} \langle \psi_{\mathbf{\phi}} | \hat T_S | \psi_{\mathbf{\phi}} \rangle + \sum_{k'<k} \pi^{(k')}_k V_{eff}^{k'}[\rho_{[\mathbf{\phi}]}] + V_\text{peturb}^{k}(\rhoPhi)
 \end{align}
 
 
@@ -54,41 +63,33 @@ Where $\pi^{(i)}_k$ are the DIIS coefficients of the KSDFT calculation and
 
 \begin{align}
     V_{eff}^{k'}[\rho_{[\mathbf{\phi}]}] = \int \rho_{[\mathbf{\phi}]}(\mathbf{r}) V_{eff[\rho_{[\mathbf{\phi}^{k'}]}]}(r)dr\\
-    V_{peturb}^{k}(\rhoPhi) = \int \rhoPhi(\mathbf{r}) v_{peturb,\mu}^{k}\omega_\mu(\mathbf{r})dr\\
+    V_\text{peturb}^{k}(\rhoPhi) = \int \rhoPhi(\mathbf{r}) v_{\text{peturb},\mu}^{k}\omega_\mu(\mathbf{r})dr
 \end{align}
-is the effective potential of the $k'$-th iteration integrated over the density of the new density and the pertubation of the effective potential of the $k$th iteration. With $v_{peturb,\mu}^{k} \sim \epsilon_k * \mathcal{N}(1,0)$ and $\omega_\mu$ being basis function in the orbital free basis.
-$\epsilon_k$ is the chosen such that starts at the 5 interation and decreases over time.
+is the effective potential of the $k'$-th iteration integrated over the density of the new density and the pertubation of the effective potential of the $k$th iteration. With $v_{\text{peturb},\mu}^{k} \sim \epsilon_k * \mathcal{N}(1,0)$ and $\omega_\mu$ being basis function in the orbital free basis.
+$\epsilon_k$ is then chosen such that starts at the 5 interation and decreases over time.
 This is solved using Laplace multipliers:
 
 \begin{align}
-    \frac{\delta T_S[\rho_{[\mathbf{\phi}^{k}]}]}{\delta \rho}(\mathbf{r}) + \sum_{k'<k} \pi^{(k')}_k V_{eff}^{k'}(\mathbf{r}) + v_{peturb,\mu}^{k}\omega_\mu(\mathbf{r})= \mu^{(k)}
+    \frac{\delta T_S[\rho_{[\mathbf{\phi}^{k}]}]}{\delta \rho}(\mathbf{r}) + \sum_{k'<k} \pi^{(k')}_k V_{eff}^{k'}(\mathbf{r}) + v_{\text{peturb},\mu}^{k}\omega_\mu(\mathbf{r})= \mu^{(k)}
 \end{align}
+From here we cannot compute the gradient of the kinetic energy exactly but we can calculate its projection in the plane of constant particle numbers. As in density optimisation our searchspace is restricted to this plane this is sufficient for our purposes.
 The projected gradient of the kinetic energy is then calculated as the DIIS weighted average over the projected last few effective potentials:
 
 \begin{align}
-    \nabla_\mathbf{p} T_S(\mathbf{p}) &= \int \frac{\delta T_S[\rho_{[\mathbf{\phi}^{k}]}]}{\delta \rho}(\mathbf{r}) \mathbf{\omega}(\mathbf{r}) d\mathbf{r} = -\int\sum_{k'<k} \pi^{(k')}_k V_{eff}^{k'}(\mathbf{r}) \mathbf{\omega}v_{peturb,\mu}^{k}\omega_\mu(\mathbf{r})(\mathbf{r}) +\mu^{(k)}\mathbf{\omega}(\mathbf{r})d\mathbf{r} = -{\mathbf{v}}_{eff\{\mathbf{p}^{k'}\}_{k'< k}}+\mu^{(k)}\mathbf{w}\\
+    \nabla_\mathbf{p} T_S(\mathbf{p}) &= \int \frac{\delta T_S[\rho_{[\mathbf{\phi}^{k}]}]}{\delta \rho}(\mathbf{r}) \mathbf{\omega}(\mathbf{r}) d\mathbf{r} \\
+    &= -\int\sum_{k'<k} \pi^{(k')}_k V_{eff}^{k'}(\mathbf{r}) \mathbf{\omega}v_{peturb,\mu}^{k}\omega_\mu(\mathbf{r})(\mathbf{r}) +\mu^{(k)}\mathbf{\omega}(\mathbf{r})d\mathbf{r} = -{\mathbf{v}}_{eff\{\mathbf{p}^{k'}\}_{k'< k}}+\mu^{(k)}\mathbf{w}\\
     \left( \textbf{I}-\frac{\textbf{w}^{(d)}{\textbf{w}^{(d)}}^T}{{\textbf{w}^{(d)}}^T
         \textbf{w}^{(d)}}\right) \nabla_\mathbf{p} T_S(\mathbf{p}) &= -\left( \textbf{I}-\frac{\textbf{w}^{(d)}{\textbf{w}^{(d)}}^T}{{\textbf{w}^{(d)}}^T
         \textbf{w}^{(d)}}\right){\mathbf{v}}_{eff\{\mathbf{p}^{k'}\}_{k'< k}}\\
     \mathbf{v}_{eff}(\mathbf{p}) &= \nabla_\mathbf{p} (E_{H}(\mathbf{p}) + E_{XC}(\mathbf{p}) + E_{ext}(\mathbf{p}))
 \end{align}
-The exchange-correlation energy $E_{xc}[n]$ is typically approximated using functionals similar to those in Kohn-Sham DFT, such as LDA or GGA.
-The calculation of the effective potential in terms of the orbital free density we first need to fit the kohn sham density to the orbitals.
-\subsection{Density fitting}
-This procedere called density fitting is also very commonly done to speed up kohn sham calculation , as the four center coulomb integral used to calculate the hartree energy scales with $O(N^4)$ and is therefore very expensive for large systems. As for this usecase it is only important that the hartree energy of the produced by the fitted basis is accurate the Hartree energy of the residual density is often the metric of choocise to minimise.
-\begin{align}
-        \mathcal{L}(\mathbf{p}) &= \mathbf{p} \tilde{W} \mathbf{p} - 2 \mathbf{p}\bar {\tilde L} \bar\Gamma + \bar\Gamma \tilde{\mathbf{D}}\bar\Gamma
-\end{align}
-By variational methods this equation can be minimized in the following way:
-\begin{align}
-\partial_{\mathbf p}\mathcal L&= 2\tilde{W} \mathbf{p}- 2 \bar {\tilde L} \bar\Gamma=0\\
-\mathbf{p}&=\tilde{W}^{-1}\bar {\tilde L} \bar\Gamma\\
-&=\bar{\mathbf{P}} \bar\Gamma
-\end{align}
-Which results in a equation that can be easily solved by least squares methods.
-But this simple method results in bad in inaccurate densities and bad other energies.
-In Section ... better density fitting methods are discussed and compared.
+These labels for the kinetic energy are then used to train a machine learning model to emulate the kinetic energy functional.\\
+
 \subsection{Preparation of the data}
+To prepare the data to be better suited for a machine learning Model we employ the same techniques as in the original M-OFDFT\cite{zhang_m-ofdft_2023} paper, therefor we only quickly notion their functions here.
 \subsubsection{Natrep}
+Orthogonolizing the OF-basis for more meaningfull coefficients.
 \subsubsection{Dimensionwise rescaling}
+An statistic is calculated for the coefficients of each atomtype in the dataset and the coefficients are rescaled to have a mean of 0 and a standard deviation of 1.
 \subsubsection{Local frames}
+To make the model invariant to rotations is for each atom a local coordinate system is choosen which is directed in the direction of its nearest neightbor. Then the coefficients are projected into this local frame.

@@ -1,68 +1,51 @@
 \subsection{Kohn Sham Density Functional Theory(KS-DFT)}
-The exact formulation of the Hamiltonial of the electrons of a static many body system, like a molecule, taken into account the born oppenheimer approximation of static nucleii, is given by the Schrödinger equation(using natural units):
-
-
+The exact formulation of the Hamiltonial of the electrons of a static many body system, like a molecule, taken into account the born oppenheimer approximation of static nucleii , is given by the Schrödinger equation(using natural units):
 \begin{align}
-H[\mathbf{\Psi}] = T(\mathbf{\Psi}) + V_{ee}(\mathbf{\Psi}) + V_{ext}(\mathbf{\Psi})
+    \hat{H}\psi(\mathbf{r_1},\mathbf{r_2},\cdots,\mathbf{r_N}) =(\hat{T} + \hat V_{ee} + \hat V_{ext})\psi(\mathbf{r_1},\mathbf{r_2},\cdots,\mathbf{r_N}) = E\psi(\mathbf{r_1},\mathbf{r_2},\cdots,\mathbf{r_N})
 \end{align}
-Where
-\begin{align}
-    T[\mathbf{\Psi}] &= \frac{1}{2}\int\nabla\mathbf{\Psi}^*(\mathbf{r})\nabla\mathbf{\Psi}(\mathbf{r}) dr \\
-    V_{ee}[\mathbf{\Psi}] &= \frac{1}{2}\int\int\frac{1}{|\mathbf{r}-\mathbf{r'}|}\mathbf{\Psi}^*(\mathbf{r})\mathbf{\Psi}^*(\mathbf{r}')\mathbf{\Psi}(\mathbf{r}')\mathbf{\Psi}(\mathbf{r})d\mathbf{r}d\mathbf{r'}\\
-    V_{ext}[\mathbf{\Psi}] &= \int v_{ext}(\mathbf{r})\mathbf{\Psi}^*(\mathbf{r})\mathbf{\Psi}(\mathbf{r})d\mathbf{r}
-\end{align}
-
-Here $\mathbf{Psi}$ is
-
-
- \cite{KohnSham1965}, KSDFT extends the foundational work of Hohenberg and Kohn \cite{HohenbergKohn1964} on Density Functional Theory (DFT).
+With the ground state Energy and the electron density given by
 \begin{align}
     E^{\star}=\min _{\psi: \text { antisym },\langle\psi \mid \psi\rangle=1}\langle\psi| \hat{T}+\hat{V}_{\mathrm{ee}}+\hat{V}_{\mathrm{ext}}|\psi\rangle\\
-    \rho_{[\psi]}(\mathbf{r}):=N \int\left|\psi\left(\mathbf{r}, \mathbf{r}^{(2)}, \cdots, \mathbf{r}^{(N)}\right)\right|^2 \mathrm{~d} \mathbf{r}^{(2)} \cdots \mathrm{d} \mathbf{r}^{(N)}\\
+    \rho_{[\psi]}(\mathbf{r}):=N \int\left|\psi\left(\mathbf{r}, \mathbf{r}^{(2)}, \cdots, \mathbf{r}^{(N)}\right)\right|^2 \mathrm{~d} \mathbf{r}^{(2)} \cdots \mathrm{d} \mathbf{r}^{(N)}
 \end{align}
-$\begin{aligned} E^{\star} & =\min _{\rho: \geqslant 0, \int \rho(\mathbf{r}) \mathrm{d} \mathbf{r}=N}\left(\min _{\psi: \text { antisym }, \rho_{[\psi]}=\rho}\langle\psi| \hat{T}+\hat{V}_{\mathrm{ee}}|\psi\rangle\right)+E_{\text {ext }}[\rho] \\ & =\min _{\rho: \geqslant 0, \int \rho(\mathbf{r}) \mathrm{d} \mathbf{r}=N}\left\{E[\rho]:=U[\rho]+E_{\text {ext }}[\rho]\right\} .\end{aligned}$
-...
-This leads to the celebrated Kohn Sham equations:
-
+Which can be rewritten to
+\begin{align}\label{eq:energy_density}
+     E^{\star} & =\min _{\rho: \geqslant 0, \int \rho(\mathbf{r}) \mathrm{d} \mathbf{r}=N}\left(\min _{\psi: \text { antisym }, \rho_{[\psi]}=\rho}\langle\psi| \hat{T}+\hat{V}_{\mathrm{ee}}|\psi\rangle\right)+E_{\text {ext }}[\rho] \\ & =\min _{\rho: \geqslant 0, \int \rho(\mathbf{r}) \mathrm{d} \mathbf{r}=N}\left\{E[\rho]:=U[\rho]+E_{\text {ext }}[\rho]\right\} .
+\end{align}
+However, $\psi(\mathbf{r_1},\mathbf{r_2},\cdots,\mathbf{r_N})$ is a function of $3N$ variables, rendering the equation unsolvable for systems with more than two electrons. Kohn-Sham DFT (KS-DFT) \cite{kohn_self-consistent_1965}, which extends the foundational work of Hohenberg and Kohn \cite{hohenberg_inhomogeneous_1964} on Density Functional Theory (DFT), approximates the correlated many-body wave with a determinantal wavefunction $\psi(\mathbf{r_1},\mathbf{r_2},\cdots,\mathbf{r_N}) = \text{det}(\{\phi_i(r_j)\}_{i,j=1,...,N})$ built of $N$ single-particle functions $\phi_i(\mathbf{r})$, termed orbitals. This leads to the Kohn-Sham equations:
 \begin{align}
-    H_{KS}[\rho] = T_S[\rho] + V_{eff}[\rho]
+    E_{KS}[\rho] = T_S[\rho] + E_{eff}[\rho]
 \end{align}
 Where
-
-\begin{align}
-    T_S[\rho] &:=\min _{\phi_i: \text {orthorgonal, normalized}, \rho_{[\phi]}=\rho }\sum\limits_{i=1}^n\nabla\phi_i \nabla \phi_i\\
-    V_{eff}[\rho] &:= V_{ext}[\rho] + V_H[\rho] + V_{xc}[\rho]\\
-    V_H[\rho] &:= \int\int \frac{\rho(\mathbf{r})\rho(\mathbf{r'})}{|\mathbf{r}-\mathbf{r'}|}d\mathbf{r}d\mathbf{r'}\\
-    V_{xc}[\rho] &:= \int \rho(\mathbf{r})\epsilon_{xc}(\rho(\mathbf{r}))d\mathbf{r}\\
-    V_{ext}[\rho] &:= \int v_{ext}(\mathbf{r})\rho(\mathbf{r})d\mathbf{r}.
+\begin{align}\label{eq:kin}
+    T_S[\rho] &:=\min _{\phi_i: \text {orthonormal}, \rho_{[\phi]}=\rho }\sum\limits_{i=1}^n\nabla\phi_i \nabla \phi_i\\
+    E_{eff}[\rho] &:= V_{ext}[\rho] + V_H[\rho] + V_{xc}[\rho]\\
+    E_H[\rho] &:= \int\int \frac{\rho(\mathbf{r})\rho(\mathbf{r'})}{|\mathbf{r}-\mathbf{r'}|}d\mathbf{r}d\mathbf{r'}\\
+    E_{xc}[\rho] &:= \int \rho(\mathbf{r})\epsilon_{xc}(\rho(\mathbf{r}))d\mathbf{r}\\
+    E_{ext}[\rho] &:= \int v_{ext}(\mathbf{r})\rho(\mathbf{r})d\mathbf{r}.
 \end{align}
+The exchange-correlation energy $E_{xc}[\rho]$ is typically approximated using empirically fitted functionals. The calculation of the effective potential in terms of the orbital free density we first need to fit the kohn sham density to the orbitals.\\
 The Kohn Sham equations are solved iteratively using the Self-Consistent Field (SCF) method:
 The total energy is expressed in terms of the Kohn-Sham orbitals as:
 \begin{align}
-    E_{KS} = \min _{\phi_i: \text {orthorgonal, normalized}} \left( \sum_{i=1}^N \phi_i \Delta \phi_i + E_\text{H}[\rhoPhi]+ E_\text{XC}[\rhoPhi]+E_\text{ext}[\rhoPhi]\right)
+    E_{KS} = \min _{\phi_i: \text {orthonormal}} \left( \sum_{i=1}^N \phi_i \Delta \phi_i + E_\text{H}[\rhoPhi]+ E_\text{XC}[\rhoPhi]+E_\text{ext}[\rhoPhi]\right)
 \end{align}
-To solve the kohn sham equations the Energy is varied with respect to the orbitals and the resulting equations are solved iteratively using the SCF method.
+To solve the kohn sham equations the Energy is varied with respect to the orbitals and the resulting equations
 \begin{align}
     \frac{\delta E_{KS}}{\delta \phi_i(\mathbf{r})} = -\Delta \phi_i(\mathbf{r}) + \frac{\delta E_\text{H}[\rhoPhi]}{\delta \phi_i}(\mathbf{r}) + \frac{\delta E_\text{XC}[\rhoPhi]}{\delta \phi_i}(\mathbf{r}) + \frac{\delta E_\text{ext}[\rhoPhi]}{\delta \phi_i}(\mathbf{r}) = 0
 \end{align}
-As the exchange correlation energy and the hartree energy are more complicated functionals of the density, this equation can't be solved analytically and is instead solved iteratively using the self consistend field method.
-\subsubsection{Self Consistent Field (SCF)Method}
+ are solved iteratively using the SCF method.
+\subsection{Self Consistent Field (SCF)Method}
 In the SCF method the following steps are repeated until convergence is reached:
-We will from now on begin to enumerate the orbitals corresponding to their interation in the scf procedure $\mathbf{\Phi}^{(j)} = \{\phi_i^{(j)}\}_{i=1}^n$.
+We will from now on begin to enumerate the orbitals corresponding to their interation in the scf procedure $\mathbf{\Phi}^{(j)} = \{\phi_i^{(j)}\}_{i=1}^n$, where $(j)$ denotes the current iteration.
 \begin{enumerate}
     \item Start with an initial guess for $\rho(\mathbf{r})$
-    \item Calculate $V_{eff}(\mathbf{r})$
-    \item Solve the Kohn-Sham equations to obtain $\phi_i(\mathbf{r})$
-    \item Calculate a new density: $\rho_{new}(\mathbf{r}) = \sum_i |\phi_i(\mathbf{r})|^2$
-    \item If $|\rho_{new}(\mathbf{r}) - \rho(\mathbf{r})| < \text{tolerance}$, stop. Otherwise, return to step 2 with $\rho(\mathbf{r}) = \rho_{new}(\mathbf{r})$
+    \item Calculate $V_\text{eff}_i[\mathbf{\Phi}^{(j)}] = \frac{\delta E_\text{eff}[\mathbf{\Phi}^{(j)}]}{\delta \phi_i^{(j)}}(\mathbf{r})$
+    \item Solve the Kohn-Sham equations while fixing $V_\text{eff}_i[\mathbf{\Phi}^{(j)}]$ to obtain the next set of orbitals $\phi_i^{(j+1)}(\mathbf{r})$.
     \item Calculate the total energy $E_{KS}$
-    \item If $|E_{KS} - E_{KS_{old}}| < \text{tolerance}$, stop. Otherwise, return to step 2 with $\rho(\mathbf{r}) = \rho_{new}(\mathbf{r})$
-    \item Calculate the forces on the nuclei
-    \item Update the positions of the nuclei
-    \item Return to step 1
-    \item If the forces on the nuclei are below a certain threshold, stop.
+    \item If $|E_{KS}[\phi_i^{(j+1)}] - E_{KS}[\phi_i^{(j)}]| < \epsilon_\text{tolerance}$ and $\Phi^{(j+1)}(\mathbf{r})-\Phi^{(j)}(\mathbf{r})$ is small, stop. Otherwise, return to step 2 and increase the number of the current iteration $(j)$.
 \end{enumerate}
-If we want now to apply this precedere to a real system we also have to take into account the way that we want to represent the orbitals. In the following we will introduce the concept of basis sets and how they are used to represent the orbitals in a kohn sham calculation.
+To apply this procedure to a real system, we must also consider how to represent the orbitals. For this we are using the gaussian basis sets introduced in the previous section.
 
 
 

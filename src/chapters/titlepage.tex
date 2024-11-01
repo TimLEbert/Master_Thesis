@@ -18,30 +18,31 @@
     \LARGE \textbf{Master thesis}\\\vspace{2.pt}
     {\Large in Physics}\\\vfill
     {\large submitted by}\\
-    \textbf{Tim Ebert}\\\vfill
+    \textbf{Tim Ebert}\\
+    \large born in Marburg\vfill
     {\large Date of submission}\\\vspace{2.pt}
     \textbf{1.11.2025}\\\vfill
     \large
     \vspace{3.2pt}
     \begin{tabular}{cc}
-    Betreuer:& Prof. Dr. Fred Hamprecht\\\vspace*{4pt}
-    Zweitgutachter:& Prof. Dr. Andreas Dreuw
+    Supervisor:& Prof. Dr. Fred Hamprecht\\\vspace*{4pt}
+    Second Reviewer:& Prof. Dr. Andreas Dreuw
     \end{tabular}
 \end{titlepage}
 \newpage
 \thispagestyle{plain}
 	\large
 	\begin{center}
-    \textbf{Zusammenfassung}
+    \textbf{Abstract}
 \end{center}
 \normalsize
-Es wurden differenzierbare Basis integrale implementiert die genutzt wurden um orbital free basis sets zu fitten und adaptive minimale Basis Sets zu implementieren. Die fähigkeiten dieser geffittenten basis functionen wurde mit anderen klassischen Basis sets verglichen 
+We developed and evaluated multiple density fitting methods for their use case in orbital-free density functional theory (OF-DFT). We implemented differentiable basis set integrals in PyTorch. Using these, we optimized orbital-free basis sets to generate improved training labels for machine learning-based OF-DFT . We assessed their effect on the training and accuracy of our ML-model and found that they greatly improve the predicted densities and energies without sacrificing  speed. Additionally, we leveraged the differentiable integrals to implement adaptive basis sets for Kohn-Sham DFT, using graph neural networks for per-atom basis function prediction, and compared their performance against conventional static basis sets.
 	\vspace{5cm}
 \begin{center}
 	\large
     \textbf{Abstract}
 \end{center}
 \normalsize
-The LPA truncation of the euclidean functional renormalization group (FRG) was formulated for finite temperatures for a O(N)- model with a heat bath attached. The flow equations for the effective potential and the dissipation constant $\gamma$ were determined. Using numerical simulations, the flow equation was solved. Using the data collected in the simulations the effects of dissipation on the phase transition and the flow of the dissipation constant itself were studied for varying initial parameters.
+Wir haben mehrere Dichteanpassungs methoden für ihre Anwendung in der orbitalfreien Dichtefunktionaltheorie (OF-DFT) entwickelt und bewertet. Wir implementierten differenzierbare Basissatzintegrale in PyTorch. Mit diesen optimierten wir orbitalfreie Basissätze, um verbesserte Trainingsetiketten für OF-DFT mit maschinellem Lernen zu erzeugen. Wir haben ihre Auswirkungen auf das Training und die Genauigkeit unseres ML-Modells bewertet und festgestellt, dass sie die vorhergesagten Dichten und Energien ohne Geschwindigkeitseinbußen erheblich verbessern. Darüber hinaus haben wir die differenzierbaren Integrale genutzt, um adaptive Basissätze für die Kohn-Sham-DFT zu implementieren, indem wir neuronale Graphen-Netzwerke für die Vorhersage von Basisfunktionen pro Atom verwendet haben, und ihre Leistung mit herkömmlichen statischen Basissätzen verglichen.
 
 

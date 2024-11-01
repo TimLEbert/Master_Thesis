@@ -1,20 +1,9 @@
-This section introduces the fundamentals that are neccesary to understand the following chapters. The section is divided into four parts. First the Density functional theory is introduced, followed by the orbital free DFT formulation. The third part introduces the basis sets that are used in DFT calculations. The last part introduces machine learning and the graphformer model that is used in this thesis.
-
-
-
-
-Methods:
-Density functional theory and speciffically kohn sham
-Basis sets GTOs and PAOs and their integrals. typical basis sets
-Orbital free dft formulation basis sets even tempered, density fitting 
-Machine learing
-Graphformer  Message passing Graph neural network
-
+This section introduces the fundamentals necessary to understand the following chapters. It is divided into four parts. First, we present the basics of basis functions for Density Functional Theory (DFT) calculations, which are essential for discretizing theoretical formulations into machine-solvable equations. Secondly, we introduce the foundations of DFT, focusing on Kohn-Sham DFT (KS-DFT), followed by the mechanics of Orbital-Free DFT (OF-DFT) formulation. This includes descriptions of how OF-DFT labels are computed for machine learning models, which are introduced in the final section of the methods chapter.
+\section{Basis sets}
+\input{chapters/foundations/basissets_and_integrals}
 \section{Density functional theory}
 \input{chapters/foundations/kohn_sham_dft}
 \section{Orbital free DFT}
 \input{chapters/foundations/orbital_free_dft}
-\section{Basis sets}
-\input{chapters/foundations/basissets_and_integrals}
 \section{Machine Learning}
 \input{chapters/foundations/machine_learning}
