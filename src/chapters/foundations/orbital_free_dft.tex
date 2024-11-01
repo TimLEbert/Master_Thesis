@@ -86,10 +86,10 @@ The projected gradient of the kinetic energy is then calculated as the DIIS weig
 These labels for the kinetic energy are then used to train a machine learning model to emulate the kinetic energy functional.\\
 
 \subsection{Preparation of the data}
-To prepare the data to be better suited for a machine learning Model we employ the same techniques as in the original M-OFDFT\cite{zhang_m-ofdft_2023} paper, therefor we only quickly notion their functions here.
+To prepare the data for machine learning, we employ the same techniques as in the original M-OFDFT \cite{zhang_m-ofdft_2023} paper. We briefly describe their functions here.
 \subsubsection{Natrep}
-Orthogonolizing the OF-basis for more meaningfull coefficients.
+Orthogonalizing the orbital-free basis for more meaningful coefficients.
 \subsubsection{Dimensionwise rescaling}
-An statistic is calculated for the coefficients of each atomtype in the dataset and the coefficients are rescaled to have a mean of 0 and a standard deviation of 1.
+Statistics are calculated for the coefficients of each atom type in the dataset, and the coefficients are rescaled to have a mean of 0 and a standard deviation of 1.
 \subsubsection{Local frames}
-To make the model invariant to rotations is for each atom a local coordinate system is choosen which is directed in the direction of its nearest neightbor. Then the coefficients are projected into this local frame.
+To make the model rotationally invariant, a local coordinate system is defined for each atom, oriented towards its nearest neighbor. The coefficients are then projected into this local frame.
