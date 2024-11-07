@@ -125,39 +125,4 @@ If we assume that $A=\tilde{W}$ is invertible this can be solved by:
     &= \bar{\mathbf{P}}\bar\Gamma\\
     \end{align}
 Where $\bar{\mathbf{P}}$ is a three index tensor only dependent on the geometry of the molecule.
-\begin{table}[ht]
-\centering
-\begin{tabular}{p{3.5cm}|c|c|c|c}
-\textbf{Method} & \textbf{AE $E_H$} & \textbf{AE $E_{XC}$} & \textbf{AE $E_{ext}$} & \textbf{AE $E_{kin}$} \\
-\hline
-\raggedright \textbf{hartree} & (1.43$\pm$0.4)$\cdot 10^{-6}$ & (1.09$\pm$0.7)$\cdot 10^{-5}$ & (8.68$\pm$1.2)$\cdot 10^{-4}$ & (8.56$\pm$1.2)$\cdot 10^{-4}$ \\
-\raggedright \textbf{hartree+external} & (2.54$\pm$0.3)$\cdot 10^{-5}$ & (1.95$\pm$0.8)$\cdot 10^{-5}$ & (2.49$\pm$0.7)$\cdot 10^{-8}$ & (8.35$\pm$5.4)$\cdot 10^{-6}$ \\
-\raggedright \textbf{hartree+external fixed density} & (3.13$\pm$2.5)$\cdot 10^{-4}$ & (2.12$\pm$1.0)$\cdot 10^{-5}$ & (1.69$\pm$0.7)$\cdot 10^{-8}$ & (2.92$\pm$2.4)$\cdot 10^{-4}$ \\
-\raggedright \textbf{hartree+external mofdft} & (1.43$\pm$0.4)$\cdot 10^{-6}$ & (1.44$\pm$0.8)$\cdot 10^{-5}$ & (2.03$\pm$0.6)$\cdot 10^{-12}$ & (1.58$\pm$0.8)$\cdot 10^{-5}$ \\
-\raggedright \textbf{hartree+external mofdft enforced density} & (1.15$\pm$1.6)$\cdot 10^{-6}$ & (1.13$\pm$0.7)$\cdot 10^{-5}$ & (3.89$\pm$4.6)$\cdot 10^{-11}$ & (1.16$\pm$0.7)$\cdot 10^{-5}$ \\
-\raggedright \textbf{hartree+external mofdft fixed density} & (1.59$\pm$3.4)$\cdot 10^{-6}$ & (5.15$\pm$16.6)$\cdot 10^{-5}$ & (1.16$\pm$1.6)$\cdot 10^{-11}$ & (5.10$\pm$16.3)$\cdot 10^{-5}$ \\
-\raggedright \textbf{hartree fixed density external} & (3.13$\pm$2.5)$\cdot 10^{-4}$ & (2.12$\pm$1.0)$\cdot 10^{-5}$ & (5.48$\pm$4.9)$\cdot 10^{-11}$ & (2.92$\pm$2.4)$\cdot 10^{-4}$ \\
-\raggedright \textbf{overlap} & (9.48$\pm$3.3)$\cdot 10^{-3}$ & (1.16$\pm$0.5)$\cdot 10^{-4}$ & (9.66$\pm$3.3)$\cdot 10^{-3}$ & (2.89$\pm$0.9)$\cdot 10^{-4}$ \\
-\raggedright \textbf{overlap fixed density external} & (3.18$\pm$2.4)$\cdot 10^{-4}$ & (8.48$\pm$2.6)$\cdot 10^{-5}$ & (1.84$\pm$1.6)$\cdot 10^{-13}$ & (2.33$\pm$2.4)$\cdot 10^{-4}$ \\
-\end{tabular}
-\caption{Differences in Energies for different density fitting methods for the first 1000 molecules of QM9}
-\end{table}
-
-\begin{table}[ht]
-\centering
-\begin{tabular}{p{2cm}|c|c|c|c|c}
-\textbf{Method} & $|\rho|-|\rho'|$ & $||\rho-\rho'||_2$ & $||\rho-\rho'||_1$ & $\int \text{abs}(-\rho)$ & $E_H[\rho-\rho']$ \\
-\hline
-\raggedright \textbf{hartree} & (4.25$\pm$3.5)$\cdot 10^{-5}$ & (7.95$\pm$1.1)$\cdot 10^{-4}$ & (6.22$\pm$0.5)$\cdot 10^{-3}$ & (2.61$\pm$8.1)$\cdot 10^{-7}$ & (2.86$\pm$0.7)$\cdot 10^{-6}$ \\
-\raggedright \textbf{hartree+external} & (4.15$\pm$3.5)$\cdot 10^{-5}$ & (7.64$\pm$1.1)$\cdot 10^{-4}$ & (6.22$\pm$0.5)$\cdot 10^{-3}$ & (2.61$\pm$8.1)$\cdot 10^{-7}$ & (2.87$\pm$0.7)$\cdot 10^{-6}$ \\
-\raggedright \textbf{hartree+external fixed density} & (8.82$\pm$7.6)$\cdot 10^{-11}$ & (7.73$\pm$1.2)$\cdot 10^{-4}$ & (6.24$\pm$0.5)$\cdot 10^{-3}$ & (2.55$\pm$8.0)$\cdot 10^{-7}$ & (2.89$\pm$0.7)$\cdot 10^{-6}$ \\
-\raggedright \textbf{hartree+external mofdft} & (4.26$\pm$3.5)$\cdot 10^{-5}$ & (6.79$\pm$1.0)$\cdot 10^{-4}$ & (6.22$\pm$0.5)$\cdot 10^{-3}$ & (2.60$\pm$8.1)$\cdot 10^{-7}$ & (2.87$\pm$0.7)$\cdot 10^{-6}$ \\
-\raggedright \textbf{hartree+external mofdft enforced density} & (7.00$\pm$5.9)$\cdot 10^{-16}$ & (9.30$\pm$5.4)$\cdot 10^{-4}$ & (7.12$\pm$1.4)$\cdot 10^{-3}$ & (2.44$\pm$13.1)$\cdot 10^{-6}$ & (3.78$\pm$2.3)$\cdot 10^{-6}$ \\
-\raggedright \textbf{hartree+external mofdft fixed density} & (1.64$\pm$1.4)$\cdot 10^{-7}$ & (2.30$\pm$2.8)$\cdot 10^{-3}$ & (7.84$\pm$2.4)$\cdot 10^{-3}$ & (3.55$\pm$18.7)$\cdot 10^{-6}$ & (5.02$\pm$6.0)$\cdot 10^{-6}$ \\
-\raggedright \textbf{hartree fixed density external} & (3.04$\pm$2.5)$\cdot 10^{-14}$ & (7.73$\pm$1.2)$\cdot 10^{-4}$ & (6.24$\pm$0.5)$\cdot 10^{-3}$ & (2.55$\pm$8.0)$\cdot 10^{-7}$ & (2.89$\pm$0.7)$\cdot 10^{-6}$ \\
-\raggedright \textbf{overlap} & (1.20$\pm$0.4)$\cdot 10^{-3}$ & (5.22$\pm$0.7)$\cdot 10^{-4}$ & (6.28$\pm$0.5)$\cdot 10^{-3}$ & (7.49$\pm$32.8)$\cdot 10^{-7}$ & (1.72$\pm$1.1)$\cdot 10^{-5}$ \\
-\raggedright \textbf{overlap fixed density external} & (2.63$\pm$2.3)$\cdot 10^{-14}$ & (5.24$\pm$0.7)$\cdot 10^{-4}$ & (6.37$\pm$0.5)$\cdot 10^{-3}$ & (4.85$\pm$20.4)$\cdot 10^{-7}$ & (7.52$\pm$3.9)$\cdot 10^{-6}$ \\
-\end{tabular}
-\caption{Differences in residuals and densities for different density fitting methods}
-\end{table}
 

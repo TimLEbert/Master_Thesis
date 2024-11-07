@@ -1,6 +1,6 @@
 Machine Learning (ML) as a field has already revolutionized numerous domains, from image recognition and natural language processing to drug discovery. The success of machine learning relies on using backpropagation to optimize parameterized model functions by training them on large amounts of data.
 
-\section{Graph Neural Networks}
+\section{Graph Neural Networks}\label{model}
 Graph neural networks are a specialized variant of neural networks designed for graph-structured data. In our case, the graph represents the molecular structure of the system we want to model. Each atom acts as a node in the graph, containing information about the local density in the form of coefficients from atom-centered basis functions. The edges of the graph contain information about interatomic distances, which can be embedded as edge features in the graph neural network.
 \subsection{OF-DFT Model and basis set predictor model}
 For the OF-DFT we are using the architecture used in M-OFDFT\cite{zhang_m-ofdft_2023} and which is an modified Graphormer-architecture \cite{ying2021transformers}. The Graphformer is a transformer like architecture that operates on graph structured data, in this case a complete graph but takes into account the distances between different nodes in its attention module.\\
